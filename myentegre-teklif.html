@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myentegre - Kurumsal Web Sitesi Teklifi</title>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='80' font-size='80'%3E📄%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0f1729;
+            --primary-light: #1a2744;
+            --primary-dark: #0a0f1a;
+            --secondary: #2563eb;
+            --secondary-light: #3b82f6;
+            --accent: #06b6d4;
+            --accent-light: #22d3ee;
+            --text-white: #ffffff;
+            --text-light: #e2e8f0;
+            --text-muted: #94a3b8;
+            --text-dark: #1e293b;
+            --bg-dark: #0f1729;
+            --bg-card: #1a2744;
+            --border-dark: rgba(255, 255, 255, 0.1);
+            --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --radius: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .document { max-width: 950px; margin: 0 auto; background: var(--bg-dark); }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, var(--primary) 100%);
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+            min-height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 60%; height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(37, 99, 235, 0.1) 100%);
+            clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            z-index: 1;
+        }
+        .year-badge { font-size: 1.5rem; font-weight: 300; color: var(--text-muted); letter-spacing: 2px; }
+        .logo-text { font-size: 1.5rem; font-weight: 700; color: var(--text-white); letter-spacing: -0.5px; }
+        .header-content { position: relative; z-index: 1; margin-top: 40px; }
+        .doc-type {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+        }
+        .header-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--text-white);
+            line-height: 1.2;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+        .header-subtitle { font-size: 1.1rem; color: var(--text-muted); font-weight: 400; }
+        .header-meta {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-dark);
+        }
+        .meta-item { display: flex; flex-direction: column; gap: 4px; }
+        .meta-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
+        .meta-value { font-size: 0.95rem; font-weight: 600; color: var(--text-white); }
+
+        /* Content */
+        .content { padding: 60px; }
+        .section { margin-bottom: 60px; }
+        .section:last-child { margin-bottom: 0; }
+        .section-header { margin-bottom: 30px; }
+        .section-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        .section-title { font-size: 1.8rem; font-weight: 700; color: var(--text-white); letter-spacing: -0.5px; }
+        .section-desc { font-size: 1rem; color: var(--text-muted); margin-top: 10px; max-width: 600px; }
+
+        /* Tech Cards */
+        .tech-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        .tech-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 24px;
+            border: 1px solid var(--border-dark);
+            transition: all 0.3s ease;
+        }
+        .tech-card:hover { border-color: var(--secondary); transform: translateY(-2px); }
+        .tech-card-header { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+        .tech-card-icon {
+            width: 42px; height: 42px;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1.1rem;
+        }
+        .tech-card-title { font-weight: 600; font-size: 1rem; color: var(--text-white); }
+        .tech-card-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+
+        /* Features */
+        .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .feature-item {
+            display: flex; align-items: center; gap: 12px;
+            padding: 16px 20px;
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-dark);
+        }
+        .feature-icon {
+            width: 22px; height: 22px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--primary); font-size: 0.65rem; flex-shrink: 0;
+        }
+        .feature-text { font-size: 0.9rem; color: var(--text-light); }
+
+        /* Modules Table */
+        .modules-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border-dark);
+        }
+        .modules-table th {
+            background: var(--bg-card);
+            color: var(--text-muted);
+            padding: 16px 24px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .modules-table th:last-child { text-align: center; width: 80px; }
+        .modules-table td {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border-dark);
+            font-size: 0.95rem;
+        }
+        .modules-table tr:last-child td { border-bottom: none; }
+        .modules-table td:last-child { text-align: center; }
+        .modules-table tbody tr { transition: background 0.2s ease; }
+        .modules-table tbody tr:hover { background: rgba(37, 99, 235, 0.05); }
+        .check-icon { color: var(--accent); font-size: 1.1rem; }
+        .module-name { font-weight: 600; color: var(--text-white); margin-bottom: 4px; }
+        .module-desc { font-size: 0.8rem; color: var(--text-muted); }
+
+        /* Timeline */
+        .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 30px; }
+        .timeline-item {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 24px 20px;
+            text-align: center;
+            border: 1px solid var(--border-dark);
+            position: relative;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            right: -12px; top: 50%;
+            transform: translateY(-50%);
+            width: 24px; height: 2px;
+            background: var(--border-dark);
+        }
+        .timeline-item:last-child::after { display: none; }
+        .timeline-number {
+            width: 36px; height: 36px;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-weight: 700; font-size: 0.9rem;
+            margin: 0 auto 15px;
+        }
+        .timeline-title { font-weight: 600; color: var(--text-white); font-size: 0.9rem; margin-bottom: 6px; }
+        .timeline-duration { font-size: 0.8rem; color: var(--accent); font-weight: 500; }
+        .timeline-total {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-dark);
+        }
+        .timeline-total span { color: var(--text-muted); font-size: 0.9rem; }
+        .timeline-total strong { color: var(--accent); font-size: 1.1rem; }
+
+        /* Pricing */
+        .pricing-box {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1d4ed8 100%);
+            border-radius: var(--radius-lg);
+            padding: 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .pricing-box::before {
+            content: '';
+            position: absolute;
+            top: -50%; right: -20%;
+            width: 300px; height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        .pricing-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.8); margin-bottom: 15px; }
+        .pricing-amount { font-size: 3.5rem; font-weight: 800; color: white; letter-spacing: -2px; }
+        .pricing-amount span { font-size: 1.2rem; font-weight: 400; opacity: 0.8; margin-left: 5px; }
+        .pricing-note { font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-top: 10px; }
+        .pricing-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 35px;
+            padding-top: 35px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        .pricing-feature {
+            display: flex; align-items: center; justify-content: center;
+            gap: 8px; font-size: 0.85rem; color: rgba(255,255,255,0.9);
+        }
+        .pricing-feature i { color: var(--accent-light); }
+
+        /* Benefits */
+        .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .benefit-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            text-align: center;
+            border: 1px solid var(--border-dark);
+            transition: all 0.3s ease;
+        }
+        .benefit-card:hover { border-color: var(--accent); }
+        .benefit-icon {
+            width: 50px; height: 50px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1.3rem;
+            margin: 0 auto 16px;
+        }
+        .benefit-title { font-weight: 600; color: var(--text-white); margin-bottom: 8px; font-size: 1rem; }
+        .benefit-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+
+        /* Terms */
+        .terms-list { list-style: none; }
+        .terms-list li {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border-dark);
+            display: flex; align-items: flex-start; gap: 14px;
+            font-size: 0.9rem; color: var(--text-light);
+        }
+        .terms-list li:last-child { border-bottom: none; }
+        .terms-list li i { color: var(--accent); margin-top: 4px; font-size: 0.5rem; }
+
+        .validity-badge {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--bg-card);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-size: 0.9rem; font-weight: 600;
+            margin-top: 30px;
+        }
+
+        /* Homepage Mockup */
+        .mockup-container {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-dark);
+            background: #0a0f1a;
+        }
+        .mockup-browser {
+            background: #1a2744;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid var(--border-dark);
+        }
+        .mockup-dots { display: flex; gap: 6px; }
+        .mockup-dots span { width: 10px; height: 10px; border-radius: 50%; }
+        .mockup-dots span:nth-child(1) { background: #ef4444; }
+        .mockup-dots span:nth-child(2) { background: #f59e0b; }
+        .mockup-dots span:nth-child(3) { background: #10b981; }
+        .mockup-url {
+            flex: 1;
+            background: var(--bg-dark);
+            border-radius: 6px;
+            padding: 6px 14px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            border: 1px solid var(--border-dark);
+        }
+        .mockup-body { padding: 0; }
+
+        /* Mockup Inner Site */
+        .mock-hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #0f172a 100%);
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        .mock-hero::before {
+            content: '';
+            position: absolute;
+            top: -30%; right: -10%;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .mock-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
+        }
+        .mock-logo { font-size: 1.4rem; font-weight: 800; color: white; letter-spacing: -0.5px; }
+        .mock-logo span { color: var(--accent); }
+        .mock-nav-links { display: flex; gap: 24px; }
+        .mock-nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .mock-nav-links a:hover { color: white; }
+        .mock-cta-btn {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .mock-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 520px;
+        }
+        .mock-hero-badge {
+            display: inline-block;
+            background: rgba(6, 182, 212, 0.15);
+            color: var(--accent);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+        .mock-hero-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+        .mock-hero-title span { color: var(--accent); }
+        .mock-hero-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+        .mock-hero-btns { display: flex; gap: 12px; }
+        .mock-btn-primary {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .mock-btn-secondary {
+            background: rgba(255,255,255,0.06);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.12);
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+
+        /* Mockup Stats */
+        .mock-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background: #0f172a;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        .mock-stat {
+            padding: 28px 20px;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.06);
+        }
+        .mock-stat:last-child { border-right: none; }
+        .mock-stat-number {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+        .mock-stat-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Mockup Services */
+        .mock-services {
+            padding: 40px;
+            background: #0f172a;
+        }
+        .mock-services-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            margin-bottom: 6px;
+        }
+        .mock-services-sub {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 28px;
+        }
+        .mock-services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .mock-service-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 10px;
+            padding: 24px 18px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .mock-service-card:hover { border-color: var(--accent); background: rgba(6, 182, 212, 0.04); }
+        .mock-service-icon {
+            width: 40px; height: 40px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            border-radius: 10px;
+            margin: 0 auto 14px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1rem;
+        }
+        .mock-service-name { font-size: 0.85rem; font-weight: 600; color: white; margin-bottom: 6px; }
+        .mock-service-desc { font-size: 0.72rem; color: var(--text-muted); line-height: 1.5; }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-light);
+            padding: 50px 60px;
+            border-top: 1px solid var(--border-dark);
+        }
+        .footer-content { display: flex; justify-content: space-between; align-items: flex-end; }
+        .footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+        .footer-contact p {
+            font-size: 0.85rem; color: var(--text-muted);
+            display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+        }
+        .footer-contact p i { color: var(--accent); width: 16px; }
+        .footer-contact a { color: var(--text-muted); text-decoration: none; }
+        .footer-contact a:hover { color: var(--accent); }
+        .signature-area { text-align: center; }
+        .signature-line { width: 180px; height: 1px; background: var(--border-dark); margin: 0 auto 12px; }
+        .signature-label { font-size: 0.8rem; color: var(--text-muted); }
+
+        /* Login Screen */
+        .login-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-dark);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        .login-screen.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        .login-container { text-align: center; padding: 60px; max-width: 450px; width: 100%; }
+        .login-logo { margin-bottom: 50px; }
+        .login-logo-text { font-size: 2.5rem; font-weight: 700; color: var(--text-white); letter-spacing: -1px; }
+        .login-subtitle { font-size: 0.9rem; color: var(--text-muted); margin-top: 8px; }
+        .login-box {
+            background: var(--bg-card); border-radius: var(--radius-lg);
+            padding: 40px; border: 1px solid var(--border-dark);
+        }
+        .login-title { font-size: 1.2rem; font-weight: 600; color: var(--text-white); margin-bottom: 8px; }
+        .login-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 30px; }
+        .login-form { display: flex; flex-direction: column; gap: 16px; }
+        .password-input-wrapper { position: relative; }
+        .password-input {
+            width: 100%; padding: 16px 50px 16px 20px;
+            background: var(--bg-dark); border: 1px solid var(--border-dark);
+            border-radius: var(--radius); color: var(--text-white);
+            font-size: 1rem; outline: none; transition: all 0.3s ease;
+        }
+        .password-input::placeholder { color: var(--text-muted); }
+        .password-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1); }
+        .password-toggle {
+            position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+            background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 4px;
+        }
+        .password-toggle:hover { color: var(--text-white); }
+        .login-btn {
+            width: 100%; padding: 16px;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+            border: none; border-radius: var(--radius); color: white;
+            font-size: 1rem; font-weight: 600; cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+        }
+        .login-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3); }
+        .login-error {
+            background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #f87171; padding: 12px 16px; border-radius: var(--radius);
+            font-size: 0.85rem; display: none; align-items: center; gap: 10px;
+        }
+        .login-error.show { display: flex; }
+        .login-footer { margin-top: 30px; font-size: 0.8rem; color: var(--text-muted); }
+        .login-footer i { color: var(--accent); margin-right: 6px; }
+
+        .document { display: none; }
+        .document.visible { display: block; }
+
+        @media print {
+            body { background: white; color: #1a202c; }
+            .document { background: white; }
+            .header { background: #1a365d !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+
+        @media (max-width: 768px) {
+            .header { padding: 40px 30px; }
+            .header-title { font-size: 2rem; }
+            .content { padding: 40px 30px; }
+            .tech-grid, .features-grid, .benefits-grid { grid-template-columns: 1fr; }
+            .timeline { grid-template-columns: repeat(2, 1fr); }
+            .timeline-item::after { display: none; }
+            .pricing-features { grid-template-columns: 1fr; }
+            .header-meta { flex-wrap: wrap; gap: 20px; }
+            .footer-content { flex-direction: column; align-items: flex-start; gap: 30px; }
+            .mock-services-grid { grid-template-columns: 1fr; }
+            .mock-stats { grid-template-columns: repeat(2, 1fr); }
+            .mock-hero-title { font-size: 1.5rem; }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            75% { transform: translateX(8px); }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- LOGIN SCREEN -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-container">
+            <div class="login-logo">
+                <span class="login-logo-text">myentegre</span>
+                <p class="login-subtitle">Kurumsal Web Sitesi Teklifi</p>
+            </div>
+            <div class="login-box">
+                <h2 class="login-title">Teklif Dokümanı</h2>
+                <p class="login-desc">Bu belgeye erişmek için şifre gereklidir</p>
+                <form class="login-form" id="loginForm" onsubmit="return handleLogin(event)">
+                    <div class="password-input-wrapper">
+                        <input type="password" class="password-input" id="passwordInput" placeholder="Şifrenizi girin" autocomplete="off" autofocus>
+                        <button type="button" class="password-toggle" onclick="togglePassword()">
+                            <i class="fas fa-eye" id="toggleIcon"></i>
+                        </button>
+                    </div>
+                    <div class="login-error" id="loginError">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>Girdiğiniz şifre hatalı. Lütfen tekrar deneyin.</span>
+                    </div>
+                    <button type="submit" class="login-btn">
+                        <span>Teklife Eriş</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+                <div class="login-footer">
+                    <i class="fas fa-lock"></i>
+                    Bu belge şifre ile korunmaktadır
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="document" id="document">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-top">
+                <div class="year-badge">2026</div>
+            </div>
+            <div class="header-content">
+                <div class="doc-type">Kurumsal Web Sitesi Teklifi</div>
+                <h1 class="header-title">myentegre<br>Kurumsal Web Sitesi</h1>
+                <p class="header-subtitle">Danışmanlık ve hizmet sektörü için modern, yönetilebilir ve SEO uyumlu kurumsal web platformu</p>
+                <div class="header-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Teklif No</span>
+                        <span class="meta-value">ME-2026-0327</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Tarih</span>
+                        <span class="meta-value">27 Mart 2026</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Müşteri</span>
+                        <span class="meta-value">myentegre</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Sektör</span>
+                        <span class="meta-value">Danışmanlık & Hizmet</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+
+            <!-- Technology Stack -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-label">Altyapı</div>
+                    <h2 class="section-title">Teknoloji Stack</h2>
+                    <p class="section-desc">Modern, güvenli ve sürdürülebilir teknolojiler ile kurumsal altyapı.</p>
+                </div>
+                <div class="tech-grid">
+                    <div class="tech-card">
+                        <div class="tech-card-header">
+                            <div class="tech-card-icon"><i class="fab fa-python"></i></div>
+                            <div class="tech-card-title">Django 5.x Framework</div>
+                        </div>
+                        <div class="tech-card-desc">Python tabanlı, güvenli ve ölçeklenebilir backend. Built-in CSRF koruması, SQL injection önleme, XSS koruması ve session güvenliği dahil.</div>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-card-header">
+                            <div class="tech-card-icon"><i class="fas fa-database"></i></div>
+                            <div class="tech-card-title">PostgreSQL Database</div>
+                        </div>
+                        <div class="tech-card-desc">Enterprise-grade ilişkisel veritabanı. ACID uyumlu, yüksek performans, JSON desteği ve gelişmiş indexleme.</div>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-card-header">
+                            <div class="tech-card-icon"><i class="fab fa-css3-alt"></i></div>
+                            <div class="tech-card-title">Tailwind CSS & Alpine.js</div>
+                        </div>
+                        <div class="tech-card-desc">Modern utility-first CSS framework ve hafif reaktif JavaScript. Hızlı yükleme, tam responsive ve dinamik kullanıcı arayüzü.</div>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-card-header">
+                            <div class="tech-card-icon"><i class="fas fa-rocket"></i></div>
+                            <div class="tech-card-title">Coolify & Docker</div>
+                        </div>
+                        <div class="tech-card-desc">Self-hosted PaaS ile otomatik deployment. Git push ile canlıya alma, otomatik SSL sertifikası, zero-downtime deploy.</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-label">Özellikler</div>
+                    <h2 class="section-title">Teknik Detaylar</h2>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">Tam responsive tasarım (mobil, tablet, desktop)</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">SSL sertifikası ile güvenli HTTPS bağlantı</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">SEO optimizasyonu (meta tags, sitemap, robots.txt)</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">Google Analytics 4 & Search Console entegrasyonu</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">WhatsApp iletişim butonu entegrasyonu</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">Otomatik görsel optimizasyonu (WebP dönüşüm)</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">Admin paneli ile kolay içerik yönetimi</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">Open Graph & Twitter Card meta etiketleri</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">Schema.org yapısal veri (LocalBusiness, FAQPage)</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">KVKK uyumlu çerez yönetimi & aydınlatma metinleri</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Modules -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-label">Kapsam</div>
+                    <h2 class="section-title">Site Modülleri</h2>
+                </div>
+                <table class="modules-table">
+                    <thead>
+                        <tr>
+                            <th>Modül</th>
+                            <th>Dahil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="module-name">Özel Admin Paneli</div>
+                                <div class="module-desc">Tüm site içeriklerini, hizmetleri, blog yazılarını, referansları, SSS ve iletişim mesajlarını yönetebileceğiniz kapsamlı yönetim arayüzü</div>
+                            </td>
+                            <td><i class="fas fa-check-circle check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="module-name">Ana Sayfa & Hero Alanı</div>
+                                <div class="module-desc">Etkileyici hero bölümü, hizmet özetleri, istatistik sayaçları, öne çıkan referanslar ve hızlı iletişim çağrısı</div>
+                            </td>
+                            <td><i class="fas fa-check-circle check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="module-name">Hakkımızda / Kurumsal Sayfalar</div>
+                                <div class="module-desc">Firma hakkında, misyon/vizyon, ekip tanıtımı, tarihçe ve kurumsal değerler sayfaları</div>
+                            </td>
+                            <td><i class="fas fa-check-circle check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="module-name">Hizmetler / Çözümler</div>
+                                <div class="module-desc">Sunulan danışmanlık ve hizmetlerin detaylı tanıtımı, hizmet detay sayfaları, kategorili yapı ve CTA butonları</div>
+                            </td>
+                            <td><i class="fas fa-check-circle check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="module-name">Blog & Haberler</div>
+                                <div class="module-desc">Kategorili blog sistemi, sektörel yazılar, SEO meta bilgileri, okuma süresi, paylaşım butonları ve görüntülenme sayacı</div>
+                            </td>
+                            <td><i class="fas fa-check-circle check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="module-name">Referanslar & Müşteri Logoları</div>
+                                <div class="module-desc">Çalışılan firma logoları, müşteri yorumları/testimonial'lar, başarı hikayeleri ve sektörel referans sayfası</div>
+                            </td>
+                            <td><i class="fas fa-check-circle check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="module-name">SSS (Sıkça Sorulan Sorular)</div>
+                                <div class="module-desc">Kategorili SSS modülü, açılır-kapanır (accordion) yapı, Schema.org FAQPage desteği ile Google zengin sonuçlarında görünme</div>
+                            </td>
+                            <td><i class="fas fa-check-circle check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="module-name">İletişim & Formlar</div>
+                                <div class="module-desc">İletişim formu, teklif talep formu, Google Maps entegrasyonu, WhatsApp hızlı iletişim butonu ve e-posta bildirimleri</div>
+                            </td>
+                            <td><i class="fas fa-check-circle check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="module-name">Dinamik Sayfalar</div>
+                                <div class="module-desc">KVKK, gizlilik politikası, kullanım koşulları, çerez politikası ve aydınlatma metinleri</div>
+                            </td>
+                            <td><i class="fas fa-check-circle check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="module-name">Site Ayarları & SEO</div>
+                                <div class="module-desc">Logo, favicon, iletişim bilgileri, sosyal medya linkleri, meta açıklamaları, Open Graph, sitemap yönetimi</div>
+                            </td>
+                            <td><i class="fas fa-check-circle check-icon"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Timeline -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-label">Süreç</div>
+                    <h2 class="section-title">Proje Takvimi</h2>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-number">1</div>
+                        <div class="timeline-title">Analiz & Tasarım</div>
+                        <div class="timeline-duration">1–2. Gün</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">2</div>
+                        <div class="timeline-title">Frontend Geliştirme</div>
+                        <div class="timeline-duration">3–4. Gün</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">3</div>
+                        <div class="timeline-title">Backend & Admin</div>
+                        <div class="timeline-duration">5–6. Gün</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">4</div>
+                        <div class="timeline-title">Test & Deploy</div>
+                        <div class="timeline-duration">7. Gün</div>
+                    </div>
+                </div>
+                <div class="timeline-total">
+                    <span>Toplam Tahmini Süre:</span> <strong>1 Hafta (7 Gün)</strong>
+                </div>
+                <div style="text-align: center; margin-top: 15px; font-size: 0.85rem; color: var(--text-muted);">
+                    <i class="fas fa-info-circle" style="color: var(--accent); margin-right: 6px;"></i>
+                    İçerik ve görseller müşteri tarafından sağlandığında süreç hızlanacaktır.
+                </div>
+            </section>
+
+            <!-- Pricing -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-label">Yatırım</div>
+                    <h2 class="section-title">Fiyatlandırma</h2>
+                </div>
+                <table class="modules-table" style="margin-bottom: 30px;">
+                    <thead>
+                        <tr>
+                            <th>Hizmet</th>
+                            <th style="text-align: right;">Tutar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="module-name">Kurumsal Web Sitesi</div>
+                                <div class="module-desc">Responsive kurumsal web sitesi, özel admin paneli, hizmetler, blog, referanslar, SSS, iletişim formları, SEO altyapısı</div>
+                            </td>
+                            <td style="text-align: right; font-weight: 700; color: var(--text-white); font-size: 1.1rem; white-space: nowrap;">70.000 ₺</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="pricing-box">
+                    <div class="pricing-label">Proje Toplam Bedeli</div>
+                    <div class="pricing-amount">70.000<span>₺</span></div>
+                    <div class="pricing-note">KDV hariç • Belirtilen tüm modül ve özellikleri kapsar</div>
+                    <div class="pricing-features">
+                        <div class="pricing-feature"><i class="fas fa-check"></i> 1 Yıl Hosting</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> SSL Sertifikası</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Domain Yönlendirme</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Coolify Deployment</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Admin Eğitimi</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Kaynak Kod Teslimi</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Benefits -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-label">Avantajlar</div>
+                    <h2 class="section-title">Neden Bu Çözüm?</h2>
+                </div>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-sliders-h"></i></div>
+                        <div class="benefit-title">Tam Yönetilebilir</div>
+                        <div class="benefit-desc">Özel admin paneli ile tüm içerikleri, hizmetleri, blog yazılarını ve referansları tek tıkla güncelleyin</div>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-search"></i></div>
+                        <div class="benefit-title">SEO & Görünürlük</div>
+                        <div class="benefit-desc">Schema.org, meta etiketleri, sitemap, Open Graph ve hızlı yükleme ile Google'da üst sıralarda yer alın</div>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="benefit-title">Güvenli Altyapı</div>
+                        <div class="benefit-desc">Django'nun built-in güvenlik katmanları, SSL sertifikası ve KVKK uyumlu veri koruma</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Terms -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-label">Koşullar</div>
+                    <h2 class="section-title">Ödeme Planı</h2>
+                </div>
+                <ul class="terms-list">
+                    <li>
+                        <i class="fas fa-circle"></i>
+                        Sözleşme imzalanması ile birlikte <strong>%50 ön ödeme</strong> (35.000 ₺) yapılır.
+                    </li>
+                    <li>
+                        <i class="fas fa-circle"></i>
+                        Proje teslimi ve onayı ile kalan <strong>%50</strong> (35.000 ₺) ödeme yapılır.
+                    </li>
+                    <li>
+                        <i class="fas fa-circle"></i>
+                        Teslim süresi: Ön ödeme sonrası <strong>1 hafta (7 iş günü)</strong> içinde tamamlanacaktır.
+                    </li>
+                    <li>
+                        <i class="fas fa-circle"></i>
+                        <strong style="color: var(--accent);">Teslim garantisi:</strong> Proje, ön ödeme tarihinden itibaren 1 hafta içinde teslim edilmediği takdirde yapılan ön ödeme tutarı (35.000 ₺) <strong>eksiksiz olarak iade</strong> edilecektir.
+                    </li>
+                    <li>
+                        <i class="fas fa-circle"></i>
+                        1 yıllık hosting, SSL sertifikası ve domain yönlendirme bedele dahildir.
+                    </li>
+                    <li>
+                        <i class="fas fa-circle"></i>
+                        Ödeme havale veya EFT ile yapılabilir.
+                    </li>
+                    <li>
+                        <i class="fas fa-circle"></i>
+                        Proje kapsamı dışındaki ek talepler ayrıca fiyatlandırılır.
+                    </li>
+                </ul>
+                <div style="text-align: center;">
+                    <div class="validity-badge">
+                        <i class="fas fa-clock"></i>
+                        Bu teklif 15 gün süreyle geçerlidir
+                    </div>
+                </div>
+            </section>
+
+            <!-- Homepage Mockup -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-label">Önizleme</div>
+                    <h2 class="section-title">Örnek Ana Sayfa Tasarımı</h2>
+                    <p class="section-desc">Aşağıda myentegre kurumsal web sitesi için önerilen ana sayfa tasarımının önizlemesi yer almaktadır.</p>
+                </div>
+
+                <div class="mockup-container">
+                    <div class="mockup-browser">
+                        <div class="mockup-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div class="mockup-url">
+                            <i class="fas fa-lock" style="color: #10b981; margin-right: 6px; font-size: 0.65rem;"></i>
+                            https://www.myentegre.com
+                        </div>
+                    </div>
+                    <div class="mockup-body">
+                        <!-- Hero -->
+                        <div class="mock-hero">
+                            <div class="mock-nav">
+                                <div class="mock-logo">my<span>entegre</span></div>
+                                <div class="mock-nav-links">
+                                    <a href="#">Hakkımızda</a>
+                                    <a href="#">Hizmetler</a>
+                                    <a href="#">Blog</a>
+                                    <a href="#">Referanslar</a>
+                                    <a href="#">SSS</a>
+                                    <a href="#" class="mock-cta-btn">İletişim</a>
+                                </div>
+                            </div>
+                            <div class="mock-hero-content">
+                                <div class="mock-hero-badge"><i class="fas fa-star" style="margin-right: 6px; font-size: 0.6rem;"></i> Danışmanlık & Entegrasyon Çözümleri</div>
+                                <h1 class="mock-hero-title">İşletmenizi <span>bir adım öteye</span> taşıyoruz.</h1>
+                                <p class="mock-hero-desc">Süreç optimizasyonu, dijital dönüşüm ve stratejik danışmanlık hizmetleri ile işletmenizin verimliliğini artırıyoruz.</p>
+                                <div class="mock-hero-btns">
+                                    <a href="#" class="mock-btn-primary"><i class="fas fa-arrow-right"></i> Hizmetlerimiz</a>
+                                    <a href="#" class="mock-btn-secondary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stats -->
+                        <div class="mock-stats">
+                            <div class="mock-stat">
+                                <div class="mock-stat-number">150+</div>
+                                <div class="mock-stat-label">Müşteri</div>
+                            </div>
+                            <div class="mock-stat">
+                                <div class="mock-stat-number">8+</div>
+                                <div class="mock-stat-label">Yıl Deneyim</div>
+                            </div>
+                            <div class="mock-stat">
+                                <div class="mock-stat-number">%98</div>
+                                <div class="mock-stat-label">Memnuniyet</div>
+                            </div>
+                            <div class="mock-stat">
+                                <div class="mock-stat-number">24/7</div>
+                                <div class="mock-stat-label">Destek</div>
+                            </div>
+                        </div>
+
+                        <!-- Services -->
+                        <div class="mock-services">
+                            <div class="mock-services-title">Hizmetlerimiz</div>
+                            <div class="mock-services-sub">Profesyonel danışmanlık çözümleri ile yanınızdayız</div>
+                            <div class="mock-services-grid">
+                                <div class="mock-service-card">
+                                    <div class="mock-service-icon"><i class="fas fa-chart-line"></i></div>
+                                    <div class="mock-service-name">Süreç Optimizasyonu</div>
+                                    <div class="mock-service-desc">İş süreçlerinizi analiz eder, verimliliği artıracak stratejiler geliştiririz.</div>
+                                </div>
+                                <div class="mock-service-card">
+                                    <div class="mock-service-icon"><i class="fas fa-cogs"></i></div>
+                                    <div class="mock-service-name">Sistem Entegrasyonu</div>
+                                    <div class="mock-service-desc">Farklı yazılım ve platformlarınızı entegre ederek tek noktadan yönetimi sağlarız.</div>
+                                </div>
+                                <div class="mock-service-card">
+                                    <div class="mock-service-icon"><i class="fas fa-lightbulb"></i></div>
+                                    <div class="mock-service-name">Stratejik Danışmanlık</div>
+                                    <div class="mock-service-desc">İşletmenizin büyüme hedeflerine uygun stratejik yol haritası oluştururuz.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 20px; font-size: 0.82rem; color: var(--text-muted);">
+                    <i class="fas fa-info-circle" style="color: var(--accent); margin-right: 6px;"></i>
+                    Bu tasarım bir önizlemedir. Son tasarım, müşteri geri bildirimleri doğrultusunda şekillenecektir.
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-contact">
+                        <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 16px;">Bu teklif <strong>myentegre</strong> için özel olarak hazırlanmıştır.</p>
+                        <p><i class="fas fa-calendar"></i> 27 Mart 2026</p>
+                    </div>
+                </div>
+                <div class="signature-area">
+                    <div class="signature-line"></div>
+                    <div class="signature-label">Yetkili İmza</div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const CORRECT_PASSWORD = 'myentegre2026';
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const passwordInput = document.getElementById('passwordInput');
+            const loginError = document.getElementById('loginError');
+            const loginScreen = document.getElementById('loginScreen');
+            const document_el = document.getElementById('document');
+            const enteredPassword = passwordInput.value;
+
+            if (enteredPassword === CORRECT_PASSWORD) {
+                loginError.classList.remove('show');
+                loginScreen.classList.add('hidden');
+                document_el.classList.add('visible');
+                window.scrollTo(0, 0);
+            } else {
+                loginError.classList.add('show');
+                passwordInput.style.animation = 'shake 0.5s ease';
+                setTimeout(() => { passwordInput.style.animation = ''; }, 500);
+                passwordInput.value = '';
+                passwordInput.focus();
+            }
+            return false;
+        }
+
+        function togglePassword() {
+            const passwordInput = document.getElementById('passwordInput');
+            const toggleIcon = document.getElementById('toggleIcon');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') { handleLogin(e); }
+        });
+    </script>
+</body>
+
+</html>
