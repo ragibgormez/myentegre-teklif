@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>myentegre - Kurumsal Web Sitesi Teklifi</title>
+    <title>endeneyim - Kurumsal Web Sitesi Teklifi</title>
     <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='80' font-size='80'%3E📄%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,6 +31,8 @@
             --radius: 12px;
             --radius-lg: 20px;
             --radius-xl: 28px;
+            --gold: #f59e0b;
+            --gold-light: #fbbf24;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -192,6 +194,7 @@
         .modules-table tbody tr { transition: background 0.2s ease; }
         .modules-table tbody tr:hover { background: rgba(37, 99, 235, 0.05); }
         .check-icon { color: var(--accent); font-size: 1.1rem; }
+        .cross-icon { color: #475569; font-size: 1rem; }
         .module-name { font-weight: 600; color: var(--text-white); margin-bottom: 4px; }
         .module-desc { font-size: 0.8rem; color: var(--text-muted); }
 
@@ -234,6 +237,7 @@
         }
         .timeline-total span { color: var(--text-muted); font-size: 0.9rem; }
         .timeline-total strong { color: var(--accent); font-size: 1.1rem; }
+        .timeline-3 { grid-template-columns: repeat(3, 1fr); }
 
         /* Pricing */
         .pricing-box {
@@ -251,6 +255,9 @@
             width: 300px; height: 300px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
+        }
+        .pricing-box.gold-theme {
+            background: linear-gradient(135deg, #92400e 0%, #b45309 50%, #d97706 100%);
         }
         .pricing-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.8); margin-bottom: 15px; }
         .pricing-amount { font-size: 3.5rem; font-weight: 800; color: white; letter-spacing: -2px; }
@@ -577,6 +584,83 @@
         .document { display: none; }
         .document.visible { display: block; }
 
+        /* Package Selector */
+        .package-selector {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        .package-tab {
+            background: var(--bg-card);
+            border: 2px solid var(--border-dark);
+            border-radius: var(--radius-lg);
+            padding: 28px 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+        }
+        .package-tab:hover { border-color: var(--secondary); transform: translateY(-2px); }
+        .package-tab.active { border-color: var(--accent); background: rgba(6, 182, 212, 0.06); }
+        .package-tab.active .pkg-name { color: var(--accent); }
+        .package-tab .pkg-icon {
+            width: 48px; height: 48px;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1.2rem;
+            margin: 0 auto 14px;
+        }
+        .package-tab .pkg-icon.starter { background: linear-gradient(135deg, #3b82f6, #60a5fa); }
+        .package-tab .pkg-icon.professional { background: linear-gradient(135deg, var(--secondary), var(--accent)); }
+        .package-tab .pkg-icon.premium { background: linear-gradient(135deg, #d97706, #f59e0b); }
+        .package-tab .pkg-name {
+            font-size: 1.05rem; font-weight: 700; color: var(--text-white);
+            margin-bottom: 4px; transition: color 0.3s;
+        }
+        .package-tab .pkg-price {
+            font-size: 1.4rem; font-weight: 800; color: var(--text-white);
+            margin: 8px 0 4px;
+        }
+        .package-tab .pkg-delivery {
+            font-size: 0.78rem; color: var(--text-muted); font-weight: 500;
+        }
+        .package-tab .pkg-badge {
+            position: absolute;
+            top: -11px; left: 50%; transform: translateX(-50%);
+            background: var(--accent);
+            color: var(--primary);
+            font-size: 0.65rem; font-weight: 700;
+            padding: 3px 14px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .package-tab .pkg-badge.gold {
+            background: linear-gradient(135deg, #d97706, #f59e0b);
+            color: #1a1a1a;
+        }
+
+        /* Package Content */
+        .pkg-content { display: none; }
+        .pkg-content.active { display: block; }
+
+        /* Hosting addon box */
+        .hosting-addon {
+            margin-top: 20px;
+            padding: 24px;
+            background: rgba(245, 158, 11, 0.08);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .hosting-addon i { color: var(--gold); font-size: 1.3rem; flex-shrink: 0; }
+        .hosting-addon-text { font-size: 0.9rem; color: var(--text-light); }
+        .hosting-addon-text strong { color: var(--gold-light); }
+
         @media print {
             body { background: white; color: #1a202c; }
             .document { background: white; }
@@ -588,7 +672,7 @@
             .header-title { font-size: 2rem; }
             .content { padding: 40px 30px; }
             .tech-grid, .features-grid, .benefits-grid { grid-template-columns: 1fr; }
-            .timeline { grid-template-columns: repeat(2, 1fr); }
+            .timeline, .timeline-3 { grid-template-columns: repeat(2, 1fr); }
             .timeline-item::after { display: none; }
             .pricing-features { grid-template-columns: 1fr; }
             .header-meta { flex-wrap: wrap; gap: 20px; }
@@ -596,6 +680,7 @@
             .mock-services-grid { grid-template-columns: 1fr; }
             .mock-stats { grid-template-columns: repeat(2, 1fr); }
             .mock-hero-title { font-size: 1.5rem; }
+            .package-selector { grid-template-columns: 1fr; }
         }
 
         @keyframes shake {
@@ -611,31 +696,31 @@
     <div class="login-screen" id="loginScreen">
         <div class="login-container">
             <div class="login-logo">
-                <span class="login-logo-text">myentegre</span>
+                <span class="login-logo-text">endeneyim</span>
                 <p class="login-subtitle">Kurumsal Web Sitesi Teklifi</p>
             </div>
             <div class="login-box">
-                <h2 class="login-title">Teklif Dokümanı</h2>
-                <p class="login-desc">Bu belgeye erişmek için şifre gereklidir</p>
+                <h2 class="login-title">Teklif Dokumani</h2>
+                <p class="login-desc">Bu belgeye erismek icin sifre gereklidir</p>
                 <form class="login-form" id="loginForm" onsubmit="return handleLogin(event)">
                     <div class="password-input-wrapper">
-                        <input type="password" class="password-input" id="passwordInput" placeholder="Şifrenizi girin" autocomplete="off" autofocus>
+                        <input type="password" class="password-input" id="passwordInput" placeholder="Sifrenizi girin" autocomplete="off" autofocus>
                         <button type="button" class="password-toggle" onclick="togglePassword()">
                             <i class="fas fa-eye" id="toggleIcon"></i>
                         </button>
                     </div>
                     <div class="login-error" id="loginError">
                         <i class="fas fa-exclamation-circle"></i>
-                        <span>Girdiğiniz şifre hatalı. Lütfen tekrar deneyin.</span>
+                        <span>Girdiginiz sifre hatali. Lutfen tekrar deneyin.</span>
                     </div>
                     <button type="submit" class="login-btn">
-                        <span>Teklife Eriş</span>
+                        <span>Teklife Eris</span>
                         <i class="fas fa-arrow-right"></i>
                     </button>
                 </form>
                 <div class="login-footer">
                     <i class="fas fa-lock"></i>
-                    Bu belge şifre ile korunmaktadır
+                    Bu belge sifre ile korunmaktadir
                 </div>
             </div>
         </div>
@@ -649,24 +734,24 @@
             </div>
             <div class="header-content">
                 <div class="doc-type">Kurumsal Web Sitesi Teklifi</div>
-                <h1 class="header-title">myentegre<br>Kurumsal Web Sitesi</h1>
-                <p class="header-subtitle">Danışmanlık ve hizmet sektörü için modern, yönetilebilir ve SEO uyumlu kurumsal web platformu</p>
+                <h1 class="header-title">EnDeneyim Merkezi<br>Kurumsal Web Sitesi</h1>
+                <p class="header-subtitle">YKS sinav hazirlik ve egitim sektoru icin modern, yonetilebilir ve SEO uyumlu kurumsal web platformu</p>
                 <div class="header-meta">
                     <div class="meta-item">
                         <span class="meta-label">Teklif No</span>
-                        <span class="meta-value">ME-2026-0327</span>
+                        <span class="meta-value">ED-2026-0414</span>
                     </div>
                     <div class="meta-item">
                         <span class="meta-label">Tarih</span>
-                        <span class="meta-value">27 Mart 2026</span>
+                        <span class="meta-value">14 Nisan 2026</span>
                     </div>
                     <div class="meta-item">
-                        <span class="meta-label">Müşteri</span>
-                        <span class="meta-value">myentegre</span>
+                        <span class="meta-label">Musteri</span>
+                        <span class="meta-value">EnDeneyim Merkezi</span>
                     </div>
                     <div class="meta-item">
-                        <span class="meta-label">Sektör</span>
-                        <span class="meta-value">Danışmanlık & Hizmet</span>
+                        <span class="meta-label">Sektor</span>
+                        <span class="meta-value">Egitim & YKS Hazirlik</span>
                     </div>
                 </div>
             </div>
@@ -677,9 +762,9 @@
             <!-- Technology Stack -->
             <section class="section">
                 <div class="section-header">
-                    <div class="section-label">Altyapı</div>
+                    <div class="section-label">Altyapi</div>
                     <h2 class="section-title">Teknoloji Stack</h2>
-                    <p class="section-desc">Modern, güvenli ve sürdürülebilir teknolojiler ile kurumsal altyapı.</p>
+                    <p class="section-desc">Modern, guvenli ve surdurulebilir teknolojiler ile kurumsal altyapi.</p>
                 </div>
                 <div class="tech-grid">
                     <div class="tech-card">
@@ -687,310 +772,828 @@
                             <div class="tech-card-icon"><i class="fab fa-python"></i></div>
                             <div class="tech-card-title">Django 5.x Framework</div>
                         </div>
-                        <div class="tech-card-desc">Python tabanlı, güvenli ve ölçeklenebilir backend. Built-in CSRF koruması, SQL injection önleme, XSS koruması ve session güvenliği dahil.</div>
+                        <div class="tech-card-desc">Python tabanli, guvenli ve olceklenebilir backend. Built-in CSRF korumasi, SQL injection onleme, XSS korumasi ve session guvenligi dahil.</div>
                     </div>
                     <div class="tech-card">
                         <div class="tech-card-header">
                             <div class="tech-card-icon"><i class="fas fa-database"></i></div>
                             <div class="tech-card-title">PostgreSQL Database</div>
                         </div>
-                        <div class="tech-card-desc">Enterprise-grade ilişkisel veritabanı. ACID uyumlu, yüksek performans, JSON desteği ve gelişmiş indexleme.</div>
+                        <div class="tech-card-desc">Enterprise-grade iliskisel veritabani. ACID uyumlu, yuksek performans, JSON destegi ve gelismis indexleme.</div>
                     </div>
                     <div class="tech-card">
                         <div class="tech-card-header">
                             <div class="tech-card-icon"><i class="fab fa-css3-alt"></i></div>
                             <div class="tech-card-title">Tailwind CSS & Alpine.js</div>
                         </div>
-                        <div class="tech-card-desc">Modern utility-first CSS framework ve hafif reaktif JavaScript. Hızlı yükleme, tam responsive ve dinamik kullanıcı arayüzü.</div>
+                        <div class="tech-card-desc">Modern utility-first CSS framework ve hafif reaktif JavaScript. Hizli yukleme, tam responsive ve dinamik kullanici arayuzu. Swiper.js ile hero slider ve carousel destegi.</div>
                     </div>
                     <div class="tech-card">
                         <div class="tech-card-header">
                             <div class="tech-card-icon"><i class="fas fa-rocket"></i></div>
                             <div class="tech-card-title">Coolify & Docker</div>
                         </div>
-                        <div class="tech-card-desc">Self-hosted PaaS ile otomatik deployment. Git push ile canlıya alma, otomatik SSL sertifikası, zero-downtime deploy.</div>
+                        <div class="tech-card-desc">Self-hosted PaaS ile otomatik deployment. Git push ile canliya alma, otomatik SSL sertifikasi, zero-downtime deploy.</div>
                     </div>
                 </div>
             </section>
 
-            <!-- Features -->
+            <!-- Package Selector -->
             <section class="section">
                 <div class="section-header">
-                    <div class="section-label">Özellikler</div>
-                    <h2 class="section-title">Teknik Detaylar</h2>
+                    <div class="section-label">Paketler</div>
+                    <h2 class="section-title">Teklif Secenekleri</h2>
+                    <p class="section-desc">Projeniz icin 3 farkli paket hazirladik. Ihtiyaciniza en uygun secenegi secin.</p>
                 </div>
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <div class="feature-icon"><i class="fas fa-check"></i></div>
-                        <div class="feature-text">Tam responsive tasarım (mobil, tablet, desktop)</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon"><i class="fas fa-check"></i></div>
-                        <div class="feature-text">SSL sertifikası ile güvenli HTTPS bağlantı</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon"><i class="fas fa-check"></i></div>
-                        <div class="feature-text">SEO optimizasyonu (meta tags, sitemap, robots.txt)</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon"><i class="fas fa-check"></i></div>
-                        <div class="feature-text">Google Analytics 4 & Search Console entegrasyonu</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon"><i class="fas fa-check"></i></div>
-                        <div class="feature-text">WhatsApp iletişim butonu entegrasyonu</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon"><i class="fas fa-check"></i></div>
-                        <div class="feature-text">Otomatik görsel optimizasyonu (WebP dönüşüm)</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon"><i class="fas fa-check"></i></div>
-                        <div class="feature-text">Admin paneli ile kolay içerik yönetimi</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon"><i class="fas fa-check"></i></div>
-                        <div class="feature-text">Open Graph & Twitter Card meta etiketleri</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon"><i class="fas fa-check"></i></div>
-                        <div class="feature-text">Schema.org yapısal veri (LocalBusiness, FAQPage)</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon"><i class="fas fa-check"></i></div>
-                        <div class="feature-text">KVKK uyumlu çerez yönetimi & aydınlatma metinleri</div>
-                    </div>
-                </div>
-            </section>
 
-            <!-- Modules -->
-            <section class="section">
-                <div class="section-header">
-                    <div class="section-label">Kapsam</div>
-                    <h2 class="section-title">Site Modülleri</h2>
+                <div class="package-selector">
+                    <div class="package-tab active" onclick="selectPackage('starter')">
+                        <div class="pkg-icon starter"><i class="fas fa-bolt"></i></div>
+                        <div class="pkg-name">Hizli Baslangic</div>
+                        <div class="pkg-price">15.000 ₺</div>
+                        <div class="pkg-delivery"><i class="fas fa-calendar-check" style="margin-right: 4px;"></i> 17 Nisan teslim</div>
+                    </div>
+                    <div class="package-tab" onclick="selectPackage('professional')">
+                        <div class="pkg-badge">En Populer</div>
+                        <div class="pkg-icon professional"><i class="fas fa-cubes"></i></div>
+                        <div class="pkg-name">Profesyonel</div>
+                        <div class="pkg-price">40.000 ₺</div>
+                        <div class="pkg-delivery"><i class="fas fa-calendar-check" style="margin-right: 4px;"></i> 24 Nisan teslim</div>
+                    </div>
+                    <div class="package-tab" onclick="selectPackage('premium')">
+                        <div class="pkg-badge gold">Tam Paket</div>
+                        <div class="pkg-icon premium"><i class="fas fa-crown"></i></div>
+                        <div class="pkg-name">Premium</div>
+                        <div class="pkg-price">70.000 ₺</div>
+                        <div class="pkg-delivery"><i class="fas fa-calendar-check" style="margin-right: 4px;"></i> 30 Nisan teslim</div>
+                    </div>
                 </div>
-                <table class="modules-table">
-                    <thead>
-                        <tr>
-                            <th>Modül</th>
-                            <th>Dahil</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="module-name">Özel Admin Paneli</div>
-                                <div class="module-desc">Tüm site içeriklerini, hizmetleri, blog yazılarını, referansları, SSS ve iletişim mesajlarını yönetebileceğiniz kapsamlı yönetim arayüzü</div>
-                            </td>
-                            <td><i class="fas fa-check-circle check-icon"></i></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="module-name">Ana Sayfa & Hero Alanı</div>
-                                <div class="module-desc">Etkileyici hero bölümü, hizmet özetleri, istatistik sayaçları, öne çıkan referanslar ve hızlı iletişim çağrısı</div>
-                            </td>
-                            <td><i class="fas fa-check-circle check-icon"></i></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="module-name">Hakkımızda / Kurumsal Sayfalar</div>
-                                <div class="module-desc">Firma hakkında, misyon/vizyon, ekip tanıtımı, tarihçe ve kurumsal değerler sayfaları</div>
-                            </td>
-                            <td><i class="fas fa-check-circle check-icon"></i></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="module-name">Hizmetler / Çözümler</div>
-                                <div class="module-desc">Sunulan danışmanlık ve hizmetlerin detaylı tanıtımı, hizmet detay sayfaları, kategorili yapı ve CTA butonları</div>
-                            </td>
-                            <td><i class="fas fa-check-circle check-icon"></i></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="module-name">Blog & Haberler</div>
-                                <div class="module-desc">Kategorili blog sistemi, sektörel yazılar, SEO meta bilgileri, okuma süresi, paylaşım butonları ve görüntülenme sayacı</div>
-                            </td>
-                            <td><i class="fas fa-check-circle check-icon"></i></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="module-name">Referanslar & Müşteri Logoları</div>
-                                <div class="module-desc">Çalışılan firma logoları, müşteri yorumları/testimonial'lar, başarı hikayeleri ve sektörel referans sayfası</div>
-                            </td>
-                            <td><i class="fas fa-check-circle check-icon"></i></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="module-name">SSS (Sıkça Sorulan Sorular)</div>
-                                <div class="module-desc">Kategorili SSS modülü, açılır-kapanır (accordion) yapı, Schema.org FAQPage desteği ile Google zengin sonuçlarında görünme</div>
-                            </td>
-                            <td><i class="fas fa-check-circle check-icon"></i></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="module-name">İletişim & Formlar</div>
-                                <div class="module-desc">İletişim formu, teklif talep formu, Google Maps entegrasyonu, WhatsApp hızlı iletişim butonu ve e-posta bildirimleri</div>
-                            </td>
-                            <td><i class="fas fa-check-circle check-icon"></i></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="module-name">Dinamik Sayfalar</div>
-                                <div class="module-desc">KVKK, gizlilik politikası, kullanım koşulları, çerez politikası ve aydınlatma metinleri</div>
-                            </td>
-                            <td><i class="fas fa-check-circle check-icon"></i></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="module-name">Site Ayarları & SEO</div>
-                                <div class="module-desc">Logo, favicon, iletişim bilgileri, sosyal medya linkleri, meta açıklamaları, Open Graph, sitemap yönetimi</div>
-                            </td>
-                            <td><i class="fas fa-check-circle check-icon"></i></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
 
-            <!-- Timeline -->
-            <section class="section">
-                <div class="section-header">
-                    <div class="section-label">Süreç</div>
-                    <h2 class="section-title">Proje Takvimi</h2>
-                </div>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-number">1</div>
-                        <div class="timeline-title">Analiz & Tasarım</div>
-                        <div class="timeline-duration">1–2. Gün</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-number">2</div>
-                        <div class="timeline-title">Frontend Geliştirme</div>
-                        <div class="timeline-duration">3–4. Gün</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-number">3</div>
-                        <div class="timeline-title">Backend & Admin</div>
-                        <div class="timeline-duration">5–6. Gün</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-number">4</div>
-                        <div class="timeline-title">Test & Deploy</div>
-                        <div class="timeline-duration">7. Gün</div>
-                    </div>
-                </div>
-                <div class="timeline-total">
-                    <span>Toplam Tahmini Süre:</span> <strong>1 Hafta (7 Gün)</strong>
-                </div>
-                <div style="text-align: center; margin-top: 15px; font-size: 0.85rem; color: var(--text-muted);">
-                    <i class="fas fa-info-circle" style="color: var(--accent); margin-right: 6px;"></i>
-                    İçerik ve görseller müşteri tarafından sağlandığında süreç hızlanacaktır.
-                </div>
-            </section>
+                <!-- ======================== STARTER PACKAGE ======================== -->
+                <div class="pkg-content active" id="pkg-starter">
 
-            <!-- Pricing -->
-            <section class="section">
-                <div class="section-header">
-                    <div class="section-label">Yatırım</div>
-                    <h2 class="section-title">Fiyatlandırma</h2>
-                </div>
-                <table class="modules-table" style="margin-bottom: 30px;">
-                    <thead>
-                        <tr>
-                            <th>Hizmet</th>
-                            <th style="text-align: right;">Tutar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="module-name">Kurumsal Web Sitesi</div>
-                                <div class="module-desc">Responsive kurumsal web sitesi, özel admin paneli, hizmetler, blog, referanslar, SSS, iletişim formları, SEO altyapısı</div>
-                            </td>
-                            <td style="text-align: right; font-weight: 700; color: var(--text-white); font-size: 1.1rem; white-space: nowrap;">70.000 ₺</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="pricing-box">
-                    <div class="pricing-label">Proje Toplam Bedeli</div>
-                    <div class="pricing-amount">70.000<span>₺</span></div>
-                    <div class="pricing-note">KDV hariç • Belirtilen tüm modül ve özellikleri kapsar</div>
-                    <div class="pricing-features">
-                        <div class="pricing-feature"><i class="fas fa-check"></i> 1 Yıl Hosting</div>
-                        <div class="pricing-feature"><i class="fas fa-check"></i> SSL Sertifikası</div>
-                        <div class="pricing-feature"><i class="fas fa-check"></i> Domain Yönlendirme</div>
-                        <div class="pricing-feature"><i class="fas fa-check"></i> Coolify Deployment</div>
-                        <div class="pricing-feature"><i class="fas fa-check"></i> Admin Eğitimi</div>
-                        <div class="pricing-feature"><i class="fas fa-check"></i> Kaynak Kod Teslimi</div>
+                    <!-- Features -->
+                    <div class="section-header" style="margin-top: 20px;">
+                        <div class="section-label">Ozellikler</div>
+                        <h2 class="section-title">Teknik Detaylar</h2>
+                    </div>
+                    <div class="features-grid" style="margin-bottom: 50px;">
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">Tam responsive tasarim (mobil, tablet, desktop)</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">SEO optimizasyonu (meta tags, sitemap, robots.txt)</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">Admin paneli ile kolay icerik yonetimi</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">Iletisim formu (e-posta bildirimi)</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">Blog sistemi (temel CRUD)</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">KVKK uyumlu aydinlatma metinleri</div>
+                        </div>
+                    </div>
+
+                    <!-- Modules -->
+                    <div class="section-header">
+                        <div class="section-label">Kapsam</div>
+                        <h2 class="section-title">Site Modulleri</h2>
+                    </div>
+                    <table class="modules-table" style="margin-bottom: 50px;">
+                        <thead>
+                            <tr>
+                                <th>Modul</th>
+                                <th>Dahil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Admin Paneli (Temel)</div>
+                                    <div class="module-desc">Sayfalar, blog yazilari ve iletisim mesajlarini yonetebileceginiz temel yonetim arayuzu</div>
+                                </td>
+                                <td><i class="fas fa-check-circle check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Ana Sayfa & Hero Alani</div>
+                                    <div class="module-desc">Hero banner, hizmet ozetleri, rakamlarla biz sayaclari ve CTA alanlari</div>
+                                </td>
+                                <td><i class="fas fa-check-circle check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Hakkimizda / Kurumsal</div>
+                                    <div class="module-desc">Marka hikayesi, vizyon/misyon ve rakamlarla basarilar</div>
+                                </td>
+                                <td><i class="fas fa-check-circle check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Hizmetler (4 Sayfa)</div>
+                                    <div class="module-desc">Golge Koc, EnDeneme Kulubu, UcDortBes ALL Star ve EN Box tanitim sayfalari (basit)</div>
+                                </td>
+                                <td><i class="fas fa-check-circle check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Abonelik Paketleri (Statik)</div>
+                                    <div class="module-desc">Solo, Elite, Premium Performans paketlerinin tanitim sayfasi</div>
+                                </td>
+                                <td><i class="fas fa-check-circle check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Blog (Basit)</div>
+                                    <div class="module-desc">Temel blog sistemi, yazi ekleme/duzenleme, one cikan gorsel</div>
+                                </td>
+                                <td><i class="fas fa-check-circle check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Iletisim Formu</div>
+                                    <div class="module-desc">Iletisim formu, merkez adresi ve telefon/e-posta bilgileri</div>
+                                </td>
+                                <td><i class="fas fa-check-circle check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Sube Bulucu (Harita)</div>
+                                    <div class="module-desc">Harita entegrasyonu, "Konumumu Kullan" ozelligi, sube detay sayfalari</div>
+                                </td>
+                                <td><i class="fas fa-times-circle cross-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Franchise Basvuru</div>
+                                    <div class="module-desc">Franchise modeli aciklamasi, avantajlar ve basvuru formu</div>
+                                </td>
+                                <td><i class="fas fa-times-circle cross-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">SSS Sayfasi</div>
+                                    <div class="module-desc">Kategorili SSS accordion yapisi</div>
+                                </td>
+                                <td><i class="fas fa-times-circle cross-icon"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Timeline -->
+                    <div class="section-header">
+                        <div class="section-label">Surec</div>
+                        <h2 class="section-title">Proje Takvimi</h2>
+                    </div>
+                    <div class="timeline timeline-3">
+                        <div class="timeline-item">
+                            <div class="timeline-number">1</div>
+                            <div class="timeline-title">Analiz & Tasarim</div>
+                            <div class="timeline-duration">14 Nisan</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-number">2</div>
+                            <div class="timeline-title">Gelistirme</div>
+                            <div class="timeline-duration">15–16 Nisan</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-number">3</div>
+                            <div class="timeline-title">Test & Deploy</div>
+                            <div class="timeline-duration">17 Nisan</div>
+                        </div>
+                    </div>
+                    <div class="timeline-total">
+                        <span>Teslim Tarihi:</span> <strong>17 Nisan 2026 (3 Gun)</strong>
+                    </div>
+                    <div style="margin-bottom: 50px;"></div>
+
+                    <!-- Pricing -->
+                    <div class="section-header">
+                        <div class="section-label">Yatirim</div>
+                        <h2 class="section-title">Fiyatlandirma</h2>
+                    </div>
+                    <table class="modules-table" style="margin-bottom: 30px;">
+                        <thead>
+                            <tr>
+                                <th>Hizmet</th>
+                                <th style="text-align: right;">Tutar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Hizli Baslangic Paketi</div>
+                                    <div class="module-desc">Anasayfa, hakkimizda, 4 hizmet sayfasi, abonelik tanitim, blog, iletisim formu, temel admin paneli, SEO altyapisi</div>
+                                </td>
+                                <td style="text-align: right; font-weight: 700; color: var(--text-white); font-size: 1.1rem; white-space: nowrap;">15.000 ₺</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pricing-box">
+                        <div class="pricing-label">Hizli Baslangic Paketi</div>
+                        <div class="pricing-amount">15.000<span>₺</span></div>
+                        <div class="pricing-note">KDV haric • 17 Nisan 2026 teslim</div>
+                        <div class="pricing-features">
+                            <div class="pricing-feature"><i class="fas fa-check"></i> Kaynak Kod Teslimi</div>
+                            <div class="pricing-feature"><i class="fas fa-check"></i> Admin Egitimi</div>
+                            <div class="pricing-feature"><i class="fas fa-check"></i> Domain Yonlendirme</div>
+                        </div>
+                    </div>
+                    <div class="hosting-addon">
+                        <i class="fas fa-server"></i>
+                        <div class="hosting-addon-text">
+                            1 yillik hosting, SSL sertifikasi ve Coolify deployment hizmeti bu pakete dahil degildir.<br>
+                            <strong>Opsiyonel ek hizmet: +10.000 ₺</strong> ile 1 yillik hosting + SSL + deployment eklenebilir.
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 50px;"></div>
+
+                    <!-- Terms -->
+                    <div class="section-header">
+                        <div class="section-label">Kosullar</div>
+                        <h2 class="section-title">Odeme Plani</h2>
+                    </div>
+                    <ul class="terms-list">
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            Sozlesme imzalanmasi ile birlikte <strong>%50 on odeme</strong> (7.500 ₺) yapilir.
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            Proje teslimi ve onayi ile kalan <strong>%50</strong> (7.500 ₺) odeme yapilir.
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            Teslim suresi: On odeme sonrasi <strong>3 gun</strong> icinde tamamlanacaktir.
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            <strong style="color: var(--accent);">Teslim garantisi:</strong> Proje, on odeme tarihinden itibaren 3 gun icinde teslim edilmedigi takdirde yapilan on odeme tutari (7.500 ₺) <strong>eksiksiz olarak iade</strong> edilecektir.
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            Hosting ve SSL hizmeti bu pakete dahil degildir. Opsiyonel olarak <strong>+10.000 ₺</strong> ile eklenebilir.
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            Odeme havale veya EFT ile yapilabilir.
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            Proje kapsami disindaki ek talepler ayrica fiyatlandirilir.
+                        </li>
+                    </ul>
+                    <div style="text-align: center;">
+                        <div class="validity-badge">
+                            <i class="fas fa-clock"></i>
+                            Bu teklif 15 gun surele gecerlidir
+                        </div>
                     </div>
                 </div>
+
+                <!-- ======================== PROFESSIONAL PACKAGE ======================== -->
+                <div class="pkg-content" id="pkg-professional">
+
+                    <!-- Features -->
+                    <div class="section-header" style="margin-top: 20px;">
+                        <div class="section-label">Ozellikler</div>
+                        <h2 class="section-title">Teknik Detaylar</h2>
+                    </div>
+                    <div class="features-grid" style="margin-bottom: 50px;">
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">Tam responsive tasarim (mobil, tablet, desktop)</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">SEO optimizasyonu (meta tags, sitemap, robots.txt)</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">Google Maps sube bulucu entegrasyonu</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">WhatsApp iletisim butonu entegrasyonu</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">Admin paneli ile kolay icerik yonetimi</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">reCAPTCHA form korumasi</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">Rich text editor (CKEditor)</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">Scroll animasyonlari (AOS.js)</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">KVKK uyumlu cerez yonetimi & aydinlatma metinleri</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">Iletisim formu (e-posta bildirimi)</div>
+                        </div>
+                    </div>
+
+                    <!-- Modules -->
+                    <div class="section-header">
+                        <div class="section-label">Kapsam</div>
+                        <h2 class="section-title">Site Modulleri</h2>
+                    </div>
+                    <table class="modules-table" style="margin-bottom: 50px;">
+                        <thead>
+                            <tr>
+                                <th>Modul</th>
+                                <th>Dahil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Gelismis Admin Paneli</div>
+                                    <div class="module-desc">Subeler, hizmetler, blog, abonelik paketleri, SSS, iletisim mesajlari, franchise basvurulari ve site ayarlarini yonetebileceginiz kapsamli yonetim arayuzu (django-unfold)</div>
+                                </td>
+                                <td><i class="fas fa-check-circle check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Ana Sayfa & Hero Alani</div>
+                                    <div class="module-desc">Hero slider/banner, hizmet ozetleri, abonelik paketleri onizleme, rakamlarla biz sayaclari, sube haritasi onizleme ve CTA alanlari</div>
+                                </td>
+                                <td><i class="fas fa-check-circle check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Hakkimizda / Kurumsal</div>
+                                    <div class="module-desc">Marka hikayesi, vizyon/misyon, rakamlarla basarilar, ekip tanitimi ve zaman cizelgesi</div>
+                                </td>
+                                <td><i class="fas fa-check-circle check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Hizmetler (4 Sayfa)</div>
+                                    <div class="module-desc">Golge Koc, EnDeneme Kulubu, UcDortBes ALL Star ve EN Box hizmet tanitim sayfalari, detayli icerik ve CTA butonlari</div>
+                                </td>
+                                <td><i class="fas fa-check-circle check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Sube Bulucu</div>
+                                    <div class="module-desc">200+ subenin il/ilce bazli filtrelenebilir listesi, harita entegrasyonu ve "Konumumu Kullan" ozelligi</div>
+                                </td>
+                                <td><i class="fas fa-check-circle check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Abonelik Paketleri</div>
+                                    <div class="module-desc">Solo, Elite, Premium Performans paketlerinin karsilastirmali sunumu, ozellik matrisi ve basvuru CTA'lari</div>
+                                </td>
+                                <td><i class="fas fa-check-circle check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Franchise Basvuru</div>
+                                    <div class="module-desc">Franchise modeli aciklamasi, avantajlar ve basvuru formu (ad, telefon, e-posta, sehir, mesaj)</div>
+                                </td>
+                                <td><i class="fas fa-check-circle check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Blog & Kutuphane</div>
+                                    <div class="module-desc">Kategorili blog sistemi, etiket yapisi, arama, SEO meta bilgileri</div>
+                                </td>
+                                <td><i class="fas fa-check-circle check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">SSS & Iletisim</div>
+                                    <div class="module-desc">Kategorili SSS accordion yapisi, iletisim formu, merkez adresi harita embed, telefon ve e-posta bilgileri</div>
+                                </td>
+                                <td><i class="fas fa-check-circle check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Sube Detay Sayfalari</div>
+                                    <div class="module-desc">Her sube icin ayri detay sayfasi, fotograflar ve yol tarifi</div>
+                                </td>
+                                <td><i class="fas fa-times-circle cross-icon"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Timeline -->
+                    <div class="section-header">
+                        <div class="section-label">Surec</div>
+                        <h2 class="section-title">Proje Takvimi</h2>
+                    </div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-number">1</div>
+                            <div class="timeline-title">Analiz & Tasarim</div>
+                            <div class="timeline-duration">14–15 Nisan</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-number">2</div>
+                            <div class="timeline-title">Frontend</div>
+                            <div class="timeline-duration">16–18 Nisan</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-number">3</div>
+                            <div class="timeline-title">Backend & Admin</div>
+                            <div class="timeline-duration">19–22 Nisan</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-number">4</div>
+                            <div class="timeline-title">Test & Deploy</div>
+                            <div class="timeline-duration">23–24 Nisan</div>
+                        </div>
+                    </div>
+                    <div class="timeline-total">
+                        <span>Teslim Tarihi:</span> <strong>24 Nisan 2026 (10 Gun)</strong>
+                    </div>
+                    <div style="margin-bottom: 50px;"></div>
+
+                    <!-- Pricing -->
+                    <div class="section-header">
+                        <div class="section-label">Yatirim</div>
+                        <h2 class="section-title">Fiyatlandirma</h2>
+                    </div>
+                    <table class="modules-table" style="margin-bottom: 30px;">
+                        <thead>
+                            <tr>
+                                <th>Hizmet</th>
+                                <th style="text-align: right;">Tutar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Profesyonel Paket</div>
+                                    <div class="module-desc">Anasayfa, hakkimizda, 4 hizmet sayfasi, sube bulucu (harita), abonelik paketleri, franchise basvuru, blog (kategorili), SSS, iletisim, gelismis admin paneli, WhatsApp butonu, scroll animasyonlari</div>
+                                </td>
+                                <td style="text-align: right; font-weight: 700; color: var(--text-white); font-size: 1.1rem; white-space: nowrap;">40.000 ₺</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pricing-box">
+                        <div class="pricing-label">Profesyonel Paket</div>
+                        <div class="pricing-amount">40.000<span>₺</span></div>
+                        <div class="pricing-note">KDV haric • 24 Nisan 2026 teslim</div>
+                        <div class="pricing-features">
+                            <div class="pricing-feature"><i class="fas fa-check"></i> Kaynak Kod Teslimi</div>
+                            <div class="pricing-feature"><i class="fas fa-check"></i> Admin Egitimi</div>
+                            <div class="pricing-feature"><i class="fas fa-check"></i> Domain Yonlendirme</div>
+                        </div>
+                    </div>
+                    <div class="hosting-addon">
+                        <i class="fas fa-server"></i>
+                        <div class="hosting-addon-text">
+                            1 yillik hosting, SSL sertifikasi ve Coolify deployment hizmeti bu pakete dahil degildir.<br>
+                            <strong>Opsiyonel ek hizmet: +10.000 ₺</strong> ile 1 yillik hosting + SSL + deployment eklenebilir.
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 50px;"></div>
+
+                    <!-- Terms -->
+                    <div class="section-header">
+                        <div class="section-label">Kosullar</div>
+                        <h2 class="section-title">Odeme Plani</h2>
+                    </div>
+                    <ul class="terms-list">
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            Sozlesme imzalanmasi ile birlikte <strong>%50 on odeme</strong> (20.000 ₺) yapilir.
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            Proje teslimi ve onayi ile kalan <strong>%50</strong> (20.000 ₺) odeme yapilir.
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            Teslim suresi: On odeme sonrasi <strong>10 gun</strong> icinde tamamlanacaktir.
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            <strong style="color: var(--accent);">Teslim garantisi:</strong> Proje, on odeme tarihinden itibaren 10 gun icinde teslim edilmedigi takdirde yapilan on odeme tutari (20.000 ₺) <strong>eksiksiz olarak iade</strong> edilecektir.
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            Hosting ve SSL hizmeti bu pakete dahil degildir. Opsiyonel olarak <strong>+10.000 ₺</strong> ile eklenebilir.
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            Odeme havale veya EFT ile yapilabilir.
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            Proje kapsami disindaki ek talepler ayrica fiyatlandirilir.
+                        </li>
+                    </ul>
+                    <div style="text-align: center;">
+                        <div class="validity-badge">
+                            <i class="fas fa-clock"></i>
+                            Bu teklif 15 gun sureyle gecerlidir
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ======================== PREMIUM PACKAGE ======================== -->
+                <div class="pkg-content" id="pkg-premium">
+
+                    <!-- Features -->
+                    <div class="section-header" style="margin-top: 20px;">
+                        <div class="section-label">Ozellikler</div>
+                        <h2 class="section-title">Teknik Detaylar</h2>
+                    </div>
+                    <div class="features-grid" style="margin-bottom: 50px;">
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">Tam responsive tasarim (mobil, tablet, desktop)</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">SSL sertifikasi ile guvenli HTTPS baglanti</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">SEO optimizasyonu (meta tags, sitemap, robots.txt)</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">Google Maps sube bulucu entegrasyonu</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">WhatsApp iletisim butonu entegrasyonu</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">Otomatik gorsel optimizasyonu (WebP donusum)</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">Gelismis admin paneli (django-unfold)</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">Open Graph & Twitter Card meta etiketleri</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">Schema.org yapisal veri (LocalBusiness, FAQPage)</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">KVKK uyumlu cerez yonetimi & aydinlatma metinleri</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">Lighthouse 90+ performans optimizasyonu</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div class="feature-text">CI/CD pipeline (GitHub Actions)</div>
+                        </div>
+                    </div>
+
+                    <!-- Modules -->
+                    <div class="section-header">
+                        <div class="section-label">Kapsam</div>
+                        <h2 class="section-title">Site Modulleri</h2>
+                    </div>
+                    <table class="modules-table" style="margin-bottom: 50px;">
+                        <thead>
+                            <tr>
+                                <th>Modul</th>
+                                <th>Dahil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Gelismis Admin Paneli</div>
+                                    <div class="module-desc">Subeler, hizmetler, blog, abonelik paketleri, SSS, iletisim mesajlari, franchise basvurulari ve site ayarlarini yonetebileceginiz kapsamli yonetim arayuzu (django-unfold)</div>
+                                </td>
+                                <td><i class="fas fa-check-circle check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Ana Sayfa & Hero Alani</div>
+                                    <div class="module-desc">Hero slider/banner, hizmet ozetleri, abonelik paketleri onizleme, rakamlarla biz sayaclari, sube haritasi onizleme, testimonial carousel ve CTA alanlari</div>
+                                </td>
+                                <td><i class="fas fa-check-circle check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Hakkimizda / Kurumsal</div>
+                                    <div class="module-desc">Marka hikayesi, vizyon/misyon, rakamlarla basarilar, ekip tanitimi ve zaman cizelgesi</div>
+                                </td>
+                                <td><i class="fas fa-check-circle check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Hizmetler (4 Sayfa)</div>
+                                    <div class="module-desc">Golge Koc, EnDeneme Kulubu, UcDortBes ALL Star ve EN Box hizmet tanitim sayfalari, detayli icerik ve CTA butonlari</div>
+                                </td>
+                                <td><i class="fas fa-check-circle check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Sube Bulucu + Detay Sayfalari</div>
+                                    <div class="module-desc">200+ subenin il/ilce bazli filtrelenebilir listesi, harita entegrasyonu, "Konumumu Kullan", sube detay sayfalari, foto galeri ve yol tarifi</div>
+                                </td>
+                                <td><i class="fas fa-check-circle check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Abonelik Paketleri</div>
+                                    <div class="module-desc">Solo, Elite, Premium Performans paketlerinin karsilastirmali sunumu, ozellik matrisi ve basvuru CTA'lari</div>
+                                </td>
+                                <td><i class="fas fa-check-circle check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Franchise Basvuru</div>
+                                    <div class="module-desc">Franchise modeli aciklamasi, avantajlar, yatirim bilgileri, basari hikayeleri ve basvuru formu</div>
+                                </td>
+                                <td><i class="fas fa-check-circle check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Blog & Kutuphane (Gelismis)</div>
+                                    <div class="module-desc">Kategorili blog sistemi, etiket yapisi, arama, SEO meta bilgileri, ilgili yazilar, yazar profilleri ve goruntuleme sayaci</div>
+                                </td>
+                                <td><i class="fas fa-check-circle check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">SSS & Iletisim</div>
+                                    <div class="module-desc">Kategorili SSS accordion yapisi, iletisim formu, merkez adresi harita embed, e-posta template'leri</div>
+                                </td>
+                                <td><i class="fas fa-check-circle check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Site Ayarlari & SEO (Gelismis)</div>
+                                    <div class="module-desc">Logo, favicon, iletisim bilgileri, sosyal medya, meta aciklamalari, Open Graph, Schema.org, sitemap, GA4 entegrasyonu, reCAPTCHA</div>
+                                </td>
+                                <td><i class="fas fa-check-circle check-icon"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Timeline -->
+                    <div class="section-header">
+                        <div class="section-label">Surec</div>
+                        <h2 class="section-title">Proje Takvimi</h2>
+                    </div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-number">1</div>
+                            <div class="timeline-title">Analiz & Tasarim</div>
+                            <div class="timeline-duration">14–16 Nisan</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-number">2</div>
+                            <div class="timeline-title">Frontend</div>
+                            <div class="timeline-duration">17–21 Nisan</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-number">3</div>
+                            <div class="timeline-title">Backend & Admin</div>
+                            <div class="timeline-duration">22–27 Nisan</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-number">4</div>
+                            <div class="timeline-title">Test & Deploy</div>
+                            <div class="timeline-duration">28–30 Nisan</div>
+                        </div>
+                    </div>
+                    <div class="timeline-total">
+                        <span>Teslim Tarihi:</span> <strong>30 Nisan 2026 (16 Gun)</strong>
+                    </div>
+                    <div style="margin-bottom: 50px;"></div>
+
+                    <!-- Pricing -->
+                    <div class="section-header">
+                        <div class="section-label">Yatirim</div>
+                        <h2 class="section-title">Fiyatlandirma</h2>
+                    </div>
+                    <table class="modules-table" style="margin-bottom: 30px;">
+                        <thead>
+                            <tr>
+                                <th>Hizmet</th>
+                                <th style="text-align: right;">Tutar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="module-name">Premium Paket</div>
+                                    <div class="module-desc">Tum moduller dahil: anasayfa, hakkimizda, 4 hizmet sayfasi, sube bulucu + detay sayfalari, abonelik paketleri, franchise basvuru, gelismis blog, SSS, iletisim, gelismis admin, Schema.org, GA4, CI/CD, Lighthouse 90+ optimizasyon</div>
+                                </td>
+                                <td style="text-align: right; font-weight: 700; color: var(--text-white); font-size: 1.1rem; white-space: nowrap;">70.000 ₺</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pricing-box gold-theme">
+                        <div class="pricing-label">Premium Paket — Her Sey Dahil</div>
+                        <div class="pricing-amount">70.000<span>₺</span></div>
+                        <div class="pricing-note">KDV haric • 30 Nisan 2026 teslim</div>
+                        <div class="pricing-features">
+                            <div class="pricing-feature"><i class="fas fa-check"></i> 1 Yil Hosting</div>
+                            <div class="pricing-feature"><i class="fas fa-check"></i> SSL Sertifikasi</div>
+                            <div class="pricing-feature"><i class="fas fa-check"></i> Domain Yonlendirme</div>
+                            <div class="pricing-feature"><i class="fas fa-check"></i> Coolify Deployment</div>
+                            <div class="pricing-feature"><i class="fas fa-check"></i> Admin Egitimi</div>
+                            <div class="pricing-feature"><i class="fas fa-check"></i> Kaynak Kod Teslimi</div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 50px;"></div>
+
+                    <!-- Terms -->
+                    <div class="section-header">
+                        <div class="section-label">Kosullar</div>
+                        <h2 class="section-title">Odeme Plani</h2>
+                    </div>
+                    <ul class="terms-list">
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            Sozlesme imzalanmasi ile birlikte <strong>%50 on odeme</strong> (35.000 ₺) yapilir.
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            Proje teslimi ve onayi ile kalan <strong>%50</strong> (35.000 ₺) odeme yapilir.
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            Teslim suresi: On odeme sonrasi <strong>16 gun</strong> icinde tamamlanacaktir.
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            <strong style="color: var(--accent);">Teslim garantisi:</strong> Proje, on odeme tarihinden itibaren 16 gun icinde teslim edilmedigi takdirde yapilan on odeme tutari (35.000 ₺) <strong>eksiksiz olarak iade</strong> edilecektir.
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            1 yillik hosting, SSL sertifikasi ve Coolify deployment <strong style="color: var(--gold-light);">bedele dahildir</strong>.
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            Odeme havale veya EFT ile yapilabilir.
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            Proje kapsami disindaki ek talepler ayrica fiyatlandirilir.
+                        </li>
+                    </ul>
+                    <div style="text-align: center;">
+                        <div class="validity-badge">
+                            <i class="fas fa-clock"></i>
+                            Bu teklif 15 gun sureyle gecerlidir
+                        </div>
+                    </div>
+                </div>
+
             </section>
 
             <!-- Benefits -->
             <section class="section">
                 <div class="section-header">
                     <div class="section-label">Avantajlar</div>
-                    <h2 class="section-title">Neden Bu Çözüm?</h2>
+                    <h2 class="section-title">Neden Bu Cozum?</h2>
                 </div>
                 <div class="benefits-grid">
                     <div class="benefit-card">
                         <div class="benefit-icon"><i class="fas fa-sliders-h"></i></div>
-                        <div class="benefit-title">Tam Yönetilebilir</div>
-                        <div class="benefit-desc">Özel admin paneli ile tüm içerikleri, hizmetleri, blog yazılarını ve referansları tek tıkla güncelleyin</div>
+                        <div class="benefit-title">Tam Yonetilebilir</div>
+                        <div class="benefit-desc">Ozel admin paneli ile subeleri, hizmetleri, abonelik paketlerini, blog yazilarini ve franchise basvurularini tek tikla yonetin</div>
                     </div>
                     <div class="benefit-card">
                         <div class="benefit-icon"><i class="fas fa-search"></i></div>
-                        <div class="benefit-title">SEO & Görünürlük</div>
-                        <div class="benefit-desc">Schema.org, meta etiketleri, sitemap, Open Graph ve hızlı yükleme ile Google'da üst sıralarda yer alın</div>
+                        <div class="benefit-title">SEO & Gorunurluk</div>
+                        <div class="benefit-desc">Schema.org, meta etiketleri, sitemap, Open Graph ve hizli yukleme ile Google'da ust siralarda yer alin</div>
                     </div>
                     <div class="benefit-card">
                         <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
-                        <div class="benefit-title">Güvenli Altyapı</div>
-                        <div class="benefit-desc">Django'nun built-in güvenlik katmanları, SSL sertifikası ve KVKK uyumlu veri koruma</div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Terms -->
-            <section class="section">
-                <div class="section-header">
-                    <div class="section-label">Koşullar</div>
-                    <h2 class="section-title">Ödeme Planı</h2>
-                </div>
-                <ul class="terms-list">
-                    <li>
-                        <i class="fas fa-circle"></i>
-                        Sözleşme imzalanması ile birlikte <strong>%50 ön ödeme</strong> (35.000 ₺) yapılır.
-                    </li>
-                    <li>
-                        <i class="fas fa-circle"></i>
-                        Proje teslimi ve onayı ile kalan <strong>%50</strong> (35.000 ₺) ödeme yapılır.
-                    </li>
-                    <li>
-                        <i class="fas fa-circle"></i>
-                        Teslim süresi: Ön ödeme sonrası <strong>1 hafta (7 iş günü)</strong> içinde tamamlanacaktır.
-                    </li>
-                    <li>
-                        <i class="fas fa-circle"></i>
-                        <strong style="color: var(--accent);">Teslim garantisi:</strong> Proje, ön ödeme tarihinden itibaren 1 hafta içinde teslim edilmediği takdirde yapılan ön ödeme tutarı (35.000 ₺) <strong>eksiksiz olarak iade</strong> edilecektir.
-                    </li>
-                    <li>
-                        <i class="fas fa-circle"></i>
-                        1 yıllık hosting, SSL sertifikası ve domain yönlendirme bedele dahildir.
-                    </li>
-                    <li>
-                        <i class="fas fa-circle"></i>
-                        Ödeme havale veya EFT ile yapılabilir.
-                    </li>
-                    <li>
-                        <i class="fas fa-circle"></i>
-                        Proje kapsamı dışındaki ek talepler ayrıca fiyatlandırılır.
-                    </li>
-                </ul>
-                <div style="text-align: center;">
-                    <div class="validity-badge">
-                        <i class="fas fa-clock"></i>
-                        Bu teklif 15 gün süreyle geçerlidir
+                        <div class="benefit-title">Guvenli Altyapi</div>
+                        <div class="benefit-desc">Django'nun built-in guvenlik katmanlari, SSL sertifikasi, reCAPTCHA form korumasi ve KVKK uyumlu veri koruma</div>
                     </div>
                 </div>
             </section>
@@ -998,9 +1601,9 @@
             <!-- Homepage Mockup -->
             <section class="section">
                 <div class="section-header">
-                    <div class="section-label">Önizleme</div>
-                    <h2 class="section-title">Örnek Ana Sayfa Tasarımı</h2>
-                    <p class="section-desc">Aşağıda myentegre kurumsal web sitesi için önerilen ana sayfa tasarımının önizlemesi yer almaktadır.</p>
+                    <div class="section-label">Onizleme</div>
+                    <h2 class="section-title">Ornek Ana Sayfa Tasarimi</h2>
+                    <p class="section-desc">Asagida EnDeneyim Merkezi kurumsal web sitesi icin onerilen ana sayfa tasariminin onizlemesi yer almaktadir.</p>
                 </div>
 
                 <div class="mockup-container">
@@ -1010,30 +1613,30 @@
                         </div>
                         <div class="mockup-url">
                             <i class="fas fa-lock" style="color: #10b981; margin-right: 6px; font-size: 0.65rem;"></i>
-                            https://www.myentegre.com
+                            https://www.endeneyimmerkezi.com
                         </div>
                     </div>
                     <div class="mockup-body">
                         <!-- Hero -->
                         <div class="mock-hero">
                             <div class="mock-nav">
-                                <div class="mock-logo">my<span>entegre</span></div>
+                                <div class="mock-logo">EN<span>Deneyim</span></div>
                                 <div class="mock-nav-links">
-                                    <a href="#">Hakkımızda</a>
+                                    <a href="#">Hakkimizda</a>
                                     <a href="#">Hizmetler</a>
+                                    <a href="#">Abonelikler</a>
+                                    <a href="#">Subeler</a>
                                     <a href="#">Blog</a>
-                                    <a href="#">Referanslar</a>
-                                    <a href="#">SSS</a>
-                                    <a href="#" class="mock-cta-btn">İletişim</a>
+                                    <a href="#" class="mock-cta-btn">Iletisim</a>
                                 </div>
                             </div>
                             <div class="mock-hero-content">
-                                <div class="mock-hero-badge"><i class="fas fa-star" style="margin-right: 6px; font-size: 0.6rem;"></i> Danışmanlık & Entegrasyon Çözümleri</div>
-                                <h1 class="mock-hero-title">İşletmenizi <span>bir adım öteye</span> taşıyoruz.</h1>
-                                <p class="mock-hero-desc">Süreç optimizasyonu, dijital dönüşüm ve stratejik danışmanlık hizmetleri ile işletmenizin verimliliğini artırıyoruz.</p>
+                                <div class="mock-hero-badge"><i class="fas fa-star" style="margin-right: 6px; font-size: 0.6rem;"></i> YKS Sinav Hazirlik & Egitim</div>
+                                <h1 class="mock-hero-title">Basariya giden yolda <span>EN iyi deneyim</span></h1>
+                                <p class="mock-hero-desc">200+ subemiz, uzman koclarimiz ve dijital platformlarimizla YKS'ye hazirlik surecinde yaninizdayiz.</p>
                                 <div class="mock-hero-btns">
-                                    <a href="#" class="mock-btn-primary"><i class="fas fa-arrow-right"></i> Hizmetlerimiz</a>
-                                    <a href="#" class="mock-btn-secondary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                                    <a href="#" class="mock-btn-primary"><i class="fas fa-arrow-right"></i> Subeni Bul</a>
+                                    <a href="#" class="mock-btn-secondary"><i class="fas fa-tags"></i> Abonelikler</a>
                                 </div>
                             </div>
                         </div>
@@ -1041,19 +1644,19 @@
                         <!-- Stats -->
                         <div class="mock-stats">
                             <div class="mock-stat">
-                                <div class="mock-stat-number">150+</div>
-                                <div class="mock-stat-label">Müşteri</div>
+                                <div class="mock-stat-number">200+</div>
+                                <div class="mock-stat-label">Sube</div>
                             </div>
                             <div class="mock-stat">
-                                <div class="mock-stat-number">8+</div>
-                                <div class="mock-stat-label">Yıl Deneyim</div>
+                                <div class="mock-stat-number">50.000+</div>
+                                <div class="mock-stat-label">Ogrenci</div>
                             </div>
                             <div class="mock-stat">
-                                <div class="mock-stat-number">%98</div>
+                                <div class="mock-stat-number">%95</div>
                                 <div class="mock-stat-label">Memnuniyet</div>
                             </div>
                             <div class="mock-stat">
-                                <div class="mock-stat-number">24/7</div>
+                                <div class="mock-stat-number">7/24</div>
                                 <div class="mock-stat-label">Destek</div>
                             </div>
                         </div>
@@ -1061,22 +1664,22 @@
                         <!-- Services -->
                         <div class="mock-services">
                             <div class="mock-services-title">Hizmetlerimiz</div>
-                            <div class="mock-services-sub">Profesyonel danışmanlık çözümleri ile yanınızdayız</div>
+                            <div class="mock-services-sub">YKS hazirlikta fark yaratan cozumler</div>
                             <div class="mock-services-grid">
                                 <div class="mock-service-card">
-                                    <div class="mock-service-icon"><i class="fas fa-chart-line"></i></div>
-                                    <div class="mock-service-name">Süreç Optimizasyonu</div>
-                                    <div class="mock-service-desc">İş süreçlerinizi analiz eder, verimliliği artıracak stratejiler geliştiririz.</div>
+                                    <div class="mock-service-icon"><i class="fas fa-user-graduate"></i></div>
+                                    <div class="mock-service-name">Golge Koc</div>
+                                    <div class="mock-service-desc">Sinav surecini planlayan ve adim adim takip eden uzman kocluk sistemi.</div>
                                 </div>
                                 <div class="mock-service-card">
-                                    <div class="mock-service-icon"><i class="fas fa-cogs"></i></div>
-                                    <div class="mock-service-name">Sistem Entegrasyonu</div>
-                                    <div class="mock-service-desc">Farklı yazılım ve platformlarınızı entegre ederek tek noktadan yönetimi sağlarız.</div>
+                                    <div class="mock-service-icon"><i class="fas fa-file-alt"></i></div>
+                                    <div class="mock-service-name">EnDeneme Kulubu</div>
+                                    <div class="mock-service-desc">Turkiye geneli deneme sinavlari, siralama sistemi ve detayli analiz raporlari.</div>
                                 </div>
                                 <div class="mock-service-card">
-                                    <div class="mock-service-icon"><i class="fas fa-lightbulb"></i></div>
-                                    <div class="mock-service-name">Stratejik Danışmanlık</div>
-                                    <div class="mock-service-desc">İşletmenizin büyüme hedeflerine uygun stratejik yol haritası oluştururuz.</div>
+                                    <div class="mock-service-icon"><i class="fas fa-star"></i></div>
+                                    <div class="mock-service-name">UcDortBes ALL Star</div>
+                                    <div class="mock-service-desc">3-4-5 yildiz zorluk sistemli dijital egitim platformu ve soru bankasi.</div>
                                 </div>
                             </div>
                         </div>
@@ -1085,7 +1688,7 @@
 
                 <div style="text-align: center; margin-top: 20px; font-size: 0.82rem; color: var(--text-muted);">
                     <i class="fas fa-info-circle" style="color: var(--accent); margin-right: 6px;"></i>
-                    Bu tasarım bir önizlemedir. Son tasarım, müşteri geri bildirimleri doğrultusunda şekillenecektir.
+                    Bu tasarim bir onizlemedir. Son tasarim, musteri geri bildirimleri dogrultusunda sekillenecektir.
                 </div>
             </section>
         </main>
@@ -1095,20 +1698,20 @@
             <div class="footer-content">
                 <div class="footer-info">
                     <div class="footer-contact">
-                        <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 16px;">Bu teklif <strong>myentegre</strong> için özel olarak hazırlanmıştır.</p>
-                        <p><i class="fas fa-calendar"></i> 27 Mart 2026</p>
+                        <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 16px;">Bu teklif <strong>EnDeneyim Merkezi</strong> icin ozel olarak hazirlanmistir.</p>
+                        <p><i class="fas fa-calendar"></i> 14 Nisan 2026</p>
                     </div>
                 </div>
                 <div class="signature-area">
                     <div class="signature-line"></div>
-                    <div class="signature-label">Yetkili İmza</div>
+                    <div class="signature-label">Yetkili Imza</div>
                 </div>
             </div>
         </footer>
     </div>
 
     <script>
-        const CORRECT_PASSWORD = 'myentegre2026';
+        const CORRECT_PASSWORD = 'endeneyim2026';
 
         function handleLogin(event) {
             event.preventDefault();
@@ -1145,6 +1748,19 @@
                 toggleIcon.classList.remove('fa-eye-slash');
                 toggleIcon.classList.add('fa-eye');
             }
+        }
+
+        function selectPackage(pkg) {
+            // Update tabs
+            document.querySelectorAll('.package-tab').forEach(tab => tab.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            // Update content
+            document.querySelectorAll('.pkg-content').forEach(content => content.classList.remove('active'));
+            document.getElementById('pkg-' + pkg).classList.add('active');
+
+            // Smooth scroll to content
+            document.getElementById('pkg-' + pkg).scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         document.getElementById('passwordInput').addEventListener('keypress', function(e) {
