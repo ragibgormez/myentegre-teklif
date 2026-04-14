@@ -326,7 +326,7 @@
             border-radius: var(--radius-lg);
             overflow: hidden;
             border: 1px solid var(--border-dark);
-            background: #0a0f1a;
+            background: #faf9f7;
         }
         .mockup-browser {
             background: #1a2744;
@@ -352,163 +352,236 @@
         }
         .mockup-body { padding: 0; }
 
-        /* Mockup Inner Site */
+        /* Mockup Inner Site — Premium light theme matching endeneyimmerkezi.com */
+        .mock-topbar {
+            background: #1a1a2e;
+            padding: 8px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.7);
+        }
+        .mock-topbar a { color: #ed6c05; text-decoration: none; font-weight: 600; }
+        .mock-topbar-right { display: flex; gap: 16px; align-items: center; }
+        .mock-topbar-right i { font-size: 0.6rem; }
+
+        .mock-navbar {
+            background: white;
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+        .mock-logo-svg { height: 28px; width: auto; }
+        .mock-nav-links { display: flex; gap: 22px; align-items: center; }
+        .mock-nav-links a {
+            color: #4e4a49;
+            text-decoration: none;
+            font-size: 0.72rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            letter-spacing: 0.2px;
+        }
+        .mock-nav-links a:hover { color: #ed6c05; }
+        .mock-cta-btn {
+            background: #ed6c05;
+            color: white;
+            padding: 9px 20px;
+            border-radius: 8px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(237, 108, 5, 0.3);
+        }
+        .mock-login-btn {
+            color: #4e4a49;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid #d1d0cb;
+            transition: all 0.2s;
+        }
+
         .mock-hero {
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #0f172a 100%);
-            padding: 60px 40px;
+            background: linear-gradient(160deg, #ffffff 0%, #fef7f0 40%, #fdf2e9 100%);
+            padding: 70px 40px 60px;
             position: relative;
             overflow: hidden;
         }
         .mock-hero::before {
             content: '';
             position: absolute;
-            top: -30%; right: -10%;
-            width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, transparent 70%);
+            top: -60%; right: -20%;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(237, 108, 5, 0.06) 0%, transparent 70%);
             border-radius: 50%;
         }
-        .mock-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 50px;
-            position: relative;
-            z-index: 1;
-        }
-        .mock-logo { font-size: 1.4rem; font-weight: 800; color: white; letter-spacing: -0.5px; }
-        .mock-logo span { color: var(--accent); }
-        .mock-nav-links { display: flex; gap: 24px; }
-        .mock-nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .mock-nav-links a:hover { color: white; }
-        .mock-cta-btn {
-            background: var(--accent);
-            color: var(--primary);
-            padding: 8px 18px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s;
+        .mock-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -40%; left: -10%;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(30, 58, 95, 0.04) 0%, transparent 70%);
+            border-radius: 50%;
         }
         .mock-hero-content {
             position: relative;
             z-index: 1;
-            max-width: 520px;
+            max-width: 540px;
         }
         .mock-hero-badge {
-            display: inline-block;
-            background: rgba(6, 182, 212, 0.15);
-            color: var(--accent);
-            padding: 5px 14px;
-            border-radius: 20px;
-            font-size: 0.7rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: white;
+            border: 1px solid rgba(237, 108, 5, 0.2);
+            color: #ed6c05;
+            padding: 6px 16px;
+            border-radius: 24px;
+            font-size: 0.68rem;
             font-weight: 600;
-            margin-bottom: 20px;
-            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+            letter-spacing: 0.3px;
+            box-shadow: 0 2px 8px rgba(237, 108, 5, 0.08);
         }
         .mock-hero-title {
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             font-weight: 800;
-            color: white;
-            line-height: 1.15;
-            margin-bottom: 16px;
-            letter-spacing: -1px;
+            color: #1a1a2e;
+            line-height: 1.12;
+            margin-bottom: 18px;
+            letter-spacing: -1.5px;
         }
-        .mock-hero-title span { color: var(--accent); }
+        .mock-hero-title span { color: #ed6c05; }
         .mock-hero-desc {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 28px;
+            font-size: 0.9rem;
+            color: #5c5a55;
+            line-height: 1.7;
+            margin-bottom: 32px;
+            max-width: 460px;
         }
-        .mock-hero-btns { display: flex; gap: 12px; }
+        .mock-hero-btns { display: flex; gap: 14px; align-items: center; }
         .mock-btn-primary {
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+            background: #ed6c05;
             color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
+            padding: 14px 28px;
+            border-radius: 10px;
             font-size: 0.82rem;
             font-weight: 600;
             text-decoration: none;
             display: inline-flex; align-items: center; gap: 8px;
+            box-shadow: 0 4px 16px rgba(237, 108, 5, 0.3);
+            transition: all 0.2s;
         }
         .mock-btn-secondary {
-            background: rgba(255,255,255,0.06);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
+            background: white;
+            color: #1a1a2e;
+            padding: 14px 28px;
+            border-radius: 10px;
             font-size: 0.82rem;
             font-weight: 500;
             text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.12);
+            border: 1px solid #d1d0cb;
             display: inline-flex; align-items: center; gap: 8px;
+            transition: all 0.2s;
         }
+        .mock-hero-trust {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+        .mock-trust-item {
+            display: flex; align-items: center; gap: 6px;
+            font-size: 0.7rem; color: #6b6a65;
+        }
+        .mock-trust-item i { color: #ed6c05; font-size: 0.65rem; }
+        .mock-trust-item strong { color: #1a1a2e; }
 
         /* Mockup Stats */
         .mock-stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            background: #0f172a;
-            border-top: 1px solid rgba(255,255,255,0.06);
+            background: #1a1a2e;
+            position: relative;
+        }
+        .mock-stats::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ed6c05, #f59e0b, #ed6c05);
         }
         .mock-stat {
-            padding: 28px 20px;
+            padding: 32px 20px;
             text-align: center;
             border-right: 1px solid rgba(255,255,255,0.06);
         }
         .mock-stat:last-child { border-right: none; }
         .mock-stat-number {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 800;
-            color: var(--accent);
-            margin-bottom: 4px;
+            color: #ed6c05;
+            margin-bottom: 6px;
+            letter-spacing: -1px;
         }
-        .mock-stat-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        .mock-stat-label { font-size: 0.68rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 500; }
 
-        /* Mockup Services */
+        /* Mockup Ayricaliklar */
         .mock-services {
-            padding: 40px;
-            background: #0f172a;
+            padding: 50px 40px;
+            background: #faf9f7;
+        }
+        .mock-services-label {
+            text-align: center;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ed6c05;
+            margin-bottom: 8px;
         }
         .mock-services-title {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            color: white;
+            color: #1a1a2e;
             text-align: center;
             margin-bottom: 6px;
+            letter-spacing: -0.5px;
         }
         .mock-services-sub {
             font-size: 0.78rem;
-            color: var(--text-muted);
+            color: #6b6a65;
             text-align: center;
-            margin-bottom: 28px;
+            margin-bottom: 32px;
         }
         .mock-services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
         .mock-service-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 10px;
-            padding: 24px 18px;
-            text-align: center;
+            background: white;
+            border: 1px solid #eeedea;
+            border-left: 3px solid #ed6c05;
+            border-radius: 12px;
+            padding: 28px 20px;
             transition: all 0.3s;
         }
-        .mock-service-card:hover { border-color: var(--accent); background: rgba(6, 182, 212, 0.04); }
+        .mock-service-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06); }
         .mock-service-icon {
-            width: 40px; height: 40px;
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
-            border-radius: 10px;
-            margin: 0 auto 14px;
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, rgba(237, 108, 5, 0.1), rgba(237, 108, 5, 0.05));
+            border-radius: 12px;
+            margin-bottom: 16px;
             display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 1rem;
+            color: #ed6c05; font-size: 1.1rem;
         }
-        .mock-service-name { font-size: 0.85rem; font-weight: 600; color: white; margin-bottom: 6px; }
-        .mock-service-desc { font-size: 0.72rem; color: var(--text-muted); line-height: 1.5; }
+        .mock-service-name { font-size: 0.88rem; font-weight: 700; color: #1a1a2e; margin-bottom: 8px; letter-spacing: -0.3px; }
+        .mock-service-desc { font-size: 0.72rem; color: #6b6a65; line-height: 1.6; }
 
         /* Footer */
         .footer {
@@ -1630,30 +1703,51 @@
                         </div>
                         <div class="mockup-url">
                             <i class="fas fa-lock" style="color: #10b981; margin-right: 6px; font-size: 0.65rem;"></i>
-                            https://www.endeneyimmerkezi.com
+                            endeneyimmerkezi.com
                         </div>
                     </div>
                     <div class="mockup-body">
+                        <!-- Top Bar -->
+                        <div class="mock-topbar">
+                            <div><i class="fas fa-phone-alt" style="margin-right: 4px;"></i> 0212 571 71 55 &nbsp;&bull;&nbsp; <a href="#">iletisim@endeneyimmerkezi.com</a></div>
+                            <div class="mock-topbar-right">
+                                <span><i class="fab fa-instagram"></i></span>
+                                <span><i class="fab fa-youtube"></i></span>
+                                <span><i class="fab fa-linkedin"></i></span>
+                            </div>
+                        </div>
+
+                        <!-- Navbar -->
+                        <div class="mock-navbar">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 137.79 68.86" class="mock-logo-svg">
+                                <g><g><polyline fill="#ed6c05" points="68.82 5.95 137.64 37.83 69.08 .25 68.97 .02 68.82 .11 68.67 .02 68.55 .25 0 37.83 68.82 5.95"/></g><g><path fill="#ed6c05" d="M68.88,45.57c-4.21,5.15-9.56,7.78-16.16,7.49-5.05-.22-9.35-2.28-12.86-5.94-6.93-7.21-6.94-18.84.08-26.19,4.01-4.2,8.99-6.16,14.81-5.86,5.83.3,10.45,2.95,14.16,7.49,4.49-5.52,10.24-8.1,17.26-7.42,5.12.49,9.35,2.88,12.66,6.85,6.47,7.74,5.58,19.27-2.08,26.29-7.37,6.75-20.28,6.9-27.85-2.7Z"/><path fill="#ed6c05" d="M79.41,29.52c.07-.02.14-.05.21-.07.16.23.33.46.48.7,2.63,4.13,5.31,8.23,7.87,12.41.68,1.11,1.4,1.63,2.72,1.49.78-.08.97-.3.96-1.05-.03-5.84,0-11.68-.02-17.52,0-1.6.25-1.39-1.4-1.4-1.2,0-1.39.2-1.4,1.4,0,4.02,0,8.04,0,12.05,0,.3-.03.6-.04.9-.07.02-.14.03-.21.05-.17-.25-.35-.5-.51-.76-2.53-4.01-5.11-7.98-7.55-12.04-.74-1.23-1.52-1.81-2.97-1.64-.76.09-.97.26-.97,1.02.03,6.03.02,12.05.02,18.08,0,.26.03.52.05.87.34,0,.63,0,.92,0,1.73,0,1.84-.11,1.84-1.81,0-3.94,0-7.88,0-11.81,0-.29,0-.58,0-.87Z"/><path fill="#ed6c05" d="M56.68,32.44c-2.03,0-3.91-.02-5.78.01-.63,0-.92-.15-.9-.85.05-1.37.04-2.73,0-4.1-.01-.59.17-.8.78-.79,2.28.03,4.55.01,6.83.01,1.92,0,1.89,0,1.9-1.89,0-.63-.22-.76-.8-.75-3.37.02-6.75,0-10.12.01-1.12,0-1.37.24-1.37,1.36,0,5.71,0,11.42,0,17.12,0,1.23.21,1.44,1.45,1.45,3.56,0,7.12,0,10.69,0,.23,0,.47-.03.77-.05,0-.58-.04-1.12.01-1.64.07-.71-.18-.92-.89-.91-2.79.04-5.57,0-8.36.02-.63,0-.92-.16-.9-.86.04-1.58.04-3.16,0-4.74-.01-.61.2-.78.79-.77,1.58.03,3.16.02,4.74,0,.24,0,.64-.16.69-.32.2-.71.3-1.45.45-2.29Z"/></g><g><path fill="#4e4a49" d="M26.29,65.95c-.57.8-1.32,1.17-2.41,1.17h-2.88v-7.99h2.88c1.09,0,1.84.37,2.41,1.17.49.68.5,1.5.5,2.83s-.01,2.14-.5,2.83Z"/><path fill="#4e4a49" d="M28.39,67.12v-7.99h5.26v1.39h-3.7v1.87h3.15v1.39h-3.15v1.94h3.7v1.39h-5.26Z"/><path fill="#4e4a49" d="M39.89,67.12l-3.16-4.9v4.9h-1.56v-7.99h1.39l3.16,4.89v-4.89h1.56v7.99h-1.39Z"/><path fill="#4e4a49" d="M43.15,67.12v-7.99h5.26v1.39h-3.7v1.87h3.15v1.39h-3.15v1.94h3.7v1.39h-5.26Z"/><path fill="#4e4a49" d="M52.98,63.85v3.28h-1.55v-3.28l-2.4-4.71h1.69l1.49,3.22,1.47-3.22h1.69l-2.4,4.71Z"/><path fill="#4e4a49" d="M56.35,67.12v-7.99h1.56v7.99h-1.56Z"/><path fill="#4e4a49" d="M65.44,67.12v-4.65l-1.53,3.03h-1.05l-1.54-3.03v4.65h-1.56v-7.99h1.54l2.09,4.32,2.07-4.32h1.54v7.99h-1.56Z"/><path fill="#4e4a49" d="M77.14,67.12v-4.65l-1.53,3.03h-1.05l-1.54-3.03v4.65h-1.56v-7.99h1.54l2.09,4.32,2.07-4.32h1.54v7.99h-1.56Z"/><path fill="#4e4a49" d="M80.56,67.12v-7.99h5.26v1.39h-3.7v1.87h3.15v1.39h-3.15v1.94h3.7v1.39h-5.26Z"/><path fill="#4e4a49" d="M91.58,67.12l-1.56-3.19h-1.12v3.19h-1.56v-7.99h3.13c1.63,0,2.59,1.11,2.59,2.44,0,1.12-.68,1.82-1.46,2.1l1.78,3.44h-1.81Z"/><path fill="#4e4a49" d="M99.32,67.12l-2.05-3.63-1.03,1.23v2.4h-1.56v-7.99h1.56v3.48l2.81-3.48h1.9l-2.65,3.17,2.84,4.81h-1.82Z"/><path fill="#4e4a49" d="M102.14,67.12v-7.99h5.26v1.39h-3.7v1.87h3.15v1.39h-3.15v1.94h3.7v1.39h-5.26Z"/><path fill="#4e4a49" d="M108.44,67.12v-1.26l3.41-5.34h-3.26v-1.39h5.1v1.23l-3.42,5.36h3.42v1.39h-5.25Z"/><path fill="#4e4a49" d="M115.07,67.12v-7.99h1.56v7.99h-1.56Z"/></g><rect fill="#4e4a49" x="21" y="68.58" width="95.63" height=".29"/></g>
+                            </svg>
+                            <div class="mock-nav-links">
+                                <a href="#">Kurumsal</a>
+                                <a href="#">Ayricliklar</a>
+                                <a href="#">Abonelikler</a>
+                                <a href="#">Subeler</a>
+                                <a href="#">Blog</a>
+                                <a href="#" class="mock-login-btn"><i class="fas fa-user" style="margin-right: 4px; font-size: 0.6rem;"></i> Giris Yap</a>
+                                <a href="#" class="mock-cta-btn">Iletisim</a>
+                            </div>
+                        </div>
+
                         <!-- Hero -->
                         <div class="mock-hero">
-                            <div class="mock-nav">
-                                <div class="mock-logo">EN<span>Deneyim</span></div>
-                                <div class="mock-nav-links">
-                                    <a href="#">Kurumsal</a>
-                                    <a href="#">Ayricliklar</a>
-                                    <a href="#">Abonelikler</a>
-                                    <a href="#">Subeler</a>
-                                    <a href="#">Blog</a>
-                                    <a href="#" class="mock-cta-btn">Iletisim</a>
-                                </div>
-                            </div>
                             <div class="mock-hero-content">
-                                <div class="mock-hero-badge"><i class="fas fa-star" style="margin-right: 6px; font-size: 0.6rem;"></i> YKS Sinav Hazirlik & Egitim</div>
-                                <h1 class="mock-hero-title">Basariya giden yolda <span>EN iyi deneyim</span></h1>
-                                <p class="mock-hero-desc">200+ subemiz, uzman koclarimiz ve dijital platformlarimizla YKS'ye hazirlik surecinde yaninizdayiz.</p>
+                                <div class="mock-hero-badge"><i class="fas fa-graduation-cap"></i> YKS Sinav Hazirlik & Calisma Merkezi</div>
+                                <h1 class="mock-hero-title">Yeni bir <span>deneyim</span><br>seni bekliyor</h1>
+                                <p class="mock-hero-desc">Golge Koc, EN Deneme Kulubu, UcDortBes ALL Star ve 200+ sube ile YKS'ye hazirlik surecinde farki hisset.</p>
                                 <div class="mock-hero-btns">
-                                    <a href="#" class="mock-btn-primary"><i class="fas fa-arrow-right"></i> Subeni Bul</a>
-                                    <a href="#" class="mock-btn-secondary"><i class="fas fa-tags"></i> Abonelikler</a>
+                                    <a href="#" class="mock-btn-primary"><i class="fas fa-map-marker-alt"></i> EN Yakin Deneyim</a>
+                                    <a href="#" class="mock-btn-secondary"><i class="fas fa-play-circle"></i> Kesfet</a>
+                                </div>
+                                <div class="mock-hero-trust">
+                                    <div class="mock-trust-item"><i class="fas fa-check-circle"></i> <strong>200+</strong> sube</div>
+                                    <div class="mock-trust-item"><i class="fas fa-check-circle"></i> <strong>10+</strong> ayriclik</div>
+                                    <div class="mock-trust-item"><i class="fas fa-check-circle"></i> <strong>3</strong> abonelik paketi</div>
+                                    <div class="mock-trust-item"><i class="fas fa-check-circle"></i> <strong>Franchise</strong> firsati</div>
                                 </div>
                             </div>
                         </div>
@@ -1665,38 +1759,39 @@
                                 <div class="mock-stat-label">Sube</div>
                             </div>
                             <div class="mock-stat">
-                                <div class="mock-stat-number">50.000+</div>
-                                <div class="mock-stat-label">Ogrenci</div>
+                                <div class="mock-stat-number">6+</div>
+                                <div class="mock-stat-label">Sehir</div>
                             </div>
                             <div class="mock-stat">
-                                <div class="mock-stat-number">%95</div>
-                                <div class="mock-stat-label">Memnuniyet</div>
+                                <div class="mock-stat-number">10+</div>
+                                <div class="mock-stat-label">Ayriclik</div>
                             </div>
                             <div class="mock-stat">
-                                <div class="mock-stat-number">7/24</div>
-                                <div class="mock-stat-label">Destek</div>
+                                <div class="mock-stat-number">3</div>
+                                <div class="mock-stat-label">Paket</div>
                             </div>
                         </div>
 
-                        <!-- Services -->
+                        <!-- Ayricliklar -->
                         <div class="mock-services">
-                            <div class="mock-services-title">Ayricliklarimiz</div>
-                            <div class="mock-services-sub">YKS hazirlikta fark yaratan deneyimler</div>
+                            <div class="mock-services-label">Ayricliklar</div>
+                            <div class="mock-services-title">EN Deneyim'e ozel avantajlar</div>
+                            <div class="mock-services-sub">Basariya giden yolda seni destekleyen 10 farkli ayriclik</div>
                             <div class="mock-services-grid">
                                 <div class="mock-service-card">
-                                    <div class="mock-service-icon"><i class="fas fa-user-graduate"></i></div>
+                                    <div class="mock-service-icon"><i class="fas fa-user-shield"></i></div>
                                     <div class="mock-service-name">Golge Koc</div>
                                     <div class="mock-service-desc">Sinav surecini planlayan ve adim adim takip eden uzman kocluk sistemi.</div>
                                 </div>
                                 <div class="mock-service-card">
-                                    <div class="mock-service-icon"><i class="fas fa-file-alt"></i></div>
-                                    <div class="mock-service-name">EnDeneme Kulubu</div>
-                                    <div class="mock-service-desc">Turkiye geneli deneme sinavlari, siralama sistemi ve detayli analiz raporlari.</div>
+                                    <div class="mock-service-icon"><i class="fas fa-clipboard-check"></i></div>
+                                    <div class="mock-service-name">EN Deneme Kulubu</div>
+                                    <div class="mock-service-desc">200+ subenin katildigi Turkiye geneli deneme sinavi organizasyonu ve siralama.</div>
                                 </div>
                                 <div class="mock-service-card">
-                                    <div class="mock-service-icon"><i class="fas fa-star"></i></div>
+                                    <div class="mock-service-icon"><i class="fas fa-book-open"></i></div>
                                     <div class="mock-service-name">UcDortBes ALL Star</div>
-                                    <div class="mock-service-desc">3-4-5 yildiz zorluk sistemli dijital egitim platformu ve soru bankasi.</div>
+                                    <div class="mock-service-desc">3-4-5 yildiz zorluk sistemli basili ve dijital sinav hazirlik seti.</div>
                                 </div>
                             </div>
                         </div>
