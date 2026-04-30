@@ -1,0 +1,568 @@
+{% load static %}<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hikayemiz — EN Deneyim Merkezi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    @font-face {
+      font-family: 'Town Display';
+      src: url("{% static 'fonts/Town10-Display-Medium.otf' %}") format('opentype');
+      font-weight: 500; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Town Display';
+      src: url("{% static 'fonts/Town10-Display-Bold.otf' %}") format('opentype');
+      font-weight: 700; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Town Display';
+      src: url("{% static 'fonts/Town10-Display-Black.otf' %}") format('opentype');
+      font-weight: 900; font-style: normal; font-display: swap;
+    }
+
+    :root {
+      --orange: #f37422;
+      --orange-mid: #c23f1b;
+      --orange-dark: #9b1618;
+      --orange-bright: #ff7727;
+      --yellow: #fec841;
+      --yellow-light: #ffe77e;
+      --black: #000000;
+      --white: #ffffff;
+      --gray-light: #f4f4f4;
+      --gray-mid: #e0e0e0;
+      --gray-text: #555555;
+      --gray-subtle: #888888;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', Helvetica, Arial, sans-serif;
+      background: var(--white);
+      color: var(--black);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .hero-headline, .section-title, .display-font {
+      font-family: 'Town Display', 'Inter', Helvetica, Arial, sans-serif;
+      letter-spacing: -0.01em;
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: transparent;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      padding: 0 48px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    nav.scrolled {
+      background: var(--white);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+    }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+    .nav-logo img { height: 42px; width: auto; transition: opacity 0.3s; }
+    .nav-logo .logo-white { display: block; }
+    .nav-logo .logo-dark { display: none; }
+    nav.scrolled .nav-logo .logo-white { display: none; }
+    nav.scrolled .nav-logo .logo-dark { display: block; }
+
+    .nav-links { display: flex; align-items: center; gap: 0; list-style: none; }
+    .nav-links > li { position: relative; }
+    .nav-links > li > a,
+    .nav-links > li > span {
+      display: block; padding: 0 18px; height: 72px; line-height: 72px;
+      font-size: 13px; font-weight: 500; letter-spacing: 0.02em;
+      text-decoration: none; color: rgba(255,255,255,0.9);
+      transition: color 0.2s; cursor: pointer; white-space: nowrap; user-select: none;
+    }
+    nav.scrolled .nav-links > li > a,
+    nav.scrolled .nav-links > li > span { color: var(--black); }
+    .nav-links > li > a:hover,
+    .nav-links > li > span:hover { color: var(--orange); }
+    .nav-links > li > span .fa-chevron-down {
+      font-size: 9px; margin-left: 4px; vertical-align: middle; transition: transform 0.2s;
+    }
+    .nav-links > li:hover > span .fa-chevron-down { transform: rotate(180deg); }
+
+    .dropdown {
+      position: absolute; top: 100%; left: 0;
+      background: var(--white); min-width: 200px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      opacity: 0; pointer-events: none;
+      transform: translateY(-8px);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .nav-links > li:hover .dropdown { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .dropdown a {
+      display: block; padding: 12px 20px; font-size: 13px; font-weight: 500;
+      color: var(--black); text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+      border-bottom: 1px solid var(--gray-light);
+    }
+    .dropdown a:last-child { border-bottom: none; }
+    .dropdown a:hover { background: var(--gray-light); color: var(--orange); }
+    .dropdown a.active { color: var(--orange); background: var(--gray-light); font-weight: 700; }
+
+    .nav-cta { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .btn-login {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 10px 22px; font-family: 'Inter', sans-serif;
+      font-size: 13px; font-weight: 600;
+      border: 1.5px solid rgba(255,255,255,0.7);
+      background: transparent; color: rgba(255,255,255,0.95);
+      text-decoration: none; cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s; letter-spacing: 0.02em;
+    }
+    nav.scrolled .btn-login { border-color: var(--black); color: var(--black); }
+    .btn-login:hover { background: var(--orange); border-color: var(--orange); color: var(--white); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); transition: background 0.3s; }
+    nav.scrolled .hamburger span { background: var(--black); }
+
+    /* ─── PAGE HERO ─── */
+    .page-hero {
+      background: #0a0a0f;
+      padding: 160px 80px 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 70% 60%, rgba(243,116,34,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.016) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.016) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+    }
+    .page-hero-inner { position: relative; z-index: 1; max-width: 800px; }
+    .breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(255,255,255,0.35);
+      margin-bottom: 32px;
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--orange); }
+    .breadcrumb .sep { color: rgba(255,255,255,0.2); }
+    .breadcrumb .current { color: var(--orange); }
+    .page-hero h1 {
+      font-size: clamp(56px, 8vw, 112px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .page-hero-sub {
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: 400;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    /* ─── SECTION GLOBALS ─── */
+    section { width: 100%; }
+    .section-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--orange);
+      margin-bottom: 20px; display: block;
+    }
+    .link-arrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 13px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--black);
+      text-decoration: none; border-bottom: 1.5px solid var(--black);
+      padding-bottom: 2px; transition: color 0.2s, border-color 0.2s;
+    }
+    .link-arrow:hover { color: var(--orange); border-color: var(--orange); }
+    .link-arrow .fa-arrow-right { font-size: 11px; transition: transform 0.2s; }
+    .link-arrow:hover .fa-arrow-right { transform: translateX(4px); }
+
+    /* ─── HIKAYE CONTENT ─── */
+    .story-section {
+      padding: 120px 80px;
+      background: var(--white);
+    }
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
+      align-items: center;
+      max-width: 1200px;
+    }
+    .story-grid h2 {
+      font-size: clamp(36px, 4vw, 60px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 28px;
+    }
+    .story-grid p {
+      font-size: 17px;
+      color: var(--gray-text);
+      line-height: 1.8;
+    }
+    .story-accent-block {
+      background: var(--black);
+      padding: 64px 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .story-accent-block::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 30% 50%, rgba(243,116,34,0.10) 0%, transparent 70%);
+    }
+    .story-accent-block blockquote {
+      position: relative; z-index: 1;
+      font-size: clamp(22px, 3vw, 36px);
+      font-family: 'Town Display', 'Inter', sans-serif;
+      font-weight: 700;
+      font-style: italic;
+      letter-spacing: -0.02em;
+      line-height: 1.35;
+      color: var(--white);
+    }
+    .story-accent-block blockquote::before {
+      content: '\201C';
+      font-size: 120px;
+      line-height: 0.6;
+      color: var(--orange);
+      display: block;
+      margin-bottom: 16px;
+      font-family: Georgia, serif;
+    }
+
+    /* ─── TIMELINE ─── */
+    .timeline-section {
+      padding: 120px 80px;
+      background: var(--gray-light);
+    }
+    .timeline-header { margin-bottom: 80px; }
+    .timeline-header h2 {
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 900; letter-spacing: -0.03em; line-height: 1;
+    }
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    .timeline-item {
+      padding: 0 48px 0 0;
+      border-right: 1px solid var(--gray-mid);
+    }
+    .timeline-item:last-child { border-right: none; padding-right: 0; }
+    .timeline-item:not(:first-child) { padding-left: 48px; }
+    .timeline-num {
+      font-size: 13px; font-weight: 800; letter-spacing: 0.1em;
+      color: var(--orange); display: block;
+      margin-bottom: 20px; padding-bottom: 16px;
+      border-bottom: 2px solid var(--orange); width: fit-content;
+    }
+    .timeline-item h3 {
+      font-size: 22px; font-weight: 800;
+      letter-spacing: -0.02em; margin-bottom: 14px; line-height: 1.2;
+    }
+    .timeline-item p {
+      font-size: 14px; color: var(--gray-text); line-height: 1.7;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black); color: var(--white); padding: 96px 80px 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+      gap: 48px; padding-bottom: 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-slogan { font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.4); line-height: 1.6; margin-bottom: 32px; }
+    .footer-col-title {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(255,255,255,0.35);
+      margin-bottom: 24px; display: block;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 12px; }
+    .footer-col ul li a {
+      font-size: 14px; font-weight: 400;
+      color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--white); }
+    .footer-contact-email {
+      font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 8px;
+      display: block; text-decoration: none; transition: color 0.2s;
+    }
+    .footer-contact-email:hover { color: var(--white); }
+    .footer-contact-phone {
+      font-size: 20px; font-weight: 700; letter-spacing: -0.02em;
+      color: var(--white); display: block; text-decoration: none;
+      margin-bottom: 28px; transition: color 0.2s;
+    }
+    .footer-contact-phone:hover { color: var(--orange); }
+    .social-links { display: flex; gap: 16px; }
+    .social-link {
+      width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.45); text-decoration: none;
+      font-size: 14px; transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .social-link:hover { border-color: var(--orange); color: var(--orange); }
+    .footer-bottom {
+      padding: 24px 0; display: flex;
+      align-items: center; justify-content: space-between;
+    }
+    .footer-bottom-left { font-size: 12px; color: rgba(255,255,255,0.25); }
+    .footer-bottom-right { display: flex; gap: 24px; }
+    .footer-bottom-right a {
+      font-size: 12px; color: rgba(255,255,255,0.25);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-bottom-right a:hover { color: rgba(255,255,255,0.6); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      nav { padding: 0 32px; }
+      .page-hero { padding: 140px 48px 80px; }
+      .story-section { padding: 80px 48px; }
+      .story-grid { grid-template-columns: 1fr; gap: 48px; }
+      .timeline-section { padding: 80px 48px; }
+      .timeline { grid-template-columns: 1fr; gap: 48px; }
+      .timeline-item { border-right: none; border-bottom: 1px solid var(--gray-mid); padding: 0 0 48px 0 !important; }
+      .timeline-item:last-child { border-bottom: none; padding-bottom: 0 !important; }
+      footer { padding: 80px 48px 0; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-cta { display: none; }
+      .page-hero { padding: 120px 24px 64px; }
+      .story-section { padding: 64px 24px; }
+      .story-accent-block { padding: 40px 32px; }
+      .timeline-section { padding: 64px 24px; }
+      footer { padding: 64px 24px 0; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="mainNav">
+  <a href="/" class="nav-logo" aria-label="EN Deneyim Merkezi">
+    <img class="logo-white" src="{% static 'img/logo-white.png' %}" alt="EN Deneyim Merkezi" />
+    <img class="logo-dark" src="{% static 'img/logo-dark.png' %}" alt="EN Deneyim Merkezi" />
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="/">Anasayfa</a></li>
+    <li>
+      <span>Kurumsal <i class="fa-solid fa-chevron-down"></i></span>
+      <div class="dropdown">
+        <a href="/v1/kurumsal/hikayemiz/" class="active">Hikayemiz</a>
+        <a href="/v1/kurumsal/felsefemiz/">Felsefemiz</a>
+        <a href="/v1/kurumsal/yonetim-kadromuz/">Yönetim Kadromuz</a>
+        <a href="/v1/kurumsal/insan-kaynaklari/">İnsan Kaynakları</a>
+        <a href="/v1/kurumsal/kurumsal-kimlik/">Kurumsal Kimlik</a>
+        <a href="/v1/kurumsal/franchise/">Franchise</a>
+      </div>
+    </li>
+    <li>
+      <span>Endeneyim <i class="fa-solid fa-chevron-down"></i></span>
+      <div class="dropdown">
+        <a href="/endeneyim/neden-endeneyim/">Neden Endeneyim?</a>
+        <a href="/endeneyim/ayricaliklar/">Ayrıcalıklar</a>
+        <a href="/endeneyim/subeler/">Şubeler</a>
+      </div>
+    </li>
+    <li>
+      <span>Abonelikler <i class="fa-solid fa-chevron-down"></i></span>
+      <div class="dropdown">
+        <a href="/abonelikler/solo/">Solo</a>
+        <a href="/abonelikler/elite/">Elite</a>
+        <a href="/abonelikler/premium/">Premium</a>
+      </div>
+    </li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/iletisim/">İletişim</a></li>
+  </ul>
+
+  <div class="nav-cta">
+    <a href="https://app.endeneyimmerkezi.com/login.php" class="btn-login" target="_blank" rel="noopener">
+      <i class="fa-regular fa-user"></i>
+      Giriş Yap
+    </a>
+  </div>
+  <div class="hamburger" aria-label="Menü" role="button">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="/">Anasayfa</a>
+      <span class="sep">/</span>
+      <a href="/v1/kurumsal/">Kurumsal</a>
+      <span class="sep">/</span>
+      <span class="current">Hikayemiz</span>
+    </div>
+    <h1>Hikayemiz</h1>
+    <p class="page-hero-sub">Ezberlemek mi, gerçekten öğrenmek mi?</p>
+  </div>
+</section>
+
+<!-- KURULUŞ FELSEFESİ -->
+<section class="story-section">
+  <div class="story-grid">
+    <div>
+      <span class="section-label">Kuruluş Felsefesi</span>
+      <h2>Bir idealin doğuşu.</h2>
+      <p>Kurucularımız, eğitimde deneyimin gücüne inanan idealistlerdir. Öğrencilerin kendi yollarını keşfettiklerinde bilginin onların bir parçası haline geldiğine inanırlar. Bu anlayış, EN Deneyim'in doğuşuna neden olmuştur.</p>
+    </div>
+    <div style="background: var(--gray-light); padding: 64px; position: relative; overflow: hidden;">
+      <div style="position: absolute; top: 32px; right: 32px; font-size: 80px; color: var(--gray-mid); font-family: Georgia, serif; line-height: 1;">&ldquo;</div>
+      <p style="font-size: 20px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.5; color: var(--black); position: relative; z-index: 1;">Bilginin kalıcı olması için, öğrencinin o bilgiyi <em style="font-style: normal; color: var(--orange);">hissetmesi</em> gerekir.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BÜYÜK QUOTE -->
+<div class="story-accent-block">
+  <div style="max-width: 800px; margin: 0 auto; padding: 0 80px; position: relative; z-index: 1;">
+    <blockquote>
+      Öğrencilere sadece bilgi vermek değil, onların yanında yürümek. Her denemede, her başarıda ve her düşüşte orada olmak.
+    </blockquote>
+  </div>
+</div>
+
+<!-- TARİHÇEMİZ -->
+<section class="timeline-section">
+  <div class="timeline-header">
+    <span class="section-label">Tarihçemiz</span>
+    <h2>Adım adım<br>büyüdük.</h2>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <span class="timeline-num">01</span>
+      <h3>Adım Adım Büyüme</h3>
+      <p>Kurucularımız masa etrafında hayaller kurdu, gecelerce programlar yazıp araştırmalar yaptı. Her zorluk, daha güçlü bir yapı için zemin hazırladı.</p>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-num">02</span>
+      <h3>Büyüme ve Genişleme</h3>
+      <p>Yüzlerce öğrencinin katılımı ve binlerce saatlik emekle Neuro Pass ve Neuro Sound gibi özgün içerikler oluşturuldu. Türkiye genelinde şubeleşme başladı.</p>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-num">03</span>
+      <h3>Topluluk Haline Gelme</h3>
+      <p>Günümüzde sadece bir eğitim platformu değil, birbirini destekleyen bir aile yapısına dönüştü. 200+ şube, 50.000+ öğrenci, tek hedef: başarı.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <a href="/" class="footer-logo" aria-label="EN Deneyim Merkezi" style="display:block; margin-bottom:20px;">
+        <img src="{% static 'img/logo-white.png' %}" alt="EN Deneyim Merkezi" style="height: 56px; width: auto;" />
+      </a>
+      <p class="footer-slogan">Yeni bir deneyim seni bekliyor.</p>
+    </div>
+    <div class="footer-col">
+      <span class="footer-col-title">Kurumsal</span>
+      <ul>
+        <li><a href="/v1/kurumsal/hikayemiz/">Hikayemiz</a></li>
+        <li><a href="/v1/kurumsal/franchise/">Franchise</a></li>
+        <li><a href="/v1/kurumsal/insan-kaynaklari/">İnsan Kaynakları</a></li>
+        <li><a href="/v1/kurumsal/felsefemiz/">Felsefemiz</a></li>
+        <li><a href="/v1/kurumsal/kurumsal-kimlik/">Kurumsal Kimlik</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <span class="footer-col-title">Endeneyim</span>
+      <ul>
+        <li><a href="/endeneyim/neden-endeneyim/">Neden Endeneyim?</a></li>
+        <li><a href="/endeneyim/ayricaliklar/">Ayrıcalıklar</a></li>
+        <li><a href="/endeneyim/subeler/">Şubeler</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <span class="footer-col-title">Abonelikler</span>
+      <ul>
+        <li><a href="/abonelikler/solo/">Solo</a></li>
+        <li><a href="/abonelikler/elite/">Elite</a></li>
+        <li><a href="/abonelikler/premium/">Premium</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <span class="footer-col-title">İletişim</span>
+      <a href="mailto:iletisim@endeneyimmerkezi.com" class="footer-contact-email">iletisim@endeneyimmerkezi.com</a>
+      <a href="tel:02125717155" class="footer-contact-phone">0212 571 71 55</a>
+      <div class="social-links">
+        <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-bottom-left">© 2026 EN Deneyim Merkezi. Tüm hakları saklıdır.</span>
+    <div class="footer-bottom-right">
+      <a href="/kvkk/">KVKK</a>
+      <a href="/gizlilik/">Gizlilik Politikası</a>
+      <a href="/cerez/">Çerez Politikası</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    var nav = document.getElementById('mainNav');
+    var ticking = false;
+    function onScroll() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          nav.classList.toggle('scrolled', window.scrollY > 10);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+</script>
+</body>
+</html>

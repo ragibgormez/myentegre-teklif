@@ -1,0 +1,274 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yönetim Kadromuz | EN Deneyim Merkezi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+@font-face { font-family: 'Town Display'; src: url("{% static 'fonts/Town10-Display-Medium.otf' %}") format('opentype'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Town Display'; src: url("{% static 'fonts/Town10-Display-Bold.otf' %}") format('opentype'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Town Display'; src: url("{% static 'fonts/Town10-Display-Black.otf' %}") format('opentype'); font-weight: 900; font-style: normal; font-display: swap; }
+    :root {
+      --orange: #f37422; --orange-mid: #c23f1b; --orange-dark: #9b1618;
+      --orange-bright: #ff7727; --yellow: #fec841; --yellow-light: #ffe77e;
+      --orange-light: #ff8c2a; --orange-pale: #fff4ec;
+      --navy: #1a1a2e; --navy-mid: #16213e; --gray-dark: #2d2d3a;
+      --gray: #6b7280; --gray-light: #9ca3af; --bg: #f8f9fa;
+      --white: #ffffff; --border: #e5e7eb;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.06); --shadow-md: 0 4px 24px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.12); --shadow-orange: 0 8px 32px rgba(237,108,5,0.25);
+      --radius: 16px; --radius-sm: 10px;
+    }
+    html { scroll-behavior: smooth; }
+    h1, h2, h3, .display-font { font-family: 'Town Display', 'Plus Jakarta Sans', Helvetica, Arial, sans-serif; letter-spacing: -0.01em; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--navy); line-height: 1.6; overflow-x: hidden; }
+
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(229,231,235,0.6); padding: 0 2rem; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 2rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links > li { position: relative; }
+    .nav-links a { text-decoration: none; color: var(--gray-dark); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-links .has-dropdown > a { display: flex; align-items: center; gap: 0.25rem; }
+    .nav-links .has-dropdown > a .nav-chevron { font-size: 0.65rem; transition: transform 0.2s; opacity: 0.7; }
+    .nav-dropdown { display: none; position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%); background: white; border: 1px solid var(--border); border-radius: var(--radius-sm); box-shadow: var(--shadow-lg); padding: 0.5rem 0; min-width: 200px; z-index: 200; list-style: none; }
+    .nav-dropdown li a { display: block; padding: 0.55rem 1.25rem; font-size: 0.875rem; color: var(--gray-dark); white-space: nowrap; transition: color 0.15s, background 0.15s; }
+    .nav-dropdown li a:hover, .nav-dropdown li a.active { color: var(--orange); background: var(--orange-pale); }
+    .has-dropdown:hover > .nav-dropdown, .has-dropdown:focus-within > .nav-dropdown { display: block; }
+    .has-dropdown:hover > a .nav-chevron { transform: rotate(180deg); }
+    .nav-actions { display: flex; align-items: center; gap: 0.75rem; }
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.4rem; border-radius: 50px; font-family: inherit; font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease; text-decoration: none; border: none; }
+    .btn-primary { background: var(--orange); color: white; box-shadow: var(--shadow-orange); }
+    .btn-primary:hover { background: var(--orange-light); transform: translateY(-1px); }
+
+    .page-hero { background: linear-gradient(135deg, #ffffff 0%, #fff8f2 50%, #fff4ec 100%); padding: 5rem 2rem 4rem; text-align: center; border-bottom: 1px solid var(--border); }
+    .page-hero-inner { max-width: 800px; margin: 0 auto; }
+    .breadcrumb { display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-size: 0.82rem; color: var(--gray); margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--gray); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--orange); }
+    .breadcrumb span { color: var(--orange-mid); }
+    .page-hero h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; color: var(--navy); margin-bottom: 1rem; line-height: 1.1; }
+    .page-hero .subtitle { font-size: 1.1rem; color: var(--gray); max-width: 560px; margin: 0 auto; line-height: 1.7; }
+
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-tag { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--orange); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem; }
+    .section-title { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 800; color: var(--navy); line-height: 1.25; margin-bottom: 2.5rem; }
+    .section-title span { color: var(--orange); }
+
+    /* TEAM GRID */
+    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
+    .team-card { background: white; border-radius: var(--radius); padding: 2.5rem 2rem; border: 1px solid var(--border); box-shadow: var(--shadow-sm); text-align: center; transition: all 0.3s ease; }
+    .team-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: transparent; }
+    .team-avatar { width: 96px; height: 96px; border-radius: 50%; background: linear-gradient(135deg, var(--orange-pale), #fde8d5); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; border: 3px solid var(--border); transition: all 0.3s ease; }
+    .team-card:hover .team-avatar { border-color: var(--orange); background: linear-gradient(135deg, var(--orange), var(--orange-light)); }
+    .team-avatar i { font-size: 2.2rem; color: var(--orange); transition: color 0.3s ease; }
+    .team-card:hover .team-avatar i { color: white; }
+    .team-name { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; }
+    .team-role { display: inline-block; background: var(--orange-pale); color: var(--orange-mid); font-size: 0.78rem; font-weight: 600; padding: 0.25rem 0.75rem; border-radius: 50px; margin-bottom: 0.75rem; }
+    .team-bio { font-size: 0.85rem; color: var(--gray); line-height: 1.6; }
+
+    footer { background: var(--navy); padding: 5rem 2rem 2rem; color: rgba(255,255,255,0.65); }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1.6fr; gap: 2.5rem; margin-bottom: 3rem; }
+    .footer-brand p { font-size: 0.875rem; line-height: 1.7; margin: 1.25rem 0; max-width: 300px; }
+    .footer-socials { display: flex; gap: 0.75rem; }
+    .social-btn { width: 38px; height: 38px; background: rgba(255,255,255,0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); font-size: 0.9rem; text-decoration: none; transition: all 0.2s; }
+    .social-btn:hover { background: var(--orange); color: white; transform: translateY(-2px); }
+    .footer-col h5 { color: white; font-size: 0.875rem; font-weight: 700; margin-bottom: 1.25rem; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--orange); }
+    .footer-contact-items { display: flex; flex-direction: column; gap: 0.85rem; }
+    .contact-item { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.875rem; }
+    .contact-item i { color: var(--orange); margin-top: 2px; font-size: 0.9rem; flex-shrink: 0; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 0.82rem; }
+    .footer-bottom-links { display: flex; gap: 1.5rem; }
+    .footer-bottom-links a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+    .footer-bottom-links a:hover { color: var(--orange); }
+
+    @media (max-width: 768px) {
+      nav .nav-links { display: none; }
+      .team-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 1024px) {
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/v2/" class="nav-logo">
+      <img src="{% static 'img/logo-dark.png' %}" alt="EN Deneyim Merkezi" style="height: 42px; width: auto;" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="/v2/">Anasayfa</a></li>
+      <li class="has-dropdown">
+        <a href="#" style="color: var(--orange);">Kurumsal <span class="nav-chevron">▾</span></a>
+        <ul class="nav-dropdown">
+          <li><a href="hikayemiz.html">Hikayemiz</a></li>
+          <li><a href="yonetim-kadromuz.html" class="active">Yönetim Kadromuz</a></li>
+          <li><a href="felsefemiz.html">Felsefemiz</a></li>
+          <li><a href="insan-kaynaklari.html">İnsan Kaynakları</a></li>
+          <li><a href="kurumsal-kimlik.html">Kurumsal Kimlik</a></li>
+          <li><a href="franchise.html">Franchise</a></li>
+        </ul>
+      </li>
+      <li class="has-dropdown">
+        <a href="#">Endeneyim <span class="nav-chevron">▾</span></a>
+        <ul class="nav-dropdown">
+          <li><a href="#">Neden Endeneyim?</a></li>
+          <li><a href="#">Ayrıcalıklar</a></li>
+          <li><a href="#">Şubeler</a></li>
+        </ul>
+      </li>
+      <li class="has-dropdown">
+        <a href="#">Abonelikler <span class="nav-chevron">▾</span></a>
+        <ul class="nav-dropdown">
+          <li><a href="#">Solo</a></li>
+          <li><a href="#">Elite</a></li>
+          <li><a href="#">Premium</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">İletişim</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="https://app.endeneyimmerkezi.com/login.php" class="btn btn-primary">
+        Giriş Yap <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="/v2/">Anasayfa</a>
+      <i class="fa-solid fa-chevron-right" style="font-size:0.6rem;"></i>
+      <a href="#">Kurumsal</a>
+      <i class="fa-solid fa-chevron-right" style="font-size:0.6rem;"></i>
+      <span>Yönetim Kadromuz</span>
+    </div>
+    <h1>Yönetim Kadromuz</h1>
+    <p class="subtitle">Eğitime adanan deneyimli liderler</p>
+  </div>
+</div>
+
+<section style="background: white;">
+  <div class="section-inner">
+    <div class="section-tag"><i class="fa-solid fa-circle-dot"></i> Liderlik Ekibi</div>
+    <h2 class="section-title">Ekibimizle <span>Tanışın</span></h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar"><i class="fa-solid fa-user-tie"></i></div>
+        <div class="team-name">Mehmet Yılmaz</div>
+        <div class="team-role">Genel Müdür</div>
+        <p class="team-bio">20+ yıl eğitim sektörü tecrübesi</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar"><i class="fa-solid fa-graduation-cap"></i></div>
+        <div class="team-name">Ayşe Demir</div>
+        <div class="team-role">Eğitim Direktörü</div>
+        <p class="team-bio">Pedagoji uzmanı, koçluk lideri</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar"><i class="fa-solid fa-building"></i></div>
+        <div class="team-name">Can Öztürk</div>
+        <div class="team-role">Operasyon Müdürü</div>
+        <p class="team-bio">Şube yönetimi ve organizasyon</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar"><i class="fa-solid fa-bullhorn"></i></div>
+        <div class="team-name">Elif Kaya</div>
+        <div class="team-role">Pazarlama Müdürü</div>
+        <p class="team-bio">Marka ve dijital strateji</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar"><i class="fa-solid fa-microchip"></i></div>
+        <div class="team-name">Burak Şahin</div>
+        <div class="team-role">Teknoloji Direktörü</div>
+        <p class="team-bio">Neuro Pass &amp; Neuro Sound geliştirici</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar"><i class="fa-solid fa-people-group"></i></div>
+        <div class="team-name">Selin Aydın</div>
+        <div class="team-role">İnsan Kaynakları Müdürü</div>
+        <p class="team-bio">Yetenek yönetimi ve gelişim</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="{% static 'img/logo-white.png' %}" alt="EN Deneyim Merkezi" style="height: 56px; width: auto;" />
+        <p style="font-style: italic; color: rgba(255,255,255,0.8);">Yeni bir deneyim seni bekliyor.</p>
+        <p>Türkiye'nin en kapsamlı YKS hazırlık ve çalışma salonu zinciri. 200+ şube, 6+ şehir ile geleceğini şekillendiriyoruz.</p>
+        <div class="footer-socials" style="margin-top:1rem;">
+          <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Kurumsal</h5>
+        <ul class="footer-links">
+          <li><a href="hikayemiz.html">Hikayemiz</a></li>
+          <li><a href="yonetim-kadromuz.html">Yönetim Kadrosu</a></li>
+          <li><a href="felsefemiz.html">Felsefemiz</a></li>
+          <li><a href="franchise.html">Franchise</a></li>
+          <li><a href="insan-kaynaklari.html">İnsan Kaynakları</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Endeneyim</h5>
+        <ul class="footer-links">
+          <li><a href="#">Neden Endeneyim?</a></li>
+          <li><a href="#">Ayrıcalıklar</a></li>
+          <li><a href="#">Şubeler</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Abonelikler</h5>
+        <ul class="footer-links">
+          <li><a href="#">Solo</a></li>
+          <li><a href="#">Elite</a></li>
+          <li><a href="#">Premium</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>İletişim</h5>
+        <div class="footer-contact-items">
+          <div class="contact-item"><i class="fa-regular fa-envelope"></i><span>iletisim@endeneyimmerkezi.com</span></div>
+          <div class="contact-item"><i class="fa-solid fa-phone"></i><span>0212 571 71 55</span></div>
+          <div class="contact-item"><i class="fa-solid fa-location-dot"></i><span>Cihannüma, Barbaros Blv. No:4,<br>34353 Beşiktaş/İstanbul</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 EN Deneyim Merkezi. Tüm hakları saklıdır.</span>
+      <div class="footer-bottom-links">
+        <a href="#">KVKK</a>
+        <a href="#">Gizlilik Politikası</a>
+        <a href="#">Çerez Politikası</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
