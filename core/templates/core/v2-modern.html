@@ -154,6 +154,16 @@
       list-style: none;
     }
 
+    /* Invisible bridge — parent ile dropdown arasi bosluga hover area sagliyor */
+    .nav-dropdown::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 0;
+      right: 0;
+      height: 10px;
+    }
+
     .nav-dropdown li a {
       display: block;
       padding: 0.55rem 1.25rem;

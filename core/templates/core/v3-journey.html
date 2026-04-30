@@ -168,6 +168,15 @@
       padding: 8px 0;
       z-index: 200;
     }
+    /* Invisible bridge — parent ile dropdown arasi bosluga hover area sagliyor */
+    .nav-dropdown::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: 0;
+      right: 0;
+      height: 8px;
+    }
     .nav-item:hover .nav-dropdown { display: block; }
     .nav-dropdown a {
       display: block;
