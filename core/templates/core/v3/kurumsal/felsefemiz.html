@@ -19,6 +19,7 @@
       --orange:#f37422;--orange-mid:#c23f1b;--orange-dark:#9b1618;--orange-bright:#ff7727;
       --yellow:#fec841;--yellow-light:#ffe77e;--orange-light:#f5873a;--orange-pale:#fff3e8;
       --dark:#2d2926;--dark-60:#6b635d;--dark-30:#b5afa9;--bg:#fef9f5;--white:#ffffff;--border:#f0e8df;
+      --navy:#1A2332;--navy-light:#2d3a5a;
       --radius-sm:8px;--radius:14px;--radius-lg:20px;
       --shadow-sm:0 2px 8px rgba(45,41,38,.06);--shadow:0 4px 24px rgba(45,41,38,.10);--shadow-lg:0 12px 48px rgba(45,41,38,.14);
     }
@@ -85,21 +86,22 @@
     .value-title{font-size:26px;font-weight:800;color:var(--dark);line-height:1.2;margin-bottom:16px;}
     .value-text{font-size:16px;color:var(--dark-60);line-height:1.8;}
 
-    footer{background:var(--dark);color:rgba(255,255,255,.6);padding:72px 40px 0;}
-    .footer-inner{max-width:1280px;margin:0 auto;}
-    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1.4fr;gap:48px;padding-bottom:48px;}
-    .footer-brand p{font-size:14px;line-height:1.7;margin-top:16px;margin-bottom:24px;max-width:280px;}
-    .footer-socials{display:flex;gap:10px;}
-    .footer-socials a{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;font-size:15px;text-decoration:none;transition:background .2s,color .2s;}
-    .footer-socials a:hover{background:var(--orange);color:white;}
-    .footer-col h4{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:20px;}
-    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
-    .footer-col ul li a{color:rgba(255,255,255,.5);text-decoration:none;font-size:14px;transition:color .2s;}
-    .footer-col ul li a:hover{color:var(--orange);}
-    .footer-contact-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:14px;font-size:14px;}
-    .footer-contact-item i{color:var(--orange);font-size:14px;margin-top:2px;flex-shrink:0;}
-    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding:20px 0;display:flex;align-items:center;justify-content:space-between;font-size:13px;}
-    .footer-bottom a{color:rgba(255,255,255,.45);text-decoration:none;}
+    .footer{background:var(--navy);color:rgba(255,255,255,0.7);border-top:4px solid var(--orange);padding:80px 24px 40px;}
+    .footer-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1.4fr 1.4fr;gap:32px;}
+    @media(max-width:1024px){.footer-grid{grid-template-columns:1fr 1fr 1fr;}}
+    @media(max-width:640px){.footer-grid{grid-template-columns:1fr;}}
+    .footer h5{color:white;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:18px;}
+    .footer ul{list-style:none;padding:0;}
+    .footer ul li{margin-bottom:10px;}
+    .footer ul li a{color:rgba(255,255,255,0.7);font-size:0.92rem;text-decoration:none;transition:color 0.2s;}
+    .footer ul li a:hover{color:var(--orange);}
+    .app-badges{display:flex;flex-direction:column;gap:10px;}
+    .app-badge{display:inline-flex;align-items:center;gap:12px;padding:10px 16px;border:1px solid rgba(255,255,255,0.2);border-radius:10px;text-decoration:none;color:white;font-size:0.85rem;transition:all 0.2s;}
+    .app-badge:hover{background:rgba(255,255,255,0.06);border-color:var(--orange);}
+    .app-badge i{font-size:1.4rem;color:var(--orange);}
+    .app-badge .small{font-size:0.7rem;opacity:0.7;display:block;}
+    .footer-bottom{max-width:1280px;margin:60px auto 0;padding-top:28px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;font-size:0.85rem;color:rgba(255,255,255,0.5);}
+    .footer-bottom a{color:rgba(255,255,255,0.6);text-decoration:none;margin-left:18px;}
     .footer-bottom a:hover{color:var(--orange);}
 
     @media(max-width:900px){.value-block{grid-template-columns:1fr;gap:32px;}.value-block.reverse{direction:ltr;}}
@@ -240,60 +242,76 @@
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <img src="{% static 'img/logo-white.png' %}" alt="EN Deneyim Merkezi" style="height:56px;width:auto;" />
-        <p style="font-size:15px;font-weight:600;color:rgba(255,255,255,.85);margin-top:14px;margin-bottom:6px;">Yeni bir deneyim seni bekliyor.</p>
-        <p>Türkiye'nin önde gelen YKS sınav hazırlık ve çalışma merkezi zinciri.</p>
-        <div class="footer-socials" style="margin-top:20px;">
-          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Kurumsal</h4>
-        <ul>
-          <li><a href="/v3/kurumsal/hikayemiz/">Hikayemiz</a></li>
-          <li><a href="#">Felsefemiz</a></li>
-          <li><a href="/v3/kurumsal/yonetim-kadromuz/">Yönetim Kadrosu</a></li>
-          <li><a href="/v3/kurumsal/franchise/">Franchise</a></li>
-          <li><a href="/v3/kurumsal/insan-kaynaklari/">İnsan Kaynakları</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Endeneyim</h4>
-        <ul>
-          <li><a href="#">Neden Endeneyim?</a></li>
-          <li><a href="#">Ayrıcalıklar</a></li>
-          <li><a href="#">Şubeler</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Abonelikler</h4>
-        <ul>
-          <li><a href="#">Solo</a></li>
-          <li><a href="#">Elite</a></li>
-          <li><a href="#">Premium</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>İletişim</h4>
-        <div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><a href="mailto:iletisim@endeneyimmerkezi.com" style="color:rgba(255,255,255,.5);text-decoration:none;font-size:13px;">iletisim@endeneyimmerkezi.com</a></div>
-        <div class="footer-contact-item"><i class="fa-solid fa-phone"></i><a href="tel:02125717155" style="color:rgba(255,255,255,.5);text-decoration:none;">0212 571 71 55</a></div>
-        <div class="footer-contact-item"><i class="fa-solid fa-location-dot"></i><span>Cihannüma, Barbaros Blv. No:4,<br>34353 Beşiktaş/İstanbul</span></div>
+<footer class="footer">
+  <div class="footer-grid">
+    <!-- Col 1: Brand -->
+    <div>
+      <img src="{% static 'img/logo-white.png' %}" alt="EN Deneyim Merkezi" style="height: 56px; margin-bottom: 18px;" />
+      <p style="font-size: 0.92rem; line-height: 1.7; margin-bottom: 18px;">Yeni bir deneyim seni bekliyor. 200+ şubemiz, uzman koçlarımız ve dijital platformlarımızla yanındayız.</p>
+      <div style="display: flex; gap: 12px;">
+        <a href="#" style="color: rgba(255,255,255,0.7);"><i class="fa-brands fa-instagram fa-lg"></i></a>
+        <a href="#" style="color: rgba(255,255,255,0.7);"><i class="fa-brands fa-facebook fa-lg"></i></a>
+        <a href="#" style="color: rgba(255,255,255,0.7);"><i class="fa-brands fa-youtube fa-lg"></i></a>
+        <a href="#" style="color: rgba(255,255,255,0.7);"><i class="fa-brands fa-linkedin fa-lg"></i></a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 EN Deneyim Merkezi. Tüm hakları saklıdır.</span>
-      <div style="display:flex;gap:20px;">
-        <a href="#">KVKK</a>
-        <a href="#">Gizlilik Politikası</a>
-        <a href="#">Çerez Politikası</a>
+    <!-- Col 2: Kurumsal -->
+    <div>
+      <h5>Kurumsal</h5>
+      <ul>
+        <li><a href="/v3/kurumsal/hikayemiz/">Hakkımızda</a></li>
+        <li><a href="/v3/kurumsal/franchise/">Franchise</a></li>
+        <li><a href="/v3/kurumsal/insan-kaynaklari/">İnsan Kaynakları</a></li>
+      </ul>
+    </div>
+    <!-- Col 3: Endeneyim -->
+    <div>
+      <h5>Endeneyim</h5>
+      <ul>
+        <li><a href="#">Neden Endeneyim?</a></li>
+        <li><a href="#">Ayrıcalıklar</a></li>
+        <li><a href="#">Şubeler</a></li>
+      </ul>
+    </div>
+    <!-- Col 4: Abonelikler -->
+    <div>
+      <h5>Abonelikler</h5>
+      <ul>
+        <li><a href="#">Solo</a></li>
+        <li><a href="#">Elite</a></li>
+        <li><a href="#">Premium</a></li>
+      </ul>
+    </div>
+    <!-- Col 5: İletişim -->
+    <div>
+      <h5>İletişim</h5>
+      <ul>
+        <li><i class="fa-solid fa-envelope" style="color: var(--orange); margin-right: 6px;"></i> iletisim@endeneyimmerkezi.com</li>
+        <li><i class="fa-solid fa-phone" style="color: var(--orange); margin-right: 6px;"></i> 0212 571 71 55</li>
+        <li><i class="fa-solid fa-location-dot" style="color: var(--orange); margin-right: 6px;"></i> Cihannüma, Beşiktaş/İstanbul</li>
+      </ul>
+    </div>
+    <!-- Col 6: Mobil Uygulama -->
+    <div>
+      <h5>Mobil Uygulama</h5>
+      <div class="app-badges">
+        <a href="#" class="app-badge">
+          <i class="fa-brands fa-apple"></i>
+          <span><span class="small">İndir</span>App Store</span>
+        </a>
+        <a href="#" class="app-badge">
+          <i class="fa-brands fa-google-play"></i>
+          <span><span class="small">İndir</span>Google Play</span>
+        </a>
       </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 EN Deneyim Merkezi. Tüm hakları saklıdır.</span>
+    <div>
+      <a href="#">KVKK</a>
+      <a href="#">Gizlilik Politikası</a>
+      <a href="#">Çerez Politikası</a>
     </div>
   </div>
 </footer>

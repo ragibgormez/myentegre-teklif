@@ -70,7 +70,7 @@
 
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--bg);
+      background: var(--white);
       color: var(--navy);
       line-height: 1.6;
       overflow-x: hidden;
@@ -199,7 +199,7 @@
       align-items: center;
       gap: 0.5rem;
       padding: 0.6rem 1.4rem;
-      border-radius: 50px;
+      border-radius: 0.5rem;
       font-family: inherit;
       font-size: 0.875rem;
       font-weight: 600;
@@ -211,13 +211,14 @@
 
     .btn-outline {
       background: transparent;
-      border: 1.5px solid var(--border);
-      color: var(--gray-dark);
+      border: 1.5px solid var(--orange);
+      color: var(--orange);
     }
 
     .btn-outline:hover {
-      border-color: var(--orange);
-      color: var(--orange);
+      background: var(--orange);
+      color: white;
+      transform: translateY(-2px);
     }
 
     .btn-primary {
@@ -228,7 +229,7 @@
 
     .btn-primary:hover {
       background: var(--orange-light);
-      transform: translateY(-1px);
+      transform: translateY(-2px);
       box-shadow: 0 12px 40px rgba(237,108,5,0.35);
     }
 
@@ -241,11 +242,13 @@
       background: transparent;
       border: 2px solid white;
       color: white;
+      border-radius: 0.5rem;
     }
 
     .btn-ghost:hover {
       background: white;
       color: var(--orange);
+      transform: translateY(-2px);
     }
 
     /* ── HERO ── */
@@ -338,7 +341,7 @@
       display: flex;
       align-items: center;
       background: white;
-      border-radius: 50px;
+      border-radius: 0.5rem;
       padding: 0.4rem 0.4rem 0.4rem 1.25rem;
       margin-bottom: 2rem;
       box-shadow: 0 8px 32px rgba(0,0,0,0.2);
@@ -362,19 +365,22 @@
       color: white;
       border: none;
       padding: 0.7rem 1.5rem;
-      border-radius: 50px;
+      border-radius: 0.5rem;
       font-family: inherit;
       font-size: 0.875rem;
       font-weight: 600;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.2s;
       display: flex;
       align-items: center;
       gap: 0.4rem;
       white-space: nowrap;
     }
 
-    .search-bar button:hover { background: var(--orange-light); }
+    .search-bar button:hover {
+      background: var(--orange-light);
+      transform: translateY(-2px);
+    }
 
     .hero-ctas {
       display: flex;
@@ -412,132 +418,130 @@
       background: rgba(255,255,255,0.15);
     }
 
-    /* ── HERO RIGHT: Mosaic ── */
+    /* ── HERO RIGHT: Prestige Kurum Logo Grid ── */
     .hero-right {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-      position: relative;
-    }
-
-    .mosaic-card {
-      border-radius: var(--radius);
-      padding: 2rem 1.5rem;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      min-height: 200px;
+      gap: 1rem;
       position: relative;
-      overflow: hidden;
+    }
+
+    .prestige-grid-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .prestige-grid-mid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .prestige-grid-bot {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .prestige-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
       box-shadow: var(--shadow-lg);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.1);
     }
 
-    .mosaic-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    .prestige-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
     }
 
-    .mosaic-card:nth-child(1) {
-      background: linear-gradient(135deg, #1e3a5f, #2d5f8a);
-      margin-top: 2.5rem;
-    }
-
-    .mosaic-card:nth-child(2) {
-      background: linear-gradient(135deg, #f37422, #ff8c2a);
-    }
-
-    .mosaic-card:nth-child(3) {
-      background: linear-gradient(135deg, #0f3460, #533483);
-    }
-
-    .mosaic-card:nth-child(4) {
-      background: linear-gradient(135deg, #1a1a2e, #2d2d3a);
-      margin-top: -2.5rem;
-    }
-
-    .mosaic-icon {
-      width: 52px;
-      height: 52px;
-      background: rgba(255,255,255,0.15);
+    .prestige-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--orange-pale);
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
-      color: white;
-      margin-bottom: 1rem;
-      backdrop-filter: blur(8px);
+      font-size: 1.25rem;
+      color: var(--orange);
+      flex-shrink: 0;
     }
 
-    .mosaic-card h4 {
-      color: white;
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 0.3rem;
+    .prestige-card-body h4 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 0.2rem;
+      line-height: 1.3;
     }
 
-    .mosaic-card p {
-      color: rgba(255,255,255,0.7);
-      font-size: 0.8rem;
-      line-height: 1.5;
+    .prestige-card-body p {
+      font-size: 0.78rem;
+      color: var(--gray);
+      line-height: 1.4;
     }
 
-    .mosaic-badge {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(8px);
-      color: white;
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 0.25rem 0.6rem;
-      border-radius: 50px;
-      letter-spacing: 0.05em;
+    /* Bottom single card: horizontal center */
+    .prestige-grid-bot .prestige-card {
+      max-width: 320px;
+      margin: 0 auto;
     }
 
-    /* ── STATS BAR ── */
-    .stats-bar {
-      background: var(--navy);
-      padding: 2.5rem 2rem;
+    /* ── TRUST METRIC BLOCK ── */
+    .trust-metrics {
+      background: var(--bg);
+      padding: 6rem 2rem;
     }
 
-    .stats-inner {
+    .trust-metrics-inner {
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 2rem;
+      text-align: center;
     }
 
-    .stat-item {
+    .trust-metric-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
-      border-right: 1px solid rgba(255,255,255,0.1);
+      gap: 0.5rem;
       padding: 0 1rem;
+      border-right: 1px solid var(--border);
     }
 
-    .stat-item:last-child { border-right: none; }
+    .trust-metric-item:last-child {
+      border-right: none;
+    }
 
-    .stat-number {
-      font-size: 2.2rem;
+    .trust-number {
+      font-family: 'Town Display', 'Plus Jakarta Sans', Helvetica, Arial, sans-serif;
+      font-size: 4rem;
       font-weight: 800;
       color: var(--orange);
       line-height: 1;
-      margin-bottom: 0.4rem;
     }
 
-    .stat-label {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.55);
-      font-weight: 500;
+    .trust-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--gray-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
     }
 
     /* ── SECTIONS ── */
-    section { padding: 6rem 2rem; }
+    section { padding: 8rem 2rem; }
+
+    @media (max-width: 768px) { section { padding: 4rem 1.25rem; } }
 
     .section-inner { max-width: 1200px; margin: 0 auto; }
 
@@ -807,7 +811,7 @@
     .pkg-cta {
       width: 100%;
       padding: 0.85rem;
-      border-radius: 50px;
+      border-radius: 0.5rem;
       border: 2px solid rgba(255,255,255,0.3);
       background: transparent;
       color: white;
@@ -819,7 +823,10 @@
       text-align: center;
     }
 
-    .pkg-cta:hover { background: rgba(255,255,255,0.1); }
+    .pkg-cta:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
 
     .package-card.featured .pkg-cta {
       background: white;
@@ -827,7 +834,10 @@
       border-color: white;
     }
 
-    .package-card.featured .pkg-cta:hover { opacity: 0.9; }
+    .package-card.featured .pkg-cta:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
 
     /* ── EVENTS ── */
     .events-bg { background: white; }
@@ -943,7 +953,7 @@
 
     /* ── CONTACT FORM ── */
     .contact-bg {
-      background: linear-gradient(135deg, #f8f9fa 0%, #fff4ec 100%);
+      background: var(--bg);
     }
 
     .contact-card {
@@ -1045,7 +1055,7 @@
       background: var(--orange);
       color: white;
       border: none;
-      border-radius: 50px;
+      border-radius: 0.5rem;
       font-family: inherit;
       font-size: 1rem;
       font-weight: 700;
@@ -1075,7 +1085,7 @@
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr 1.6fr;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
       gap: 2.5rem;
       margin-bottom: 3rem;
     }
@@ -1136,24 +1146,37 @@
 
     .footer-links a:hover { color: var(--orange); }
 
-    .footer-contact-items {
+    /* Neredeyiz column */
+    .footer-addresses {
       display: flex;
       flex-direction: column;
-      gap: 0.85rem;
+      gap: 1rem;
     }
 
-    .contact-item {
+    .footer-address-item {
       display: flex;
       align-items: flex-start;
-      gap: 0.75rem;
-      font-size: 0.875rem;
+      gap: 0.6rem;
+      font-size: 0.82rem;
+      line-height: 1.5;
     }
 
-    .contact-item i {
+    .footer-address-item i {
       color: var(--orange);
-      margin-top: 2px;
-      font-size: 0.9rem;
+      margin-top: 3px;
       flex-shrink: 0;
+      font-size: 0.8rem;
+    }
+
+    .footer-address-item strong {
+      display: block;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.8rem;
+      margin-bottom: 0.1rem;
+    }
+
+    .footer-address-item span {
+      color: rgba(255,255,255,0.5);
     }
 
     .footer-bottom {
@@ -1183,7 +1206,7 @@
     /* ── ABOUT STRIP ── */
     .about-strip {
       background: var(--orange);
-      padding: 4rem 2rem;
+      padding: 6rem 2rem;
     }
 
     .about-strip-inner {
@@ -1242,6 +1265,8 @@
       .services-grid { grid-template-columns: repeat(2, 1fr); }
       .privileges-grid { grid-template-columns: repeat(4, 1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr 1fr; }
+      .trust-metrics-inner { grid-template-columns: repeat(2, 1fr); }
+      .trust-metric-item:nth-child(2) { border-right: none; }
     }
 
     @media (max-width: 768px) {
@@ -1254,9 +1279,16 @@
 
       .hero-right { order: -1; }
 
-      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .prestige-grid-top,
+      .prestige-grid-mid { grid-template-columns: 1fr 1fr; }
 
-      .stat-item:nth-child(2) { border-right: none; }
+      .prestige-grid-bot .prestige-card { max-width: 100%; }
+
+      .trust-metrics { padding: 4rem 1.25rem; }
+      .trust-metrics-inner { grid-template-columns: repeat(2, 1fr); }
+      .trust-metric-item { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
+      .trust-metric-item:last-child { border-bottom: none; }
+      .trust-number { font-size: 3rem; }
 
       .services-grid { grid-template-columns: 1fr; }
 
@@ -1271,6 +1303,7 @@
       .form-row { grid-template-columns: 1fr; }
 
       .about-strip-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .about-strip { padding: 4rem 1.25rem; }
 
       .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
 
@@ -1279,11 +1312,11 @@
     }
 
     @media (max-width: 480px) {
-      section { padding: 4rem 1.25rem; }
       .hero { padding: 3rem 1.25rem; }
       .hero-ctas { flex-direction: column; align-items: flex-start; }
       .privileges-grid { grid-template-columns: repeat(2, 1fr); }
-      .mosaic-card { min-height: 160px; padding: 1.5rem 1rem; }
+      .prestige-grid-top,
+      .prestige-grid-mid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -1294,7 +1327,7 @@
 ════════════════════════════════════════════════════════════ -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="nav-logo">
+    <a href="/v2/" class="nav-logo">
       <img src="{% static 'img/logo-dark.png' %}" alt="EN Deneyim Merkezi" style="height: 42px; width: auto;" />
     </a>
 
@@ -1356,9 +1389,9 @@
       </div>
 
       <h1 class="hero-title">
-        Geleceğini<br>
-        <span class="accent">şekillendir</span>,<br>
-        başarıyı yaşa
+        Hayalindeki YKS başarısına<br>
+        <span class="accent">ilk adımı</span><br>
+        EN Deneyim'le at
       </h1>
 
       <p class="hero-desc">
@@ -1407,59 +1440,73 @@
       </div>
     </div>
 
-    <!-- RIGHT: Mosaic -->
+    <!-- RIGHT: Prestige Kurum Logo Grid -->
     <div class="hero-right">
-      <div class="mosaic-card">
-        <div class="mosaic-badge">EN Hall</div>
-        <div class="mosaic-icon"><i class="fa-solid fa-book-open"></i></div>
-        <h4>Çalışma Salonu</h4>
-        <p>Sessiz, odaklanmış çalışma ortamı</p>
+      <div class="prestige-grid-top">
+        <div class="prestige-card">
+          <div class="prestige-icon"><i class="fa-solid fa-award"></i></div>
+          <div class="prestige-card-body">
+            <h4>TED Mensubu</h4>
+            <p>Türk Eğitim Derneği üyesi</p>
+          </div>
+        </div>
+        <div class="prestige-card">
+          <div class="prestige-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="prestige-card-body">
+            <h4>MEB Onaylı</h4>
+            <p>Milli Eğitim Bakanlığı sertifikalı</p>
+          </div>
+        </div>
       </div>
-
-      <div class="mosaic-card">
-        <div class="mosaic-badge">YKS 2025</div>
-        <div class="mosaic-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-        <h4>Deneme Sınavları</h4>
-        <p>Türkiye geneli sıralama sistemi</p>
+      <div class="prestige-grid-mid">
+        <div class="prestige-card">
+          <div class="prestige-icon"><i class="fa-solid fa-flask"></i></div>
+          <div class="prestige-card-body">
+            <h4>TÜBİTAK Partner</h4>
+            <p>Bilimsel araştırma ortağı</p>
+          </div>
+        </div>
+        <div class="prestige-card">
+          <div class="prestige-icon"><i class="fa-solid fa-star"></i></div>
+          <div class="prestige-card-body">
+            <h4>Bilim Olimpiyatları</h4>
+            <p>Olimpiyat hazırlık merkezi</p>
+          </div>
+        </div>
       </div>
-
-      <div class="mosaic-card">
-        <div class="mosaic-badge">EN Analiz</div>
-        <div class="mosaic-icon"><i class="fa-solid fa-lightbulb"></i></div>
-        <h4>Bilişsel Analiz</h4>
-        <p>Kişiselleştirilmiş öğrenci profili</p>
-      </div>
-
-      <div class="mosaic-card">
-        <div class="mosaic-badge">Gölge Koç</div>
-        <div class="mosaic-icon"><i class="fa-solid fa-users"></i></div>
-        <h4>Mentor Desteği</h4>
-        <p>Uzman rehberlik, her adımda yanında</p>
+      <div class="prestige-grid-bot">
+        <div class="prestige-card">
+          <div class="prestige-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div class="prestige-card-body">
+            <h4>ULSF Member</h4>
+            <p>Üniversite Liseleri Federasyonu</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
-     STATS BAR
+     TRUST METRIC BLOCK
 ════════════════════════════════════════════════════════════ -->
-<div class="stats-bar">
-  <div class="stats-inner">
-    <div class="stat-item">
-      <div class="stat-number">200+</div>
-      <div class="stat-label">Şube</div>
+<div class="trust-metrics">
+  <div class="trust-metrics-inner">
+    <div class="trust-metric-item">
+      <div class="trust-number">10+</div>
+      <div class="trust-label">Ayrıcalık</div>
     </div>
-    <div class="stat-item">
-      <div class="stat-number">6+</div>
-      <div class="stat-label">Şehir</div>
+    <div class="trust-metric-item">
+      <div class="trust-number">50.000+</div>
+      <div class="trust-label">Öğrenci</div>
     </div>
-    <div class="stat-item">
-      <div class="stat-number">10+</div>
-      <div class="stat-label">Ayrıcalık</div>
+    <div class="trust-metric-item">
+      <div class="trust-number">%95</div>
+      <div class="trust-label">Memnuniyet</div>
     </div>
-    <div class="stat-item">
-      <div class="stat-number">50K+</div>
-      <div class="stat-label">Öğrenci</div>
+    <div class="trust-metric-item">
+      <div class="trust-number">200+</div>
+      <div class="trust-label">Şube</div>
     </div>
   </div>
 </div>
@@ -1735,7 +1782,7 @@
             <span><i class="fa-solid fa-location-dot"></i> Tüm Şubeler</span>
             <span><i class="fa-regular fa-clock"></i> 09:00</span>
           </div>
-          <a href="#" class="event-link">Detay <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="#etkinlikler" class="event-link">Detay <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -1754,7 +1801,7 @@
             <span><i class="fa-solid fa-location-dot"></i> İstanbul — Bağcılar</span>
             <span><i class="fa-regular fa-clock"></i> 14:00</span>
           </div>
-          <a href="#" class="event-link">Detay <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="#etkinlikler" class="event-link">Detay <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -1773,7 +1820,7 @@
             <span><i class="fa-solid fa-location-dot"></i> İstanbul — Zeytinburnu</span>
             <span><i class="fa-regular fa-clock"></i> 18:30</span>
           </div>
-          <a href="#" class="event-link">Detay <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="#etkinlikler" class="event-link">Detay <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -1825,7 +1872,7 @@
         <div class="checkbox-row">
           <input type="checkbox" id="kvkk" name="kvkk" />
           <label for="kvkk">
-            <a href="#">KVKK metnini</a> ve <a href="#">Gizlilik Politikası'nı</a> okudum,
+            <a href="/v2/kurumsal/hikayemiz/">KVKK metnini</a> ve <a href="/v2/kurumsal/hikayemiz/">Gizlilik Politikası'nı</a> okudum,
             kişisel verilerimin EN Deneyim Merkezi tarafından işlenmesine onay veriyorum.
           </label>
         </div>
@@ -1855,6 +1902,12 @@
           Türkiye'nin en kapsamlı YKS hazırlık ve çalışma salonu zinciri.
           200+ şube, 6+ şehir ile geleceğini şekillendiriyoruz.
         </p>
+        <div class="footer-socials" style="margin-top: 1.25rem;">
+          <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
       </div>
 
       <!-- Column 2 — Kurumsal -->
@@ -1871,9 +1924,9 @@
       <div class="footer-col">
         <h5>Endeneyim</h5>
         <ul class="footer-links">
-          <li><a href="#">Neden Endeneyim?</a></li>
-          <li><a href="#">Ayrıcalıklar</a></li>
-          <li><a href="#">Şubeler</a></li>
+          <li><a href="#endeneyim">Neden Endeneyim?</a></li>
+          <li><a href="#ayriliklar">Ayrıcalıklar</a></li>
+          <li><a href="#endeneyim">Şubeler</a></li>
         </ul>
       </div>
 
@@ -1881,34 +1934,37 @@
       <div class="footer-col">
         <h5>Abonelikler</h5>
         <ul class="footer-links">
-          <li><a href="#">Solo</a></li>
-          <li><a href="#">Elite</a></li>
-          <li><a href="#">Premium</a></li>
+          <li><a href="#paketler">Solo</a></li>
+          <li><a href="#paketler">Elite</a></li>
+          <li><a href="#paketler">Premium</a></li>
         </ul>
       </div>
 
-      <!-- Column 5 — İletişim -->
+      <!-- Column 5 — Neredeyiz? -->
       <div class="footer-col">
-        <h5>İletişim</h5>
-        <div class="footer-contact-items">
-          <div class="contact-item">
-            <i class="fa-regular fa-envelope"></i>
-            <span>iletisim@endeneyimmerkezi.com</span>
-          </div>
-          <div class="contact-item">
-            <i class="fa-solid fa-phone"></i>
-            <span>0212 571 71 55</span>
-          </div>
-          <div class="contact-item">
+        <h5>Neredeyiz?</h5>
+        <div class="footer-addresses">
+          <div class="footer-address-item">
             <i class="fa-solid fa-location-dot"></i>
-            <span>Cihannüma, Barbaros Blv. No:4,<br>34353 Beşiktaş/İstanbul</span>
+            <div>
+              <strong>İstanbul Merkez</strong>
+              <span>Cihannüma, Barbaros Blv. No:4, Beşiktaş</span>
+            </div>
           </div>
-        </div>
-        <div class="footer-socials" style="margin-top: 1.25rem;">
-          <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
-          <a href="#" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <div class="footer-address-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+              <strong>Ankara</strong>
+              <span>Çankaya — Bilkent Cad. No:12</span>
+            </div>
+          </div>
+          <div class="footer-address-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+              <strong>İzmir</strong>
+              <span>Konak — Cumhuriyet Blv. No:8</span>
+            </div>
+          </div>
         </div>
       </div>
 
