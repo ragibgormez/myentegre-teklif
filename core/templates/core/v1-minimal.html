@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% load static %}<!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
@@ -233,23 +233,39 @@
       align-items: center;
       justify-content: flex-start;
       overflow: hidden;
-      background: linear-gradient(
-        135deg,
-        #0a0a0f 0%,
-        #0d0d1a 30%,
-        #111118 60%,
-        #080808 100%
-      );
+      background: #0a0a0f;
     }
 
-    /* Ambient glow */
+    /* Background video */
+    .hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Dark overlay for text readability */
     .hero::before {
       content: '';
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 60% 50% at 80% 60%, rgba(237,108,5,0.08) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 60% at 20% 40%, rgba(237,108,5,0.04) 0%, transparent 60%);
+        linear-gradient(
+          90deg,
+          rgba(0,0,0,0.7) 0%,
+          rgba(0,0,0,0.5) 40%,
+          rgba(0,0,0,0.35) 70%,
+          rgba(0,0,0,0.55) 100%
+        ),
+        radial-gradient(ellipse 60% 50% at 80% 60%, rgba(237,108,5,0.12) 0%, transparent 70%);
+      z-index: 1;
       pointer-events: none;
     }
 
@@ -259,15 +275,16 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
       background-size: 80px 80px;
+      z-index: 1;
       pointer-events: none;
     }
 
     .hero-inner {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       padding: 0 80px;
       max-width: 900px;
     }
@@ -363,11 +380,12 @@
       bottom: 40px;
       left: 50%;
       transform: translateX(-50%);
+      z-index: 2;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 8px;
-      color: rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.5);
       font-size: 10px;
       letter-spacing: 0.15em;
       text-transform: uppercase;
@@ -1500,6 +1518,9 @@
 
 <!-- HERO -->
 <section class="hero" id="anasayfa">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="">
+    <source src="{% static 'video/hero.mp4' %}" type="video/mp4">
+  </video>
   <div class="hero-inner">
     <span class="hero-label">EN Deneyim Merkezi — YKS Hazırlık</span>
     <h1 class="hero-headline">
