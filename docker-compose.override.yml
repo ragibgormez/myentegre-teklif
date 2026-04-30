@@ -1,0 +1,6 @@
+# Lokal gelistirme icin port mapping (docker compose otomatik yukler)
+# Coolify bu dosyayi yuklemez — sadece docker-compose.yaml'i kullanir
+services:
+  web:
+    ports:
+      - "${WEB_PORT:-8000}:8000"

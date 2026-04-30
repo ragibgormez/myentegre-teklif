@@ -34,8 +34,6 @@ services:
       POSTGRES_PORT: 5432
     expose:
       - "8000"
-    ports:
-      - "${WEB_PORT:-8000}:8000"
     volumes:
       - static_volume:/app/staticfiles
 
