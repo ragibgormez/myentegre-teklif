@@ -1,0 +1,51 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: endeneyimmerkezi-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-endeneyimmerkezi}
+      POSTGRES_USER: ${POSTGRES_USER:-endeneyim}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-endeneyim_secret}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-endeneyim} -d ${POSTGRES_DB:-endeneyimmerkezi}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - endeneyim-net
+
+  web:
+    build: .
+    container_name: endeneyimmerkezi-web
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:-change-me-in-production}
+      DJANGO_DEBUG: ${DJANGO_DEBUG:-True}
+      DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS:-localhost,127.0.0.1,0.0.0.0}
+      DJANGO_CSRF_TRUSTED_ORIGINS: ${DJANGO_CSRF_TRUSTED_ORIGINS:-}
+      POSTGRES_DB: ${POSTGRES_DB:-endeneyimmerkezi}
+      POSTGRES_USER: ${POSTGRES_USER:-endeneyim}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-endeneyim_secret}
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
+    ports:
+      - "${WEB_PORT:-8000}:8000"
+    volumes:
+      - .:/app
+      - static_volume:/app/staticfiles
+    networks:
+      - endeneyim-net
+
+volumes:
+  postgres_data:
+  static_volume:
+
+networks:
+  endeneyim-net:
+    driver: bridge

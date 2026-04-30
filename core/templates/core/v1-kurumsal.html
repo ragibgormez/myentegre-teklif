@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EN Deneyim Merkezi — Yeni Bir Deneyim Seni Bekliyor</title>
+  <meta name="description" content="EN Deneyim Merkezi, Türkiye genelinde 200+ şube ve 50.000+ öğrenci ile YKS sınav hazırlık ve çalışma kütüphanesi deneyimini yeniden tanımlıyor." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #ed6c05;
+      --orange-dark: #c95a02;
+      --orange-light: #fef3e8;
+      --dark: #4e4a49;
+      --dark-2: #2e2b2a;
+      --gray: #7a7675;
+      --gray-light: #b0adab;
+      --bg: #ffffff;
+      --bg-krem: #faf9f7;
+      --border: #ede9e5;
+      --font: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); color: var(--dark); background: var(--bg); line-height: 1.6; overflow-x: hidden; }
+
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    ul { list-style: none; }
+
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+    /* ============================================================
+       TOP BAR
+    ============================================================ */
+    .topbar {
+      background: var(--dark-2);
+      color: #c9c5c2;
+      font-size: 13px;
+      font-weight: 500;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .topbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 42px;
+      gap: 16px;
+    }
+    .topbar-left { display: flex; align-items: center; gap: 24px; }
+    .topbar-left a { display: flex; align-items: center; gap: 6px; color: #c9c5c2; transition: color .2s; }
+    .topbar-left a:hover { color: var(--orange); }
+    .topbar-left i { color: var(--orange); font-size: 12px; }
+
+    .topbar-right { display: flex; align-items: center; gap: 4px; }
+    .topbar-right a {
+      display: flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      color: #c9c5c2;
+      font-size: 13px;
+      transition: all .2s;
+    }
+    .topbar-right a:hover { background: var(--orange); color: #fff; }
+
+    /* ============================================================
+       NAVBAR
+    ============================================================ */
+    .navbar {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 1000;
+      box-shadow: 0 2px 20px rgba(78,74,73,.07);
+    }
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    .navbar-logo { display: flex; align-items: center; }
+    .navbar-logo svg { height: 52px; width: auto; }
+
+    .navbar-menu { display: flex; align-items: center; gap: 2px; }
+    .navbar-menu > li { position: relative; }
+    .navbar-menu > li > a {
+      display: flex; align-items: center; gap: 5px;
+      padding: 10px 16px;
+      font-size: 14px; font-weight: 600;
+      color: var(--dark);
+      border-radius: 6px;
+      transition: all .2s;
+      white-space: nowrap;
+    }
+    .navbar-menu > li > a:hover,
+    .navbar-menu > li > a.active { color: var(--orange); background: var(--orange-light); }
+    .navbar-menu > li > a i.fa-chevron-down { font-size: 10px; color: var(--gray-light); transition: transform .2s; }
+    .navbar-menu > li:hover > a i.fa-chevron-down { transform: rotate(180deg); }
+
+    .dropdown {
+      position: absolute; top: calc(100% + 8px); left: 0;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 16px 48px rgba(78,74,73,.14);
+      min-width: 220px;
+      padding: 8px;
+      opacity: 0; visibility: hidden;
+      transform: translateY(-8px);
+      transition: all .2s;
+      z-index: 100;
+    }
+    .navbar-menu > li:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .dropdown a {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 14px;
+      font-size: 13.5px; font-weight: 500;
+      color: var(--dark);
+      border-radius: 8px;
+      transition: all .18s;
+    }
+    .dropdown a i { width: 18px; color: var(--orange); font-size: 13px; }
+    .dropdown a:hover { background: var(--orange-light); color: var(--orange); }
+
+    .navbar-cta {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .btn-outline {
+      padding: 9px 20px;
+      border: 2px solid var(--orange);
+      border-radius: 8px;
+      font-family: var(--font);
+      font-size: 14px; font-weight: 700;
+      color: var(--orange);
+      background: transparent;
+      cursor: pointer;
+      transition: all .2s;
+      white-space: nowrap;
+    }
+    .btn-outline:hover { background: var(--orange); color: #fff; }
+    .btn-primary {
+      padding: 9px 22px;
+      border: 2px solid var(--orange);
+      border-radius: 8px;
+      font-family: var(--font);
+      font-size: 14px; font-weight: 700;
+      color: #fff;
+      background: var(--orange);
+      cursor: pointer;
+      transition: all .2s;
+      white-space: nowrap;
+    }
+    .btn-primary:hover { background: var(--orange-dark); border-color: var(--orange-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(237,108,5,.3); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--dark); border-radius: 2px; transition: all .3s; }
+
+    /* ============================================================
+       HERO SLIDER
+    ============================================================ */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      height: 580px;
+    }
+    .slides-wrapper {
+      display: flex;
+      width: 300%;
+      height: 100%;
+      animation: slideShow 15s infinite;
+    }
+    @keyframes slideShow {
+      0%       { transform: translateX(0); }
+      28%      { transform: translateX(0); }
+      33.33%   { transform: translateX(-33.333%); }
+      61.33%   { transform: translateX(-33.333%); }
+      66.66%   { transform: translateX(-66.666%); }
+      94.66%   { transform: translateX(-66.666%); }
+      100%     { transform: translateX(0); }
+    }
+
+    .slide {
+      width: 33.333%;
+      flex-shrink: 0;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .slide-bg {
+      position: absolute; inset: 0;
+      z-index: 0;
+    }
+    .slide-1 .slide-bg { background: linear-gradient(130deg, #2e2b2a 0%, #1a1817 55%, #4e4a49 100%); }
+    .slide-2 .slide-bg { background: linear-gradient(130deg, #1a1817 0%, #2e2b2a 50%, #ed6c05 150%); }
+    .slide-3 .slide-bg { background: linear-gradient(130deg, #ed6c05 0%, #c95a02 40%, #2e2b2a 100%); }
+
+    /* decorative shapes per slide */
+    .slide-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle at 80% 50%, rgba(237,108,5,.18) 0%, transparent 60%);
+    }
+    .slide-2 .slide-bg::after { background-image: radial-gradient(circle at 20% 60%, rgba(237,108,5,.22) 0%, transparent 55%); }
+    .slide-3 .slide-bg::after { background-image: radial-gradient(circle at 70% 30%, rgba(255,255,255,.08) 0%, transparent 50%); }
+
+    .slide-decor {
+      position: absolute; right: 0; top: 0; bottom: 0;
+      width: 48%;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .slide-decor::before {
+      content: '';
+      position: absolute;
+      right: -80px; top: -80px;
+      width: 560px; height: 560px;
+      border-radius: 50%;
+      border: 80px solid rgba(237,108,5,.12);
+    }
+    .slide-decor::after {
+      content: '';
+      position: absolute;
+      right: 60px; bottom: -120px;
+      width: 340px; height: 340px;
+      border-radius: 50%;
+      border: 50px solid rgba(255,255,255,.05);
+    }
+
+    /* slide 3 decor override */
+    .slide-3 .slide-decor::before { border-color: rgba(255,255,255,.1); }
+
+    .slide-content {
+      position: relative; z-index: 2;
+      padding: 0 80px;
+      max-width: 700px;
+    }
+    .slide-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--orange);
+      color: #fff;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 20px;
+      margin-bottom: 24px;
+    }
+    .slide-badge i { font-size: 11px; }
+    .slide-badge-outline {
+      background: transparent;
+      border: 2px solid rgba(237,108,5,.6);
+      color: var(--orange);
+    }
+    .slide-badge-light {
+      background: rgba(255,255,255,.15);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.3);
+    }
+    .slide-title {
+      font-size: clamp(32px, 4.5vw, 56px);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .slide-title span { color: var(--orange); }
+    .slide-desc {
+      font-size: 16px; font-weight: 400;
+      color: rgba(255,255,255,.72);
+      max-width: 480px;
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+    .slide-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-hero {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px;
+      font-family: var(--font); font-size: 15px; font-weight: 700;
+      border-radius: 8px;
+      transition: all .25s;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+    .btn-hero-primary { background: var(--orange); color: #fff; }
+    .btn-hero-primary:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(237,108,5,.4); }
+    .btn-hero-ghost { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.3); color: #fff; backdrop-filter: blur(4px); }
+    .btn-hero-ghost:hover { background: rgba(255,255,255,.2); transform: translateY(-2px); }
+
+    /* Slider dots */
+    .slider-dots {
+      position: absolute; bottom: 28px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; gap: 8px;
+      z-index: 10;
+    }
+    .dot {
+      width: 8px; height: 8px;
+      border-radius: 4px;
+      background: rgba(255,255,255,.35);
+      transition: all .3s;
+    }
+    .dot.active,
+    .dot:hover { background: var(--orange); width: 24px; }
+
+    /* animated dots progress — pure CSS using animation-delay trick */
+    .dot:nth-child(1) { animation: dotActive1 15s infinite; }
+    .dot:nth-child(2) { animation: dotActive2 15s infinite; }
+    .dot:nth-child(3) { animation: dotActive3 15s infinite; }
+    @keyframes dotActive1 {
+      0%, 28%  { background: var(--orange); width: 24px; }
+      33.33%, 94.66%, 100% { background: rgba(255,255,255,.35); width: 8px; }
+    }
+    @keyframes dotActive2 {
+      0%, 28%  { background: rgba(255,255,255,.35); width: 8px; }
+      33.33%, 61.33% { background: var(--orange); width: 24px; }
+      66.66%, 100% { background: rgba(255,255,255,.35); width: 8px; }
+    }
+    @keyframes dotActive3 {
+      0%, 61.33%  { background: rgba(255,255,255,.35); width: 8px; }
+      66.66%, 94.66% { background: var(--orange); width: 24px; }
+      100% { background: rgba(255,255,255,.35); width: 8px; }
+    }
+
+    /* ============================================================
+       STATS BAR
+    ============================================================ */
+    .stats-bar {
+      background: var(--dark-2);
+      padding: 0;
+    }
+    .stats-bar .container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .stat-item {
+      display: flex; align-items: center; gap: 18px;
+      padding: 32px 24px;
+      border-right: 1px solid rgba(255,255,255,.07);
+      transition: background .2s;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-item:hover { background: rgba(237,108,5,.08); }
+    .stat-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      background: rgba(237,108,5,.15);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .stat-icon i { font-size: 22px; color: var(--orange); }
+    .stat-text {}
+    .stat-number {
+      font-size: 32px; font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-number span { color: var(--orange); }
+    .stat-label { font-size: 13px; font-weight: 500; color: rgba(255,255,255,.5); }
+
+    /* ============================================================
+       ABOUT
+    ============================================================ */
+    .about { padding: 100px 0; background: var(--bg); }
+    .about .container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .section-tag::before {
+      content: ''; display: block;
+      width: 24px; height: 2px;
+      background: var(--orange); border-radius: 2px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 3vw, 42px);
+      font-weight: 800;
+      color: var(--dark-2);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .section-title span { color: var(--orange); }
+
+    .about-text p {
+      font-size: 16px; color: var(--gray); line-height: 1.8; margin-bottom: 20px;
+    }
+    .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+    .about-feature {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 16px;
+      background: var(--bg-krem);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      transition: all .2s;
+    }
+    .about-feature:hover { border-color: var(--orange); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(237,108,5,.1); }
+    .about-feature-icon {
+      width: 36px; height: 36px; flex-shrink: 0;
+      background: var(--orange-light);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .about-feature-icon i { font-size: 15px; color: var(--orange); }
+    .about-feature-text strong { display: block; font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
+    .about-feature-text span { font-size: 12px; color: var(--gray); }
+
+    /* About visual */
+    .about-visual { position: relative; }
+    .about-visual-main {
+      width: 100%; aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--dark-2) 0%, #3a3635 100%);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .about-visual-main::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 30% 70%, rgba(237,108,5,.25) 0%, transparent 60%);
+    }
+    .about-visual-inner {
+      position: relative; z-index: 1;
+      text-align: center;
+    }
+    .about-visual-inner i { font-size: 64px; color: rgba(237,108,5,.5); margin-bottom: 16px; display: block; }
+    .about-visual-inner p { color: rgba(255,255,255,.5); font-size: 14px; font-weight: 500; }
+
+    /* floating cards */
+    .about-float-1 {
+      position: absolute; top: -24px; right: -24px;
+      background: var(--orange);
+      color: #fff;
+      border-radius: 16px;
+      padding: 20px 24px;
+      text-align: center;
+      box-shadow: 0 16px 40px rgba(237,108,5,.35);
+    }
+    .about-float-1 strong { display: block; font-size: 32px; font-weight: 800; line-height: 1; }
+    .about-float-1 span { font-size: 12px; font-weight: 600; opacity: .85; }
+
+    .about-float-2 {
+      position: absolute; bottom: -24px; left: -24px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 18px 22px;
+      box-shadow: 0 12px 36px rgba(78,74,73,.15);
+      display: flex; align-items: center; gap: 14px;
+      border: 1px solid var(--border);
+    }
+    .about-float-2-icon {
+      width: 44px; height: 44px;
+      background: var(--orange-light);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .about-float-2-icon i { font-size: 20px; color: var(--orange); }
+    .about-float-2 strong { display: block; font-size: 18px; font-weight: 800; color: var(--dark-2); line-height: 1; }
+    .about-float-2 span { font-size: 12px; color: var(--gray); font-weight: 500; }
+
+    /* orange dots decoration */
+    .dot-grid {
+      position: absolute; bottom: 40px; right: -48px;
+      display: grid; grid-template-columns: repeat(5,8px); gap: 8px;
+    }
+    .dot-grid span { display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--orange); opacity: .25; }
+
+    /* ============================================================
+       AYRICALIKLAR
+    ============================================================ */
+    .ayricaliklar { padding: 100px 0; background: var(--bg-krem); }
+    .section-header { text-align: center; max-width: 620px; margin: 0 auto 56px; }
+    .section-header .section-tag { justify-content: center; }
+    .section-header .section-tag::before { display: none; }
+    .section-desc { font-size: 16px; color: var(--gray); line-height: 1.7; }
+
+    .ayricaliklar-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+    .ayricalik-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 20px;
+      text-align: center;
+      transition: all .25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .ayricalik-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--orange);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform .3s;
+    }
+    .ayricalik-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(78,74,73,.12); border-color: transparent; }
+    .ayricalik-card:hover::before { transform: scaleX(1); }
+
+    .ayricalik-icon {
+      width: 56px; height: 56px;
+      background: var(--orange-light);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+      transition: all .25s;
+    }
+    .ayricalik-card:hover .ayricalik-icon { background: var(--orange); }
+    .ayricalik-icon i { font-size: 22px; color: var(--orange); transition: color .25s; }
+    .ayricalik-card:hover .ayricalik-icon i { color: #fff; }
+
+    .ayricalik-name {
+      font-size: 13px; font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+    .ayricalik-desc {
+      font-size: 12px; color: var(--gray); line-height: 1.55;
+    }
+
+    /* second row centering */
+    .ayricaliklar-grid-row2 {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .ayricaliklar-grid-row2 .ayricalik-card:nth-child(1) { grid-column: 2; }
+    .ayricaliklar-grid-row2 .ayricalik-card:nth-child(2) { grid-column: 3; }
+    .ayricaliklar-grid-row2 .ayricalik-card:nth-child(3) { grid-column: 4; }
+
+    /* ============================================================
+       SUBELER
+    ============================================================ */
+    .subeler { padding: 100px 0; background: var(--bg); }
+    .subeler-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .sube-card {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: all .25s;
+      background: var(--bg);
+    }
+    .sube-card:hover { transform: translateY(-6px); box-shadow: 0 24px 56px rgba(78,74,73,.13); border-color: transparent; }
+    .sube-photo {
+      height: 200px;
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .sube-photo i { font-size: 48px; opacity: .4; color: #fff; position: relative; z-index: 1; }
+    .sube-badge-city {
+      position: absolute; top: 16px; left: 16px; z-index: 2;
+      background: rgba(0,0,0,.55); backdrop-filter: blur(4px);
+      color: #fff; font-size: 12px; font-weight: 700;
+      padding: 5px 12px; border-radius: 20px;
+      display: flex; align-items: center; gap: 5px;
+    }
+    .sube-badge-city i { font-size: 10px; color: var(--orange); }
+    .sube-badge-type {
+      position: absolute; top: 16px; right: 16px; z-index: 2;
+      background: var(--orange);
+      color: #fff; font-size: 11px; font-weight: 700;
+      padding: 5px 12px; border-radius: 20px;
+    }
+    .sube-body { padding: 20px 22px; }
+    .sube-name { font-size: 17px; font-weight: 800; color: var(--dark-2); margin-bottom: 6px; }
+    .sube-address { display: flex; align-items: flex-start; gap: 6px; font-size: 13px; color: var(--gray); }
+    .sube-address i { font-size: 11px; color: var(--orange); margin-top: 3px; flex-shrink: 0; }
+    .sube-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 16px;
+      font-size: 13px; font-weight: 700;
+      color: var(--orange);
+      transition: gap .2s;
+    }
+    .sube-card:hover .sube-link { gap: 10px; }
+
+    /* ============================================================
+       MID CTA BANNER
+    ============================================================ */
+    .cta-banner {
+      padding: 80px 0;
+      background: linear-gradient(120deg, var(--dark-2) 0%, #3a3635 40%, #1a1817 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-banner::before {
+      content: '';
+      position: absolute; top: -100px; right: -100px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      border: 80px solid rgba(237,108,5,.1);
+    }
+    .cta-banner::after {
+      content: '';
+      position: absolute; bottom: -80px; left: 200px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: rgba(237,108,5,.06);
+    }
+    .cta-banner .container {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 40px;
+      position: relative; z-index: 1;
+    }
+    .cta-text {}
+    .cta-text .section-tag { color: rgba(237,108,5,.9); }
+    .cta-title {
+      font-size: clamp(26px, 3vw, 40px);
+      font-weight: 800; color: #fff;
+      line-height: 1.25;
+      margin-bottom: 14px;
+    }
+    .cta-title span { color: var(--orange); }
+    .cta-subtitle { font-size: 16px; color: rgba(255,255,255,.6); max-width: 500px; }
+    .cta-actions { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
+    .btn-cta-primary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 16px 32px;
+      background: var(--orange); color: #fff;
+      font-family: var(--font); font-size: 15px; font-weight: 700;
+      border: none; border-radius: 10px; cursor: pointer;
+      transition: all .25s; white-space: nowrap;
+    }
+    .btn-cta-primary:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 10px 32px rgba(237,108,5,.4); }
+    .btn-cta-ghost {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 14px 32px;
+      background: transparent; color: rgba(255,255,255,.8);
+      font-family: var(--font); font-size: 14px; font-weight: 600;
+      border: 1.5px solid rgba(255,255,255,.2); border-radius: 10px; cursor: pointer;
+      transition: all .25s; white-space: nowrap;
+    }
+    .btn-cta-ghost:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.4); }
+
+    /* ============================================================
+       ABONELIKLER
+    ============================================================ */
+    .abonelikler { padding: 100px 0; background: var(--bg-krem); }
+    .paket-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 56px;
+    }
+    .paket-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: all .3s;
+    }
+    .paket-card:hover { transform: translateY(-8px); box-shadow: 0 28px 64px rgba(78,74,73,.14); }
+    .paket-card.featured {
+      background: var(--dark-2);
+      border-color: var(--orange);
+      box-shadow: 0 20px 60px rgba(237,108,5,.2);
+    }
+    .paket-card.featured:hover { box-shadow: 0 32px 80px rgba(237,108,5,.3); }
+    .paket-badge-popular {
+      position: absolute; top: 24px; right: 24px;
+      background: var(--orange); color: #fff;
+      font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+      padding: 5px 12px; border-radius: 20px;
+    }
+    .paket-icon {
+      width: 60px; height: 60px;
+      border-radius: 16px;
+      background: var(--orange-light);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 24px;
+    }
+    .paket-card.featured .paket-icon { background: rgba(237,108,5,.2); }
+    .paket-icon i { font-size: 26px; color: var(--orange); }
+    .paket-name { font-size: 20px; font-weight: 800; color: var(--dark-2); margin-bottom: 8px; }
+    .paket-card.featured .paket-name { color: #fff; }
+    .paket-desc { font-size: 13.5px; color: var(--gray); line-height: 1.6; margin-bottom: 28px; }
+    .paket-card.featured .paket-desc { color: rgba(255,255,255,.55); }
+    .paket-divider { height: 1px; background: var(--border); margin-bottom: 24px; }
+    .paket-card.featured .paket-divider { background: rgba(255,255,255,.1); }
+    .paket-features { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .paket-feature {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13.5px; color: var(--dark);
+    }
+    .paket-card.featured .paket-feature { color: rgba(255,255,255,.8); }
+    .paket-feature i { color: var(--orange); font-size: 13px; width: 16px; flex-shrink: 0; }
+    .btn-paket {
+      display: block; width: 100%; text-align: center;
+      padding: 14px;
+      font-family: var(--font); font-size: 14px; font-weight: 700;
+      border-radius: 10px; cursor: pointer;
+      transition: all .25s; border: 2px solid var(--orange);
+    }
+    .btn-paket-outline { background: transparent; color: var(--orange); }
+    .btn-paket-outline:hover { background: var(--orange); color: #fff; }
+    .btn-paket-fill { background: var(--orange); color: #fff; }
+    .btn-paket-fill:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(237,108,5,.35); }
+
+    /* ============================================================
+       BLOG
+    ============================================================ */
+    .blog { padding: 100px 0; background: var(--bg); }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 56px;
+    }
+    .blog-card {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: all .25s;
+      background: var(--bg);
+    }
+    .blog-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(78,74,73,.12); border-color: transparent; }
+    .blog-photo {
+      height: 200px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-photo i { font-size: 40px; opacity: .4; color: #fff; }
+    .blog-cat {
+      position: absolute; bottom: 16px; left: 16px;
+      background: var(--orange); color: #fff;
+      font-size: 11px; font-weight: 700;
+      padding: 4px 12px; border-radius: 20px;
+    }
+    .blog-body { padding: 24px; }
+    .blog-meta { display: flex; align-items: center; gap: 16px; font-size: 12px; color: var(--gray-light); margin-bottom: 12px; }
+    .blog-meta span { display: flex; align-items: center; gap: 5px; }
+    .blog-meta i { font-size: 11px; color: var(--orange); }
+    .blog-title {
+      font-size: 17px; font-weight: 700; color: var(--dark-2);
+      line-height: 1.4; margin-bottom: 12px;
+      transition: color .2s;
+    }
+    .blog-card:hover .blog-title { color: var(--orange); }
+    .blog-excerpt { font-size: 13.5px; color: var(--gray); line-height: 1.65; margin-bottom: 20px; }
+    .blog-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 700; color: var(--orange);
+      transition: gap .2s;
+    }
+    .blog-card:hover .blog-link { gap: 10px; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: var(--dark-2);
+      color: rgba(255,255,255,.75);
+    }
+    .footer-top {
+      padding: 72px 0 56px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1.4fr;
+      gap: 48px;
+    }
+    .footer-brand {}
+    .footer-logo { margin-bottom: 20px; filter: brightness(0) invert(1); opacity: .9; width: 140px; }
+    .footer-brand p { font-size: 14px; line-height: 1.75; color: rgba(255,255,255,.5); margin-bottom: 24px; }
+    .footer-socials { display: flex; gap: 8px; }
+    .footer-social {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.07);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; color: rgba(255,255,255,.6);
+      transition: all .2s;
+    }
+    .footer-social:hover { background: var(--orange); color: #fff; transform: translateY(-2px); }
+
+    .footer-col h4 {
+      font-size: 13px; font-weight: 800;
+      color: #fff;
+      letter-spacing: .08em; text-transform: uppercase;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a {
+      font-size: 13.5px; color: rgba(255,255,255,.5);
+      display: flex; align-items: center; gap: 8px;
+      transition: all .2s;
+    }
+    .footer-col ul li a:hover { color: var(--orange); gap: 12px; }
+    .footer-col ul li a i { font-size: 11px; color: var(--orange); opacity: .7; }
+
+    .footer-contact-list { display: flex; flex-direction: column; gap: 14px; }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 12px; }
+    .footer-contact-item i { font-size: 14px; color: var(--orange); margin-top: 2px; flex-shrink: 0; }
+    .footer-contact-item span { font-size: 13.5px; color: rgba(255,255,255,.5); line-height: 1.6; }
+
+    /* Newsletter */
+    .footer-newsletter {}
+    .footer-newsletter p { font-size: 13.5px; color: rgba(255,255,255,.5); margin-bottom: 16px; line-height: 1.65; }
+    .newsletter-form { display: flex; gap: 0; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,.1); }
+    .newsletter-form input {
+      flex: 1; padding: 12px 16px;
+      background: rgba(255,255,255,.06);
+      border: none; outline: none;
+      font-family: var(--font); font-size: 13.5px; color: #fff;
+    }
+    .newsletter-form input::placeholder { color: rgba(255,255,255,.3); }
+    .newsletter-form button {
+      padding: 12px 18px;
+      background: var(--orange); color: #fff;
+      border: none; cursor: pointer;
+      font-family: var(--font); font-size: 13px; font-weight: 700;
+      transition: background .2s;
+      white-space: nowrap;
+    }
+    .newsletter-form button:hover { background: var(--orange-dark); }
+    .newsletter-note { font-size: 11.5px; color: rgba(255,255,255,.3); margin-top: 10px; }
+
+    .footer-bottom {
+      padding: 22px 0;
+    }
+    .footer-bottom .container {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-copy { font-size: 13px; color: rgba(255,255,255,.35); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,.35); transition: color .2s; }
+    .footer-links a:hover { color: var(--orange); }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1100px) {
+      .ayricaliklar-grid { grid-template-columns: repeat(4, 1fr); }
+      .ayricaliklar-grid-row2 { grid-template-columns: repeat(4, 1fr); }
+      .ayricaliklar-grid-row2 .ayricalik-card:nth-child(1) { grid-column: 1; }
+      .ayricaliklar-grid-row2 .ayricalik-card:nth-child(2) { grid-column: 2; }
+      .ayricaliklar-grid-row2 .ayricalik-card:nth-child(3) { grid-column: 3; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+    @media (max-width: 900px) {
+      .about .container { grid-template-columns: 1fr; gap: 48px; }
+      .about-visual { order: -1; }
+      .subeler-grid { grid-template-columns: repeat(2, 1fr); }
+      .paket-grid { grid-template-columns: 1fr; max-width: 480px; margin: 56px auto 0; }
+      .blog-grid { grid-template-columns: 1fr; max-width: 480px; margin: 56px auto 0; }
+      .stats-bar .container { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .cta-banner .container { flex-direction: column; text-align: center; }
+      .cta-actions { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+      .about-float-1 { top: -16px; right: -8px; }
+      .about-float-2 { bottom: -16px; left: -8px; }
+      .hero { height: 480px; }
+      .slide-content { padding: 0 40px; }
+    }
+    @media (max-width: 768px) {
+      .topbar { display: none; }
+      .navbar .container { height: 64px; }
+      .navbar-menu, .navbar-cta { display: none; }
+      .hamburger { display: flex; }
+      .ayricaliklar-grid { grid-template-columns: repeat(2, 1fr); }
+      .ayricaliklar-grid-row2 { grid-template-columns: repeat(2, 1fr); }
+      .ayricaliklar-grid-row2 .ayricalik-card:nth-child(1) { grid-column: 1; }
+      .ayricaliklar-grid-row2 .ayricalik-card:nth-child(2) { grid-column: 2; }
+      .ayricaliklar-grid-row2 .ayricalik-card:nth-child(3) { grid-column: 1; }
+      .subeler-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-links { flex-wrap: wrap; gap: 12px; }
+      .hero { height: auto; min-height: 400px; }
+      .slide-title { font-size: 26px; }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0 20px; }
+      .about { padding: 64px 0; }
+      .ayricaliklar { padding: 64px 0; }
+      .subeler { padding: 64px 0; }
+      .cta-banner { padding: 56px 0; }
+      .abonelikler { padding: 64px 0; }
+      .blog { padding: 64px 0; }
+      .slide-content { padding: 0 24px; }
+      .about-features { grid-template-columns: 1fr; }
+      .stats-bar .container { grid-template-columns: 1fr; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.07); }
+      .stat-item:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     TOP BAR
+============================================================ -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">
+      <a href="tel:02125717155">
+        <i class="fa-solid fa-phone"></i>
+        0212 571 71 55
+      </a>
+      <a href="mailto:iletisim@endeneyimmerkezi.com">
+        <i class="fa-solid fa-envelope"></i>
+        iletisim@endeneyimmerkezi.com
+      </a>
+    </div>
+    <div class="topbar-right">
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     NAVBAR
+============================================================ -->
+<header>
+  <nav class="navbar">
+    <div class="container">
+      <!-- LOGO — inline SVG from en-deneyim-dark.svg -->
+      <a href="/" class="navbar-logo" aria-label="EN Deneyim Merkezi Ana Sayfa">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="nav-logo" viewBox="0 0 137.79 68.86" aria-hidden="true">
+          <defs>
+            <style>
+              .nav-cls-1 { fill: none; }
+              .nav-cls-2 { fill: #4e4a49; }
+              .nav-cls-3 { fill: #ed6c05; }
+              .nav-cls-4 { clip-path: url(#nav-clippath); }
+            </style>
+            <clipPath id="nav-clippath">
+              <rect class="nav-cls-1" width="137.79" height="38.05"></rect>
+            </clipPath>
+          </defs>
+          <g>
+            <g>
+              <g class="nav-cls-4">
+                <polyline class="nav-cls-3" points="68.82 5.95 137.64 37.83 69.08 .25 68.97 .02 68.82 .11 68.67 .02 68.55 .25 0 37.83 68.82 5.95"></polyline>
+              </g>
+              <g>
+                <path class="nav-cls-3" d="M68.88,45.57c-4.21,5.15-9.56,7.78-16.16,7.49-5.05-.22-9.35-2.28-12.86-5.94-6.93-7.21-6.94-18.84.08-26.19,4.01-4.2,8.99-6.16,14.81-5.86,5.83.3,10.45,2.95,14.16,7.49,4.49-5.52,10.24-8.1,17.26-7.42,5.12.49,9.35,2.88,12.66,6.85,6.47,7.74,5.58,19.27-2.08,26.29-7.37,6.75-20.28,6.9-27.85-2.7ZM67.47,34.03c-.08,9.06,7.43,16.63,16.55,16.69,8.98.06,16.62-7.39,16.72-16.29.1-9.25-7.23-16.95-16.2-17.03-9.5-.08-16.98,7.21-17.07,16.63ZM53.35,17.35c-.76.1-1.88.18-2.98.39-8.84,1.63-14.88,10.88-12.99,19.68,1.76,8.16,9.3,13.92,17.55,13.23,5.08-.43,9.09-2.74,12.17-6.76.3-.39.3-.7.08-1.15-2.83-5.79-2.84-11.59.01-17.38.23-.46.19-.76-.11-1.15-3.38-4.41-7.84-6.66-13.74-6.85Z"></path>
+                <path class="nav-cls-3" d="M79.41,29.52c.07-.02.14-.05.21-.07.16.23.33.46.48.7,2.63,4.13,5.31,8.23,7.87,12.41.68,1.11,1.4,1.63,2.72,1.49.78-.08.97-.3.96-1.05-.03-5.84,0-11.68-.02-17.52,0-1.6.25-1.39-1.4-1.4-1.2,0-1.39.2-1.4,1.4,0,4.02,0,8.04,0,12.05,0,.3-.03.6-.04.9-.07.02-.14.03-.21.05-.17-.25-.35-.5-.51-.76-2.53-4.01-5.11-7.98-7.55-12.04-.74-1.23-1.52-1.81-2.97-1.64-.76.09-.97.26-.97,1.02.03,6.03.02,12.05.02,18.08,0,.26.03.52.05.87.34,0,.63,0,.92,0,1.73,0,1.84-.11,1.84-1.81,0-3.94,0-7.88,0-11.81,0-.29,0-.58,0-.87Z"></path>
+                <path class="nav-cls-3" d="M56.68,32.44c-2.03,0-3.91-.02-5.78.01-.63,0-.92-.15-.9-.85.05-1.37.04-2.73,0-4.1-.01-.59.17-.8.78-.79,2.28.03,4.55.01,6.83.01,1.92,0,1.89,0,1.9-1.89,0-.63-.22-.76-.8-.75-3.37.02-6.75,0-10.12.01-1.12,0-1.37.24-1.37,1.36,0,5.71,0,11.42,0,17.12,0,1.23.21,1.44,1.45,1.45,3.56,0,7.12,0,10.69,0,.23,0,.47-.03.77-.05,0-.58-.04-1.12.01-1.64.07-.71-.18-.92-.89-.91-2.79.04-5.57,0-8.36.02-.63,0-.92-.16-.9-.86.04-1.58.04-3.16,0-4.74-.01-.61.2-.78.79-.77,1.58.03,3.16.02,4.74,0,.24,0,.64-.16.69-.32.2-.71.3-1.45.45-2.29Z"></path>
+                <path class="nav-cls-3" d="M79.41,29.52c0,.29,0,.58,0,.87,0,3.94,0,7.88,0,11.81,0,1.7-.11,1.81-1.84,1.81-.29,0-.58,0-.92,0-.02-.35-.05-.61-.05-.87,0-6.03.01-12.05-.02-18.08,0-.76.21-.93.97-1.02,1.45-.16,2.23.41,2.97,1.64,2.44,4.06,5.02,8.03,7.55,12.04.16.26.34.51.51.76.07-.02.14-.03.21-.05.02-.3.04-.6.04-.9,0-4.02,0-8.04,0-12.05,0-1.2.2-1.41,1.4-1.4,1.64.01,1.4-.2,1.4,1.4.01,5.84,0,11.68.02,17.52,0,.74-.18.96-.96,1.05-1.33.14-2.04-.38-2.72-1.49-2.56-4.17-5.24-8.28-7.87-12.41-.15-.24-.32-.47-.48-.7-.07.02-.14.05-.21.07Z"></path>
+                <path class="nav-cls-3" d="M56.68,32.44c-.15.84-.25,1.58-.45,2.29-.05.16-.45.32-.69.32-1.58.03-3.16.04-4.74,0-.59-.01-.81.17-.79.77.03,1.58.04,3.16,0,4.74-.02.7.26.86.9.86,2.79-.02,5.57.01,8.36-.02.71,0,.96.21.89.91-.05.52-.01,1.06-.01,1.64-.31.02-.54.05-.77.05-3.56,0-7.12,0-10.69,0-1.25,0-1.45-.21-1.45-1.45,0-5.71,0-11.42,0-17.12,0-1.11.25-1.36,1.37-1.36,3.37,0,6.75.01,10.12-.01.57,0,.8.13.8.75,0,1.89.02,1.89-1.9,1.89-2.28,0-4.55.02-6.83-.01-.6,0-.79.2-.78.79.03,1.37.04,2.73,0,4.1-.02.7.26.86.9.85,1.87-.03,3.75-.01,5.78-.01Z"></path>
+              </g>
+              <g>
+                <path class="nav-cls-2" d="M26.29,65.95c-.57.8-1.32,1.17-2.41,1.17h-2.88v-7.99h2.88c1.09,0,1.84.37,2.41,1.17.49.68.5,1.5.5,2.83s-.01,2.14-.5,2.83ZM24.91,61.02c-.26-.33-.64-.49-1.17-.49h-1.19v5.2h1.19c.53,0,.91-.17,1.17-.49.29-.35.33-.85.33-2.11s-.03-1.76-.33-2.11Z"></path>
+                <path class="nav-cls-2" d="M28.39,67.12v-7.99h5.26v1.39h-3.7v1.87h3.15v1.39h-3.15v1.94h3.7v1.39h-5.26Z"></path>
+                <path class="nav-cls-2" d="M39.89,67.12l-3.16-4.9v4.9h-1.56v-7.99h1.39l3.16,4.89v-4.89h1.56v7.99h-1.39Z"></path>
+                <path class="nav-cls-2" d="M43.15,67.12v-7.99h5.26v1.39h-3.7v1.87h3.15v1.39h-3.15v1.94h3.7v1.39h-5.26Z"></path>
+                <path class="nav-cls-2" d="M52.98,63.85v3.28h-1.55v-3.28l-2.4-4.71h1.69l1.49,3.22,1.47-3.22h1.69l-2.4,4.71Z"></path>
+                <path class="nav-cls-2" d="M56.35,67.12v-7.99h1.56v7.99h-1.56ZM56.47,56.97h1.29v1.3h-1.29v-1.3Z"></path>
+                <path class="nav-cls-2" d="M65.44,67.12v-4.65l-1.53,3.03h-1.05l-1.54-3.03v4.65h-1.56v-7.99h1.54l2.09,4.32,2.07-4.32h1.54v7.99h-1.56Z"></path>
+                <path class="nav-cls-2" d="M77.14,67.12v-4.65l-1.53,3.03h-1.05l-1.54-3.03v4.65h-1.56v-7.99h1.54l2.09,4.32,2.07-4.32h1.54v7.99h-1.56Z"></path>
+                <path class="nav-cls-2" d="M80.56,67.12v-7.99h5.26v1.39h-3.7v1.87h3.15v1.39h-3.15v1.94h3.7v1.39h-5.26Z"></path>
+                <path class="nav-cls-2" d="M91.58,67.12l-1.56-3.19h-1.12v3.19h-1.56v-7.99h3.13c1.63,0,2.59,1.11,2.59,2.44,0,1.12-.68,1.82-1.46,2.1l1.78,3.44h-1.81ZM90.37,60.53h-1.47v2.11h1.47c.68,0,1.13-.44,1.13-1.05s-.45-1.05-1.13-1.05Z"></path>
+                <path class="nav-cls-2" d="M99.32,67.12l-2.05-3.63-1.03,1.23v2.4h-1.56v-7.99h1.56v3.48l2.81-3.48h1.9l-2.65,3.17,2.84,4.81h-1.82Z"></path>
+                <path class="nav-cls-2" d="M102.14,67.12v-7.99h5.26v1.39h-3.7v1.87h3.15v1.39h-3.15v1.94h3.7v1.39h-5.26Z"></path>
+                <path class="nav-cls-2" d="M108.44,67.12v-1.26l3.41-5.34h-3.26v-1.39h5.1v1.23l-3.42,5.36h3.42v1.39h-5.25Z"></path>
+                <path class="nav-cls-2" d="M115.07,67.12v-7.99h1.56v7.99h-1.56ZM115.19,56.97h1.29v1.3h-1.29v-1.3Z"></path>
+              </g>
+              <rect class="nav-cls-2" x="21" y="68.58" width="95.63" height=".29"></rect>
+            </g>
+          </g>
+        </svg>
+      </a>
+
+      <ul class="navbar-menu">
+        <li><a href="/" class="active">Ana Sayfa</a></li>
+        <li>
+          <a href="#">Hakkımızda <i class="fa-solid fa-chevron-down"></i></a>
+          <ul class="dropdown">
+            <li><a href="#"><i class="fa-solid fa-building"></i> Kurumsal Kimlik</a></li>
+            <li><a href="#"><i class="fa-solid fa-bullseye"></i> Misyon & Vizyon</a></li>
+            <li><a href="#"><i class="fa-solid fa-users"></i> Ekibimiz</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Ayrıcalıklar <i class="fa-solid fa-chevron-down"></i></a>
+          <ul class="dropdown">
+            <li><a href="#"><i class="fa-solid fa-door-open"></i> EN Hall</a></li>
+            <li><a href="#"><i class="fa-solid fa-file-pen"></i> EN Deneme</a></li>
+            <li><a href="#"><i class="fa-solid fa-user-tie"></i> Gölge Koç</a></li>
+            <li><a href="#"><i class="fa-solid fa-book"></i> ÜçDörtBeş ALL Star</a></li>
+            <li><a href="#"><i class="fa-solid fa-mug-hot"></i> EN Coffee</a></li>
+            <li><a href="#"><i class="fa-solid fa-chart-bar"></i> EN Analiz</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Abonelikler <i class="fa-solid fa-chevron-down"></i></a>
+          <ul class="dropdown">
+            <li><a href="#"><i class="fa-solid fa-user"></i> Solo Performans</a></li>
+            <li><a href="#"><i class="fa-solid fa-star"></i> Elite Performans</a></li>
+            <li><a href="#"><i class="fa-solid fa-crown"></i> Premium Performans</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Şubeler</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">İletişim</a></li>
+      </ul>
+
+      <div class="navbar-cta">
+        <a href="#subeler" class="btn-outline">Şube Bul</a>
+        <a href="#abonelikler" class="btn-primary">Üye Ol</a>
+      </div>
+
+      <div class="hamburger" aria-label="Menü" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- ============================================================
+     HERO SLIDER
+============================================================ -->
+<section class="hero" aria-label="Öne çıkan duyurular">
+  <div class="slides-wrapper">
+
+    <!-- Slide 1: Van Şubesi Açıldı -->
+    <div class="slide slide-1">
+      <div class="slide-bg"></div>
+      <div class="slide-decor"></div>
+      <div class="slide-content">
+        <div class="slide-badge"><i class="fa-solid fa-location-dot"></i> Yeni Şube</div>
+        <h1 class="slide-title">Van Şubemiz<br><span>Kapılarını Açtı!</span></h1>
+        <p class="slide-desc">Türkiye'nin dört bir yanına yayılan EN Deneyim Merkezi artık Van'da da yanınızda. Doğu'ya taşınan deneyim, şimdi daha da güçlü.</p>
+        <div class="slide-actions">
+          <a href="#" class="btn-hero btn-hero-primary"><i class="fa-solid fa-map-location-dot"></i> Şubeyi Keşfet</a>
+          <a href="#" class="btn-hero btn-hero-ghost"><i class="fa-solid fa-play"></i> Tanıtım Filmi</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2: Florya Yakında -->
+    <div class="slide slide-2">
+      <div class="slide-bg"></div>
+      <div class="slide-decor"></div>
+      <div class="slide-content">
+        <div class="slide-badge slide-badge-outline"><i class="fa-solid fa-clock"></i> Çok Yakında</div>
+        <h1 class="slide-title">Florya <span>Yakında</span><br>Hizmetinizde</h1>
+        <p class="slide-desc">İstanbul'un en dinamik semtlerinden Florya'da yepyeni bir EN Deneyim Merkezi açılıyor. Ön kayıt avantajını kaçırma!</p>
+        <div class="slide-actions">
+          <a href="#" class="btn-hero btn-hero-primary"><i class="fa-solid fa-bell"></i> Ön Kayıt Ol</a>
+          <a href="#" class="btn-hero btn-hero-ghost"><i class="fa-solid fa-circle-info"></i> Detaylar</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3: EN Yakın Deneyim -->
+    <div class="slide slide-3">
+      <div class="slide-bg"></div>
+      <div class="slide-decor"></div>
+      <div class="slide-content">
+        <div class="slide-badge slide-badge-light"><i class="fa-solid fa-compass"></i> 200+ Şube</div>
+        <h1 class="slide-title">EN Yakın<br><span>Deneyim —</span><br>Şubeni Bul</h1>
+        <p class="slide-desc">6 şehirde, 200'den fazla şubemizle her zaman yanınızdayız. Sana en yakın EN Deneyim Merkezi'ni hemen bul.</p>
+        <div class="slide-actions">
+          <a href="#subeler" class="btn-hero btn-hero-primary"><i class="fa-solid fa-magnifying-glass-location"></i> Şube Bul</a>
+          <a href="#abonelikler" class="btn-hero btn-hero-ghost"><i class="fa-solid fa-id-card"></i> Üye Ol</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="slider-dots" aria-hidden="true">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     STATS BAR
+============================================================ -->
+<section class="stats-bar" aria-label="İstatistikler">
+  <div class="container">
+    <div class="stat-item">
+      <div class="stat-icon"><i class="fa-solid fa-building"></i></div>
+      <div class="stat-text">
+        <div class="stat-number">200<span>+</span></div>
+        <div class="stat-label">Aktif Şube</div>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon"><i class="fa-solid fa-map-pin"></i></div>
+      <div class="stat-text">
+        <div class="stat-number">6<span>+</span></div>
+        <div class="stat-label">Şehir</div>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+      <div class="stat-text">
+        <div class="stat-number">50K<span>+</span></div>
+        <div class="stat-label">Öğrenci</div>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon"><i class="fa-solid fa-gem"></i></div>
+      <div class="stat-text">
+        <div class="stat-number">10<span>+</span></div>
+        <div class="stat-label">Ayrıcalık</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT
+============================================================ -->
+<section class="about" id="hakkimizda">
+  <div class="container">
+    <div class="about-text">
+      <div class="section-tag">Hakkımızda</div>
+      <h2 class="section-title">Eğitimde<br><span>Yeni Deneyim</span></h2>
+      <p>EN Deneyim Merkezi, YKS sınav hazırlığını yeniden tanımlayan Türkiye'nin lider çalışma kütüphanesi ve eğitim merkezi zinciridir. Sessiz çalışma alanlarından uzman koçluğa, dijital sınav setlerinden sosyal öğrenme ortamlarına kadar her şey tek çatı altında.</p>
+      <p>2019 yılında İstanbul'da temelleri atılan markamız, bugün 6 şehirdeki 200'ü aşkın şubesiyle 50.000'den fazla öğrenciye "Yeni bir deneyim seni bekliyor" vaadini yaşatmaktadır.</p>
+      <div class="about-features">
+        <div class="about-feature">
+          <div class="about-feature-icon"><i class="fa-solid fa-book-open-reader"></i></div>
+          <div class="about-feature-text">
+            <strong>Sessiz Çalışma Ortamı</strong>
+            <span>Odaklanmayı artıran EN Hall alanları</span>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-icon"><i class="fa-solid fa-user-tie"></i></div>
+          <div class="about-feature-text">
+            <strong>Uzman Koçluk</strong>
+            <span>Gölge Koç ile kişisel rehberlik</span>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <div class="about-feature-text">
+            <strong>Analitik Takip</strong>
+            <span>Neuro Sound & RBA teknolojisi</span>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-icon"><i class="fa-solid fa-file-pen"></i></div>
+          <div class="about-feature-text">
+            <strong>Türkiye Geneli Denemeler</strong>
+            <span>EN Deneme sistemi ile gerçek sınav simülasyonu</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-visual">
+      <div class="about-visual-main">
+        <div class="about-visual-inner">
+          <i class="fa-solid fa-building-columns"></i>
+          <p>EN Deneyim Merkezi Beşiktaş</p>
+        </div>
+      </div>
+      <div class="about-float-1">
+        <strong>2019</strong>
+        <span>Kuruluş Yılı</span>
+      </div>
+      <div class="about-float-2">
+        <div class="about-float-2-icon"><i class="fa-solid fa-trophy"></i></div>
+        <div>
+          <strong>#1</strong>
+          <span>Çalışma Kütüphanesi Zinciri</span>
+        </div>
+      </div>
+      <div class="dot-grid" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     AYRICALIKLAR
+============================================================ -->
+<section class="ayricaliklar" id="ayricaliklar">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag"><i class="fa-solid fa-gem"></i> 10 Ayrıcalık</div>
+      <h2 class="section-title">Üyeliğinle Gelen<br><span>Ayrıcalıklar</span></h2>
+      <p class="section-desc">EN Deneyim Merkezi üyeliği, sınav hazırlığından sosyal yaşama uzanan 10 özel ayrıcalığı beraberinde getirir.</p>
+    </div>
+
+    <div class="ayricaliklar-grid">
+      <div class="ayricalik-card">
+        <div class="ayricalik-icon"><i class="fa-solid fa-door-open"></i></div>
+        <div class="ayricalik-name">EN Hall</div>
+        <div class="ayricalik-desc">Odak artıran sessiz çalışma alanı — konsantrasyonun zirvesi</div>
+      </div>
+      <div class="ayricalik-card">
+        <div class="ayricalik-icon"><i class="fa-solid fa-file-pen"></i></div>
+        <div class="ayricalik-name">EN Deneme</div>
+        <div class="ayricalik-desc">Türkiye geneli deneme sınavları ile gerçek YKS simülasyonu</div>
+      </div>
+      <div class="ayricalik-card">
+        <div class="ayricalik-icon"><i class="fa-solid fa-user-tie"></i></div>
+        <div class="ayricalik-name">Gölge Koç</div>
+        <div class="ayricalik-desc">Sana özel uzman koçluk ve kişisel gelişim rehberliği</div>
+      </div>
+      <div class="ayricalik-card">
+        <div class="ayricalik-icon"><i class="fa-solid fa-book"></i></div>
+        <div class="ayricalik-name">ÜçDörtBeş ALL Star</div>
+        <div class="ayricalik-desc">Basılı + dijital sınav seti — kapsamlı kaynak avantajı</div>
+      </div>
+      <div class="ayricalik-card">
+        <div class="ayricalik-icon"><i class="fa-solid fa-chalkboard-teacher"></i></div>
+        <div class="ayricalik-name">EN Özel Ders</div>
+        <div class="ayricalik-desc">Birebir özel ders desteği ile zayıf noktalarını güçlendir</div>
+      </div>
+    </div>
+
+    <div class="ayricaliklar-grid-row2">
+      <div class="ayricalik-card">
+        <div class="ayricalik-icon"><i class="fa-solid fa-star"></i></div>
+        <div class="ayricalik-name">EN Fenomen</div>
+        <div class="ayricalik-desc">Motivasyon etkinlikleri, seminerler ve özel buluşmalar</div>
+      </div>
+      <div class="ayricalik-card">
+        <div class="ayricalik-icon"><i class="fa-solid fa-mug-hot"></i></div>
+        <div class="ayricalik-name">EN Coffee</div>
+        <div class="ayricalik-desc">Enerjini tazele — sosyal öğrenme ve dinlenme alanı</div>
+      </div>
+      <div class="ayricalik-card">
+        <div class="ayricalik-icon"><i class="fa-solid fa-chart-bar"></i></div>
+        <div class="ayricalik-name">EN Analiz</div>
+        <div class="ayricalik-desc">Neuro Sound, RBA ve Neuro Pass ile veri odaklı performans takibi</div>
+      </div>
+      <div class="ayricalik-card">
+        <div class="ayricalik-icon"><i class="fa-solid fa-box"></i></div>
+        <div class="ayricalik-name">EN Box</div>
+        <div class="ayricalik-desc">Kişisel eşyalarınız için güvenli özel çalışma alanı</div>
+      </div>
+      <div class="ayricalik-card">
+        <div class="ayricalik-icon"><i class="fa-solid fa-headset"></i></div>
+        <div class="ayricalik-name">EN Destek</div>
+        <div class="ayricalik-desc">7/24 teknik ve akademik destek hattı ile her zaman yanında</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SUBELER
+============================================================ -->
+<section class="subeler" id="subeler">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag"><i class="fa-solid fa-map-location-dot"></i> Şubelerimiz</div>
+      <h2 class="section-title">Sana En Yakın<br><span>EN Deneyim</span></h2>
+      <p class="section-desc">İstanbul'dan Ankara'ya, İzmir'den Van'a — Türkiye'nin dört bir yanında hizmetinizdeyiz.</p>
+    </div>
+
+    <div class="subeler-grid">
+
+      <div class="sube-card">
+        <div class="sube-photo" style="background: linear-gradient(135deg, #2e2b2a, #4e4a49);">
+          <i class="fa-solid fa-building-columns"></i>
+          <div class="sube-badge-city"><i class="fa-solid fa-location-dot"></i> İstanbul</div>
+          <div class="sube-badge-type">Amiral Şube</div>
+        </div>
+        <div class="sube-body">
+          <div class="sube-name">Beşiktaş Şubesi</div>
+          <div class="sube-address"><i class="fa-solid fa-location-dot"></i> Cihannüma, Barbaros Blv. No:4, 34353 Beşiktaş</div>
+          <a href="#" class="sube-link">Detayları Gör <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="sube-card">
+        <div class="sube-photo" style="background: linear-gradient(135deg, #1a3a4a, #2a5a6e);">
+          <i class="fa-solid fa-city"></i>
+          <div class="sube-badge-city"><i class="fa-solid fa-location-dot"></i> İstanbul</div>
+          <div class="sube-badge-type">Premium Şube</div>
+        </div>
+        <div class="sube-body">
+          <div class="sube-name">Kadıköy Şubesi</div>
+          <div class="sube-address"><i class="fa-solid fa-location-dot"></i> Moda Cad. Kadıköy, 34710 İstanbul</div>
+          <a href="#" class="sube-link">Detayları Gör <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="sube-card">
+        <div class="sube-photo" style="background: linear-gradient(135deg, #3a2a1a, #6e4a2a);">
+          <i class="fa-solid fa-landmark"></i>
+          <div class="sube-badge-city"><i class="fa-solid fa-location-dot"></i> Ankara</div>
+          <div class="sube-badge-type">Standart Şube</div>
+        </div>
+        <div class="sube-body">
+          <div class="sube-name">Çankaya Şubesi</div>
+          <div class="sube-address"><i class="fa-solid fa-location-dot"></i> Kızılay, Atatürk Blv. No:22, Çankaya/Ankara</div>
+          <a href="#" class="sube-link">Detayları Gör <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="sube-card">
+        <div class="sube-photo" style="background: linear-gradient(135deg, #1a2a3a, #2a4a6a);">
+          <i class="fa-solid fa-water"></i>
+          <div class="sube-badge-city"><i class="fa-solid fa-location-dot"></i> İzmir</div>
+          <div class="sube-badge-type">Premium Şube</div>
+        </div>
+        <div class="sube-body">
+          <div class="sube-name">Alsancak Şubesi</div>
+          <div class="sube-address"><i class="fa-solid fa-location-dot"></i> Alsancak, Kıbrıs Şehitleri Cad. No:88, İzmir</div>
+          <a href="#" class="sube-link">Detayları Gör <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="sube-card">
+        <div class="sube-photo" style="background: linear-gradient(135deg, #2a1a3a, #5a2a6a);">
+          <i class="fa-solid fa-mosque"></i>
+          <div class="sube-badge-city"><i class="fa-solid fa-location-dot"></i> Bursa</div>
+          <div class="sube-badge-type">Standart Şube</div>
+        </div>
+        <div class="sube-body">
+          <div class="sube-name">Nilüfer Şubesi</div>
+          <div class="sube-address"><i class="fa-solid fa-location-dot"></i> Nilüfer, Özlüce Mah. Bursa</div>
+          <a href="#" class="sube-link">Detayları Gör <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="sube-card">
+        <div class="sube-photo" style="background: linear-gradient(135deg, #1a3a2a, #2a6a4a);">
+          <i class="fa-solid fa-mountain-sun"></i>
+          <div class="sube-badge-city"><i class="fa-solid fa-location-dot"></i> Van</div>
+          <div class="sube-badge-type">Yeni Şube</div>
+        </div>
+        <div class="sube-body">
+          <div class="sube-name">Van Şubesi</div>
+          <div class="sube-address"><i class="fa-solid fa-location-dot"></i> İpekyolu, Cumhuriyet Cad. No:5, Van</div>
+          <a href="#" class="sube-link">Detayları Gör <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center; margin-top: 48px;">
+      <a href="#" class="btn-primary" style="display:inline-flex; align-items:center; gap:8px; padding:14px 32px; font-size:15px;">
+        <i class="fa-solid fa-map"></i> Tüm Şubeleri Görüntüle
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MID CTA BANNER
+============================================================ -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-text">
+      <div class="section-tag">Harekete Geç</div>
+      <h2 class="cta-title">Geleceğe giden yolda<br><span>EN'iyi deneyim</span> seni bekliyor</h2>
+      <p class="cta-subtitle">Türkiye'nin en kapsamlı çalışma kütüphanesi zincirine katıl. 50.000'den fazla başarılı öğrencinin tercihini sen de yap.</p>
+    </div>
+    <div class="cta-actions">
+      <button class="btn-cta-primary"><i class="fa-solid fa-rocket"></i> Hemen Üye Ol</button>
+      <button class="btn-cta-ghost"><i class="fa-solid fa-phone"></i> Bizi Ara: 0212 571 71 55</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABONELİKLER
+============================================================ -->
+<section class="abonelikler" id="abonelikler">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag"><i class="fa-solid fa-id-card"></i> Abonelik Paketleri</div>
+      <h2 class="section-title">Sana Uygun<br><span>Paketi Seç</span></h2>
+      <p class="section-desc">Hedeflerine ve ihtiyaçlarına göre özelleştirilmiş 3 farklı abonelik paketi ile deneyimini şekillendir.</p>
+    </div>
+
+    <div class="paket-grid">
+
+      <div class="paket-card">
+        <div class="paket-icon"><i class="fa-solid fa-user"></i></div>
+        <div class="paket-name">Solo Performans</div>
+        <div class="paket-desc">Temel ihtiyaçlarını karşılayan, sessiz çalışma odaklı giriş seviyesi paket.</div>
+        <div class="paket-divider"></div>
+        <ul class="paket-features">
+          <li class="paket-feature"><i class="fa-solid fa-check"></i> EN Hall (Sessiz Çalışma Alanı)</li>
+          <li class="paket-feature"><i class="fa-solid fa-check"></i> EN Coffee Erişimi</li>
+          <li class="paket-feature"><i class="fa-solid fa-check"></i> EN Destek Hattı</li>
+          <li class="paket-feature"><i class="fa-solid fa-check"></i> EN Box (Kişisel Alan)</li>
+          <li class="paket-feature" style="opacity:.4"><i class="fa-solid fa-xmark"></i> Gölge Koç</li>
+          <li class="paket-feature" style="opacity:.4"><i class="fa-solid fa-xmark"></i> EN Deneme</li>
+        </ul>
+        <a href="#" class="btn-paket btn-paket-outline">Paket Detayı</a>
+      </div>
+
+      <div class="paket-card featured">
+        <div class="paket-badge-popular">Popüler</div>
+        <div class="paket-icon"><i class="fa-solid fa-star"></i></div>
+        <div class="paket-name">Elite Performans</div>
+        <div class="paket-desc">Hem çalışma hem koçluk hem de deneme avantajını bir arada sunan en çok tercih edilen paket.</div>
+        <div class="paket-divider"></div>
+        <ul class="paket-features">
+          <li class="paket-feature"><i class="fa-solid fa-check"></i> EN Hall (Öncelikli Erişim)</li>
+          <li class="paket-feature"><i class="fa-solid fa-check"></i> EN Coffee & Sosyal Alan</li>
+          <li class="paket-feature"><i class="fa-solid fa-check"></i> Gölge Koç (Aylık 4 Seans)</li>
+          <li class="paket-feature"><i class="fa-solid fa-check"></i> EN Deneme (Türkiye Geneli)</li>
+          <li class="paket-feature"><i class="fa-solid fa-check"></i> ÜçDörtBeş ALL Star</li>
+          <li class="paket-feature"><i class="fa-solid fa-check"></i> EN Analiz Raporu</li>
+        </ul>
+        <a href="#" class="btn-paket btn-paket-fill">Paket Detayı</a>
+      </div>
+
+      <div class="paket-card">
+        <div class="paket-icon"><i class="fa-solid fa-crown"></i></div>
+        <div class="paket-name">Premium Performans</div>
+        <div class="paket-desc">Tüm ayrıcalıkları kapsayan, sınırsız erişim ve öncelikli destek ile ultimate deneyim paketi.</div>
+        <div class="paket-divider"></div>
+        <ul class="paket-features">
+          <li class="paket-feature"><i class="fa-solid fa-check"></i> Tüm EN Hall Ayrıcalıkları</li>
+          <li class="paket-feature"><i class="fa-solid fa-check"></i> Gölge Koç (Sınırsız Seans)</li>
+          <li class="paket-feature"><i class="fa-solid fa-check"></i> EN Özel Ders (Haftalık)</li>
+          <li class="paket-feature"><i class="fa-solid fa-check"></i> EN Fenomen Etkinlikleri</li>
+          <li class="paket-feature"><i class="fa-solid fa-check"></i> Neuro Pass + RBA Analizi</li>
+          <li class="paket-feature"><i class="fa-solid fa-check"></i> 7/24 Öncelikli Destek</li>
+        </ul>
+        <a href="#" class="btn-paket btn-paket-outline">Paket Detayı</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     BLOG
+============================================================ -->
+<section class="blog" id="blog">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag"><i class="fa-solid fa-newspaper"></i> Blog & Haberler</div>
+      <h2 class="section-title">Güncel <span>İçerikler</span><br>ve Haberler</h2>
+      <p class="section-desc">YKS hazırlık ipuçları, motivasyon içerikleri ve EN Deneyim Merkezi'nden son gelişmeler.</p>
+    </div>
+
+    <div class="blog-grid">
+
+      <div class="blog-card">
+        <div class="blog-photo" style="background: linear-gradient(135deg, #2e2b2a, #ed6c05);">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <div class="blog-cat">YKS Hazırlık</div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span><i class="fa-regular fa-calendar"></i> 28 Nisan 2026</span>
+            <span><i class="fa-regular fa-clock"></i> 5 dk okuma</span>
+          </div>
+          <h3 class="blog-title">YKS'ye 30 Gün Kaldı: Son Viraj Stratejisi</h3>
+          <p class="blog-excerpt">Sınava son 30 gün kala hangi konulara odaklanmalı, nasıl bir çalışma planı kurmalısın? Gölge Koçlarımızdan altın öneriler.</p>
+          <a href="#" class="blog-link">Devamını Oku <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-photo" style="background: linear-gradient(135deg, #1a3a4a, #2a6a8a);">
+          <i class="fa-solid fa-brain"></i>
+          <div class="blog-cat">Neuro Analiz</div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span><i class="fa-regular fa-calendar"></i> 22 Nisan 2026</span>
+            <span><i class="fa-regular fa-clock"></i> 7 dk okuma</span>
+          </div>
+          <h3 class="blog-title">Neuro Sound Teknolojisi ile Konsantrasyon Artırma</h3>
+          <p class="blog-excerpt">EN Analiz sistemimizin önemli bileşeni Neuro Sound, öğrencilerin çalışma verimliliğini nasıl %40 artırıyor? Bilimsel araştırmalar.</p>
+          <a href="#" class="blog-link">Devamını Oku <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-photo" style="background: linear-gradient(135deg, #2a1a3a, #6a3a8a);">
+          <i class="fa-solid fa-location-dot"></i>
+          <div class="blog-cat">Haberler</div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span><i class="fa-regular fa-calendar"></i> 15 Nisan 2026</span>
+            <span><i class="fa-regular fa-clock"></i> 3 dk okuma</span>
+          </div>
+          <h3 class="blog-title">Van Şubemiz Resmen Açıldı — Doğu'ya Taşınan Deneyim</h3>
+          <p class="blog-excerpt">EN Deneyim Merkezi ailesi büyümeye devam ediyor. Van şubemizin açılışından kareler ve ilk üyelerimizin deneyimleri.</p>
+          <a href="#" class="blog-link">Devamını Oku <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center; margin-top: 48px;">
+      <a href="#" class="btn-outline" style="display:inline-flex; align-items:center; gap:8px; padding:14px 32px; font-size:15px;">
+        <i class="fa-solid fa-newspaper"></i> Tüm Yazıları Gör
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Brand -->
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 137.79 68.86" style="height:52px;width:auto;filter:brightness(0) invert(1);opacity:.85;" aria-label="EN Deneyim Merkezi">
+              <defs>
+                <style>.f-cls-1{fill:none}.f-cls-2{fill:#4e4a49}.f-cls-3{fill:#ed6c05}.f-cls-4{clip-path:url(#f-clippath)}</style>
+                <clipPath id="f-clippath"><rect class="f-cls-1" width="137.79" height="38.05"></rect></clipPath>
+              </defs>
+              <g>
+                <g>
+                  <g class="f-cls-4">
+                    <polyline class="f-cls-3" points="68.82 5.95 137.64 37.83 69.08 .25 68.97 .02 68.82 .11 68.67 .02 68.55 .25 0 37.83 68.82 5.95"></polyline>
+                  </g>
+                  <g>
+                    <path class="f-cls-3" d="M68.88,45.57c-4.21,5.15-9.56,7.78-16.16,7.49-5.05-.22-9.35-2.28-12.86-5.94-6.93-7.21-6.94-18.84.08-26.19,4.01-4.2,8.99-6.16,14.81-5.86,5.83.3,10.45,2.95,14.16,7.49,4.49-5.52,10.24-8.1,17.26-7.42,5.12.49,9.35,2.88,12.66,6.85,6.47,7.74,5.58,19.27-2.08,26.29-7.37,6.75-20.28,6.9-27.85-2.7Z"></path>
+                    <path class="f-cls-3" d="M79.41,29.52c.07-.02.14-.05.21-.07.16.23.33.46.48.7,2.63,4.13,5.31,8.23,7.87,12.41.68,1.11,1.4,1.63,2.72,1.49.78-.08.97-.3.96-1.05-.03-5.84,0-11.68-.02-17.52,0-1.6.25-1.39-1.4-1.4-1.2,0-1.39.2-1.4,1.4,0,4.02,0,8.04,0,12.05,0,.3-.03.6-.04.9-.07.02-.14.03-.21.05-.17-.25-.35-.5-.51-.76-2.53-4.01-5.11-7.98-7.55-12.04-.74-1.23-1.52-1.81-2.97-1.64-.76.09-.97.26-.97,1.02.03,6.03.02,12.05.02,18.08,0,.26.03.52.05.87.34,0,.63,0,.92,0,1.73,0,1.84-.11,1.84-1.81,0-3.94,0-7.88,0-11.81,0-.29,0-.58,0-.87Z"></path>
+                    <path class="f-cls-3" d="M56.68,32.44c-2.03,0-3.91-.02-5.78.01-.63,0-.92-.15-.9-.85.05-1.37.04-2.73,0-4.1-.01-.59.17-.8.78-.79,2.28.03,4.55.01,6.83.01,1.92,0,1.89,0,1.9-1.89,0-.63-.22-.76-.8-.75-3.37.02-6.75,0-10.12.01-1.12,0-1.37.24-1.37,1.36,0,5.71,0,11.42,0,17.12,0,1.23.21,1.44,1.45,1.45,3.56,0,7.12,0,10.69,0,.23,0,.47-.03.77-.05,0-.58-.04-1.12.01-1.64.07-.71-.18-.92-.89-.91-2.79.04-5.57,0-8.36.02-.63,0-.92-.16-.9-.86.04-1.58.04-3.16,0-4.74-.01-.61.2-.78.79-.77,1.58.03,3.16.02,4.74,0,.24,0,.64-.16.69-.32.2-.71.3-1.45.45-2.29Z"></path>
+                  </g>
+                  <g>
+                    <path class="f-cls-2" d="M26.29,65.95c-.57.8-1.32,1.17-2.41,1.17h-2.88v-7.99h2.88c1.09,0,1.84.37,2.41,1.17.49.68.5,1.5.5,2.83s-.01,2.14-.5,2.83Z"></path>
+                    <path class="f-cls-2" d="M28.39,67.12v-7.99h5.26v1.39h-3.7v1.87h3.15v1.39h-3.15v1.94h3.7v1.39h-5.26Z"></path>
+                    <path class="f-cls-2" d="M39.89,67.12l-3.16-4.9v4.9h-1.56v-7.99h1.39l3.16,4.89v-4.89h1.56v7.99h-1.39Z"></path>
+                    <path class="f-cls-2" d="M43.15,67.12v-7.99h5.26v1.39h-3.7v1.87h3.15v1.39h-3.15v1.94h3.7v1.39h-5.26Z"></path>
+                    <path class="f-cls-2" d="M52.98,63.85v3.28h-1.55v-3.28l-2.4-4.71h1.69l1.49,3.22,1.47-3.22h1.69l-2.4,4.71Z"></path>
+                    <path class="f-cls-2" d="M56.35,67.12v-7.99h1.56v7.99h-1.56Z"></path>
+                    <path class="f-cls-2" d="M65.44,67.12v-4.65l-1.53,3.03h-1.05l-1.54-3.03v4.65h-1.56v-7.99h1.54l2.09,4.32,2.07-4.32h1.54v7.99h-1.56Z"></path>
+                    <path class="f-cls-2" d="M77.14,67.12v-4.65l-1.53,3.03h-1.05l-1.54-3.03v4.65h-1.56v-7.99h1.54l2.09,4.32,2.07-4.32h1.54v7.99h-1.56Z"></path>
+                    <path class="f-cls-2" d="M80.56,67.12v-7.99h5.26v1.39h-3.7v1.87h3.15v1.39h-3.15v1.94h3.7v1.39h-5.26Z"></path>
+                    <path class="f-cls-2" d="M91.58,67.12l-1.56-3.19h-1.12v3.19h-1.56v-7.99h3.13c1.63,0,2.59,1.11,2.59,2.44,0,1.12-.68,1.82-1.46,2.1l1.78,3.44h-1.81Z"></path>
+                    <path class="f-cls-2" d="M99.32,67.12l-2.05-3.63-1.03,1.23v2.4h-1.56v-7.99h1.56v3.48l2.81-3.48h1.9l-2.65,3.17,2.84,4.81h-1.82Z"></path>
+                    <path class="f-cls-2" d="M102.14,67.12v-7.99h5.26v1.39h-3.7v1.87h3.15v1.39h-3.15v1.94h3.7v1.39h-5.26Z"></path>
+                    <path class="f-cls-2" d="M108.44,67.12v-1.26l3.41-5.34h-3.26v-1.39h5.1v1.23l-3.42,5.36h3.42v1.39h-5.25Z"></path>
+                    <path class="f-cls-2" d="M115.07,67.12v-7.99h1.56v7.99h-1.56Z"></path>
+                  </g>
+                  <rect class="f-cls-2" x="21" y="68.58" width="95.63" height=".29"></rect>
+                </g>
+              </g>
+            </svg>
+          </div>
+          <p>YKS sınav hazırlığını yeniden tanımlayan Türkiye'nin lider çalışma kütüphanesi ve eğitim merkezi zinciri. "Yeni bir deneyim seni bekliyor."</p>
+          <div class="footer-socials">
+            <a href="#" class="footer-social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="footer-social" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="footer-social" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="footer-social" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <!-- İletişim -->
+        <div class="footer-col">
+          <h4>İletişim</h4>
+          <div class="footer-contact-list">
+            <div class="footer-contact-item">
+              <i class="fa-solid fa-phone"></i>
+              <span><a href="tel:02125717155" style="color:inherit; transition:color .2s;" onmouseover="this.style.color='#ed6c05'" onmouseout="this.style.color='inherit'">0212 571 71 55</a></span>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fa-solid fa-envelope"></i>
+              <span><a href="mailto:iletisim@endeneyimmerkezi.com" style="color:inherit; transition:color .2s;" onmouseover="this.style.color='#ed6c05'" onmouseout="this.style.color='inherit'">iletisim@endeneyimmerkezi.com</a></span>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Cihannüma, Barbaros Blv. No:4,<br>34353 Beşiktaş / İstanbul</span>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fa-regular fa-clock"></i>
+              <span>Pazartesi — Pazar<br>07:00 — 23:00</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hızlı Erişim -->
+        <div class="footer-col">
+          <h4>Hızlı Erişim</h4>
+          <ul>
+            <li><a href="#hakkimizda"><i class="fa-solid fa-chevron-right"></i> Hakkımızda</a></li>
+            <li><a href="#ayricaliklar"><i class="fa-solid fa-chevron-right"></i> Ayrıcalıklar</a></li>
+            <li><a href="#abonelikler"><i class="fa-solid fa-chevron-right"></i> Abonelik Paketleri</a></li>
+            <li><a href="#subeler"><i class="fa-solid fa-chevron-right"></i> Şubeler</a></li>
+            <li><a href="#blog"><i class="fa-solid fa-chevron-right"></i> Blog</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Kariyer</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Franchise</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right"></i> İletişim</a></li>
+          </ul>
+        </div>
+
+        <!-- E-Bülten -->
+        <div class="footer-col footer-newsletter">
+          <h4>E-Bülten</h4>
+          <p>EN Deneyim Merkezi'nin kampanyaları, yeni şube açılışları ve YKS ipuçları için bültenimize abone ol.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="E-posta adresin" aria-label="E-posta adresi" />
+            <button type="submit">Abone Ol</button>
+          </div>
+          <p class="newsletter-note">Spam göndermiyoruz. İstediğin zaman abonelikten çıkabilirsin.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p class="footer-copy">&copy; 2026 EN Deneyim Merkezi. Tüm hakları saklıdır.</p>
+      <div class="footer-links">
+        <a href="#">KVKK Aydınlatma Metni</a>
+        <a href="#">Gizlilik Politikası</a>
+        <a href="#">Çerez Politikası</a>
+        <a href="#">Kullanım Koşulları</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

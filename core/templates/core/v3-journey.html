@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="EN Deneyim Merkezi — YKS Sınav Hazırlık & Çalışma Merkezi. 200+ şube, uzman koçlar ve dijital platformlarla geleceğini planla." />
+  <meta name="keywords" content="YKS hazırlık, çalışma merkezi, sınav koçu, EN Deneyim Merkezi, Gölge Koç" />
+  <title>EN Deneyim Merkezi — Geleceğini EN Deneyim ile Planla</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #ed6c05;
+      --orange-light: #f5873a;
+      --orange-pale: #fff3e8;
+      --dark: #2d2926;
+      --dark-60: #6b635d;
+      --dark-30: #b5afa9;
+      --bg: #fef9f5;
+      --white: #ffffff;
+      --border: #f0e8df;
+      --radius-sm: 8px;
+      --radius: 14px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 2px 8px rgba(45,41,38,.06);
+      --shadow: 0 4px 24px rgba(45,41,38,.10);
+      --shadow-lg: 0 12px 48px rgba(45,41,38,.14);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── TOP BAR ─── */
+    .topbar {
+      background: var(--dark);
+      color: #c4bdb7;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 0 40px;
+    }
+    .topbar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 40px;
+    }
+    .topbar-left { display: flex; gap: 24px; align-items: center; }
+    .topbar-left a {
+      color: #c4bdb7;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: color .2s;
+    }
+    .topbar-left a:hover { color: var(--orange); }
+    .topbar-left a i { color: var(--orange); font-size: 12px; }
+    .topbar-right { display: flex; gap: 16px; align-items: center; }
+    .topbar-right a {
+      color: #9b9490;
+      text-decoration: none;
+      font-size: 14px;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: color .2s, background .2s;
+    }
+    .topbar-right a:hover { color: var(--orange); background: rgba(237,108,5,.1); }
+
+    /* ─── NAVBAR ─── */
+    .navbar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+    .navbar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      height: 72px;
+      gap: 40px;
+    }
+    .logo-wrap { display: flex; align-items: center; flex-shrink: 0; }
+    .logo-wrap svg { height: 44px; width: auto; }
+    .nav-links { display: flex; gap: 4px; flex: 1; justify-content: center; }
+    .nav-links a {
+      color: var(--dark);
+      text-decoration: none;
+      font-size: 14.5px;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      transition: color .2s, background .2s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover { color: var(--orange); background: var(--orange-pale); }
+    .nav-links a.active { color: var(--orange); }
+    .nav-cta { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 50px; font-size: 14px; font-weight: 700; cursor: pointer; text-decoration: none; transition: all .22s; border: 2px solid transparent; }
+    .btn-outline { border-color: var(--dark-30); color: var(--dark); background: transparent; }
+    .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+    .btn-orange { background: var(--orange); color: var(--white); border-color: var(--orange); }
+    .btn-orange:hover { background: var(--orange-light); border-color: var(--orange-light); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(237,108,5,.35); }
+    .btn-orange-outline { border-color: var(--orange); color: var(--orange); background: transparent; }
+    .btn-orange-outline:hover { background: var(--orange); color: white; transform: translateY(-1px); }
+    .btn-lg { padding: 15px 32px; font-size: 15.5px; }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 620px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #2d2926 0%, #4a3728 35%, #7a3d0a 70%, #ed6c05 100%);
+      padding: 80px 40px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 600px 500px at 20% 50%, rgba(237,108,5,.25) 0%, transparent 70%),
+        radial-gradient(ellipse 400px 400px at 85% 20%, rgba(237,108,5,.18) 0%, transparent 60%),
+        radial-gradient(ellipse 300px 300px at 70% 90%, rgba(255,180,80,.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: .04;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    /* Decorative mountain shapes */
+    .hero-deco-left {
+      position: absolute;
+      left: -40px;
+      bottom: -20px;
+      width: 300px;
+      height: 300px;
+      opacity: .08;
+      pointer-events: none;
+    }
+    .hero-deco-right {
+      position: absolute;
+      right: -20px;
+      top: 40px;
+      width: 220px;
+      height: 220px;
+      opacity: .07;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 820px;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(237,108,5,.18);
+      border: 1px solid rgba(237,108,5,.35);
+      color: #ffb366;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border-radius: 50px;
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow i { font-size: 11px; }
+    .hero h1 {
+      font-size: clamp(36px, 5.5vw, 62px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.12;
+      letter-spacing: -.02em;
+      margin-bottom: 22px;
+    }
+    .hero h1 span { color: var(--orange); }
+    .hero-sub {
+      font-size: clamp(15px, 2vw, 18px);
+      color: rgba(255,255,255,.72);
+      font-weight: 400;
+      max-width: 580px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .hero-stats {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+    .hero-stats-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+    }
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 22px 48px;
+      border-right: 1px solid rgba(255,255,255,.1);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--orange);
+      line-height: 1;
+    }
+    .stat-lbl {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: rgba(255,255,255,.55);
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
+
+    /* ─── SECTIONS COMMON ─── */
+    section { padding: 96px 40px; }
+    .section-inner { max-width: 1280px; margin: 0 auto; }
+    .section-tag {
+      display: inline-block;
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(26px, 3.5vw, 40px);
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1.18;
+      letter-spacing: -.02em;
+    }
+    .section-title span { color: var(--orange); }
+    .section-sub {
+      font-size: 16.5px;
+      color: var(--dark-60);
+      margin-top: 14px;
+      max-width: 560px;
+      line-height: 1.7;
+    }
+    .section-header { margin-bottom: 60px; }
+    .section-header.center { text-align: center; }
+    .section-header.center .section-sub { margin-left: auto; margin-right: auto; }
+
+    /* ─── PROCESS SECTION ─── */
+    .process-section { background: var(--white); }
+    .process-flow {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: start;
+      gap: 0;
+      position: relative;
+    }
+    .process-connector {
+      display: flex;
+      align-items: center;
+      padding-top: 36px;
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+    .process-connector-line {
+      flex: 1;
+      border-top: 3px dashed var(--orange);
+      opacity: .35;
+    }
+    .process-connector-arrow {
+      color: var(--orange);
+      font-size: 18px;
+      opacity: .5;
+      margin-left: 4px;
+    }
+    .process-step {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px 32px;
+      position: relative;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+    }
+    .process-step:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--orange);
+    }
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      background: var(--orange);
+      color: var(--white);
+      font-size: 20px;
+      font-weight: 800;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 6px 18px rgba(237,108,5,.35);
+    }
+    .step-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 8px;
+    }
+    .step-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+    .step-desc {
+      font-size: 14.5px;
+      color: var(--dark-60);
+      line-height: 1.65;
+    }
+
+    /* ─── SERVICES ─── */
+    .services-section { background: var(--bg); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--orange);
+    }
+    .service-img {
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-img.g1 { background: linear-gradient(135deg, #ed6c05, #f5a25a); }
+    .service-img.g2 { background: linear-gradient(135deg, #2d2926, #5a4535); }
+    .service-img.g3 { background: linear-gradient(135deg, #7a3d0a, #ed6c05); }
+    .service-img.g4 { background: linear-gradient(135deg, #4a3728, #7a5540); }
+    .service-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 30%, rgba(255,255,255,.18) 0%, transparent 60%);
+    }
+    .service-img i { position: relative; z-index: 1; }
+    .service-body { padding: 22px 24px 24px; }
+    .service-title { font-size: 17px; font-weight: 800; margin-bottom: 8px; }
+    .service-desc { font-size: 13.5px; color: var(--dark-60); line-height: 1.6; margin-bottom: 16px; }
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--orange);
+      font-size: 13.5px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: gap .2s;
+    }
+    .service-link:hover { gap: 10px; }
+
+    /* ─── CITIES ─── */
+    .cities-section { background: var(--white); }
+    .cities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .city-card {
+      border: 2px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 28px 24px;
+      background: var(--bg);
+      cursor: pointer;
+      transition: all .25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .city-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--orange);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s;
+    }
+    .city-card:hover::before { transform: scaleX(1); }
+    .city-card:hover {
+      border-color: var(--orange);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      background: var(--white);
+    }
+    .city-deco {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 64px;
+      color: var(--orange);
+      opacity: .06;
+    }
+    .city-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--orange-pale);
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 11px;
+      border-radius: 50px;
+      margin-bottom: 14px;
+    }
+    .city-name {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--dark);
+      letter-spacing: -.02em;
+    }
+    .city-sub {
+      font-size: 13px;
+      color: var(--dark-60);
+      margin-top: 6px;
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials-section { background: var(--dark); }
+    .testimonials-section .section-tag { color: #f5a25a; }
+    .testimonials-section .section-title { color: var(--white); }
+    .testimonials-section .section-sub { color: rgba(255,255,255,.5); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: rgba(255,255,255,.05);
+      border: 1.5px solid rgba(255,255,255,.08);
+      border-radius: var(--radius-lg);
+      padding: 36px 30px;
+      transition: background .25s, border-color .25s;
+    }
+    .testimonial-card:hover {
+      background: rgba(255,255,255,.08);
+      border-color: rgba(237,108,5,.35);
+    }
+    .quote-icon {
+      font-size: 42px;
+      color: var(--orange);
+      opacity: .6;
+      line-height: 1;
+      margin-bottom: 20px;
+      font-family: Georgia, serif;
+    }
+    .testimonial-text {
+      font-size: 15px;
+      font-style: italic;
+      color: rgba(255,255,255,.82);
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+    .testimonial-sep {
+      height: 1px;
+      background: rgba(255,255,255,.1);
+      margin-bottom: 20px;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 14px; }
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--orange), #f5a25a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      font-weight: 800;
+      color: white;
+      flex-shrink: 0;
+    }
+    .author-name { font-size: 15px; font-weight: 700; color: var(--white); }
+    .author-title { font-size: 12.5px; color: rgba(255,255,255,.45); margin-top: 2px; }
+
+    /* ─── BLOG ─── */
+    .blog-section { background: var(--bg); }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .blog-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+    .blog-img {
+      height: 180px;
+      display: flex;
+      align-items: flex-start;
+      padding: 18px;
+      position: relative;
+    }
+    .blog-img.bi1 { background: linear-gradient(135deg, #fde8d0, #fbd0a8); }
+    .blog-img.bi2 { background: linear-gradient(135deg, #e8f0fe, #c8d8f8); }
+    .blog-img.bi3 { background: linear-gradient(135deg, #e8fde8, #a8dca8); }
+    .blog-date {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--orange);
+      color: white;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 50px;
+    }
+    .blog-body { padding: 22px 24px 26px; }
+    .blog-cat {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 8px;
+    }
+    .blog-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1.35;
+      margin-bottom: 10px;
+    }
+    .blog-excerpt {
+      font-size: 13.5px;
+      color: var(--dark-60);
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+    .blog-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--orange);
+      font-size: 13.5px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: gap .2s;
+    }
+    .blog-link:hover { gap: 10px; }
+
+    /* ─── CTA BAND ─── */
+    .cta-band {
+      background: linear-gradient(120deg, var(--orange) 0%, #c75800 100%);
+      padding: 72px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 500px 400px at 85% 50%, rgba(255,255,255,.08) 0%, transparent 70%);
+    }
+    .cta-band-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      position: relative;
+      z-index: 1;
+    }
+    .cta-band-text { flex: 1; }
+    .cta-band-text h2 {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 800;
+      color: white;
+      line-height: 1.2;
+      letter-spacing: -.02em;
+    }
+    .cta-band-text p {
+      font-size: 16px;
+      color: rgba(255,255,255,.75);
+      margin-top: 10px;
+    }
+    .cta-band-btns { display: flex; gap: 12px; flex-shrink: 0; flex-wrap: wrap; }
+    .btn-white { background: white; color: var(--orange); border-color: white; font-weight: 800; }
+    .btn-white:hover { background: #fff3e8; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+    .btn-white-outline { border: 2px solid rgba(255,255,255,.5); color: white; background: transparent; font-weight: 700; }
+    .btn-white-outline:hover { border-color: white; background: rgba(255,255,255,.1); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,.6);
+      padding: 72px 40px 0;
+    }
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+    }
+    .footer-brand svg { height: 38px; width: auto; }
+    /* invert dark SVG for footer */
+    .footer-brand svg .cls-2 { fill: #c4bdb7; }
+    .footer-brand p {
+      font-size: 14px;
+      line-height: 1.7;
+      margin-top: 16px;
+      margin-bottom: 24px;
+      max-width: 280px;
+    }
+    .footer-socials { display: flex; gap: 10px; }
+    .footer-socials a {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.07);
+      color: rgba(255,255,255,.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      text-decoration: none;
+      transition: background .2s, color .2s;
+    }
+    .footer-socials a:hover { background: var(--orange); color: white; }
+    .footer-col h4 {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.9);
+      margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a {
+      color: rgba(255,255,255,.5);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color .2s;
+    }
+    .footer-col ul li a:hover { color: var(--orange); }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; font-size: 14px; }
+    .footer-contact-item i { color: var(--orange); font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+    }
+    .footer-bottom a { color: rgba(255,255,255,.45); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--orange); }
+
+    /* ─── SCROLL DECORATIONS ─── */
+    .wave-divider { display: block; width: 100%; line-height: 0; }
+
+    @media (max-width: 1100px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 900px) {
+      .process-flow {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .process-connector { display: none; }
+      .cities-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .blog-grid { grid-template-columns: 1fr; }
+      .cta-band-inner { flex-direction: column; text-align: center; }
+      .cta-band-btns { justify-content: center; }
+    }
+    @media (max-width: 720px) {
+      .navbar-inner { padding: 0 20px; gap: 16px; }
+      .nav-links { display: none; }
+      section { padding: 60px 20px; }
+      .hero { padding: 60px 20px 100px; }
+      .hero-stats-inner { flex-wrap: wrap; }
+      .stat-item { padding: 16px 24px; border-right: none; border-bottom: 1px solid rgba(255,255,255,.1); }
+      .services-grid { grid-template-columns: 1fr; }
+      .cities-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .topbar { padding: 0 20px; }
+      .topbar-left a span { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── TOP BAR ─── -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <a href="tel:02125717155">
+        <i class="fa-solid fa-phone"></i>
+        <span>0212 571 71 55</span>
+      </a>
+      <a href="mailto:iletisim@endeneyimmerkezi.com">
+        <i class="fa-solid fa-envelope"></i>
+        <span>iletisim@endeneyimmerkezi.com</span>
+      </a>
+    </div>
+    <div class="topbar-right">
+      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- ─── NAVBAR ─── -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="#" class="logo-wrap" aria-label="EN Deneyim Merkezi Ana Sayfa">
+      <!-- INLINE SVG LOGO -->
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 137.79 68.86" role="img" aria-label="EN Deneyim Merkezi Logo">
+        <defs>
+          <style>
+            .cls-1 { fill: none; }
+            .cls-2 { fill: #4e4a49; }
+            .cls-3 { fill: #ed6c05; }
+            .cls-4 { clip-path: url(#clippath-nav); }
+          </style>
+          <clipPath id="clippath-nav">
+            <rect class="cls-1" width="137.79" height="38.05"></rect>
+          </clipPath>
+        </defs>
+        <g>
+          <g>
+            <g class="cls-4">
+              <polyline class="cls-3" points="68.82 5.95 137.64 37.83 69.08 .25 68.97 .02 68.82 .11 68.67 .02 68.55 .25 0 37.83 68.82 5.95"></polyline>
+            </g>
+            <g>
+              <path class="cls-3" d="M68.88,45.57c-4.21,5.15-9.56,7.78-16.16,7.49-5.05-.22-9.35-2.28-12.86-5.94-6.93-7.21-6.94-18.84.08-26.19,4.01-4.2,8.99-6.16,14.81-5.86,5.83.3,10.45,2.95,14.16,7.49,4.49-5.52,10.24-8.1,17.26-7.42,5.12.49,9.35,2.88,12.66,6.85,6.47,7.74,5.58,19.27-2.08,26.29-7.37,6.75-20.28,6.9-27.85-2.7ZM67.47,34.03c-.08,9.06,7.43,16.63,16.55,16.69,8.98.06,16.62-7.39,16.72-16.29.1-9.25-7.23-16.95-16.2-17.03-9.5-.08-16.98,7.21-17.07,16.63ZM53.35,17.35c-.76.1-1.88.18-2.98.39-8.84,1.63-14.88,10.88-12.99,19.68,1.76,8.16,9.3,13.92,17.55,13.23,5.08-.43,9.09-2.74,12.17-6.76.3-.39.3-.7.08-1.15-2.83-5.79-2.84-11.59.01-17.38.23-.46.19-.76-.11-1.15-3.38-4.41-7.84-6.66-13.74-6.85Z"></path>
+              <path class="cls-3" d="M79.41,29.52c.07-.02.14-.05.21-.07.16.23.33.46.48.7,2.63,4.13,5.31,8.23,7.87,12.41.68,1.11,1.4,1.63,2.72,1.49.78-.08.97-.3.96-1.05-.03-5.84,0-11.68-.02-17.52,0-1.6.25-1.39-1.4-1.4-1.2,0-1.39.2-1.4,1.4,0,4.02,0,8.04,0,12.05,0,.3-.03.6-.04.9-.07.02-.14.03-.21.05-.17-.25-.35-.5-.51-.76-2.53-4.01-5.11-7.98-7.55-12.04-.74-1.23-1.52-1.81-2.97-1.64-.76.09-.97.26-.97,1.02.03,6.03.02,12.05.02,18.08,0,.26.03.52.05.87.34,0,.63,0,.92,0,1.73,0,1.84-.11,1.84-1.81,0-3.94,0-7.88,0-11.81,0-.29,0-.58,0-.87Z"></path>
+              <path class="cls-3" d="M56.68,32.44c-2.03,0-3.91-.02-5.78.01-.63,0-.92-.15-.9-.85.05-1.37.04-2.73,0-4.1-.01-.59.17-.8.78-.79,2.28.03,4.55.01,6.83.01,1.92,0,1.89,0,1.9-1.89,0-.63-.22-.76-.8-.75-3.37.02-6.75,0-10.12.01-1.12,0-1.37.24-1.37,1.36,0,5.71,0,11.42,0,17.12,0,1.23.21,1.44,1.45,1.45,3.56,0,7.12,0,10.69,0,.23,0,.47-.03.77-.05,0-.58-.04-1.12.01-1.64.07-.71-.18-.92-.89-.91-2.79.04-5.57,0-8.36.02-.63,0-.92-.16-.9-.86.04-1.58.04-3.16,0-4.74-.01-.61.2-.78.79-.77,1.58.03,3.16.02,4.74,0,.24,0,.64-.16.69-.32.2-.71.3-1.45.45-2.29Z"></path>
+              <path class="cls-3" d="M79.41,29.52c0,.29,0,.58,0,.87,0,3.94,0,7.88,0,11.81,0,1.7-.11,1.81-1.84,1.81-.29,0-.58,0-.92,0-.02-.35-.05-.61-.05-.87,0-6.03.01-12.05-.02-18.08,0-.76.21-.93.97-1.02,1.45-.16,2.23.41,2.97,1.64,2.44,4.06,5.02,8.03,7.55,12.04.16.26.34.51.51.76.07-.02.14-.03.21-.05.02-.3.04-.6.04-.9,0-4.02,0-8.04,0-12.05,0-1.2.2-1.41,1.4-1.4,1.64.01,1.4-.2,1.4,1.4.01,5.84,0,11.68.02,17.52,0,.74-.18.96-.96,1.05-1.33.14-2.04-.38-2.72-1.49-2.56-4.17-5.24-8.28-7.87-12.41-.15-.24-.32-.47-.48-.7-.07.02-.14.05-.21.07Z"></path>
+              <path class="cls-3" d="M56.68,32.44c-.15.84-.25,1.58-.45,2.29-.05.16-.45.32-.69.32-1.58.03-3.16.04-4.74,0-.59-.01-.81.17-.79.77.03,1.58.04,3.16,0,4.74-.02.7.26.86.9.86,2.79-.02,5.57.01,8.36-.02.71,0,.96.21.89.91-.05.52-.01,1.06-.01,1.64-.31.02-.54.05-.77.05-3.56,0-7.12,0-10.69,0-1.25,0-1.45-.21-1.45-1.45,0-5.71,0-11.42,0-17.12,0-1.11.25-1.36,1.37-1.36,3.37,0,6.75.01,10.12-.01.57,0,.8.13.8.75,0,1.89.02,1.89-1.9,1.89-2.28,0-4.55.02-6.83-.01-.6,0-.79.2-.78.79.03,1.37.04,2.73,0,4.1-.02.7.26.86.9.85,1.87-.03,3.75-.01,5.78-.01Z"></path>
+            </g>
+            <g>
+              <path class="cls-2" d="M26.29,65.95c-.57.8-1.32,1.17-2.41,1.17h-2.88v-7.99h2.88c1.09,0,1.84.37,2.41,1.17.49.68.5,1.5.5,2.83s-.01,2.14-.5,2.83ZM24.91,61.02c-.26-.33-.64-.49-1.17-.49h-1.19v5.2h1.19c.53,0,.91-.17,1.17-.49.29-.35.33-.85.33-2.11s-.03-1.76-.33-2.11Z"></path>
+              <path class="cls-2" d="M28.39,67.12v-7.99h5.26v1.39h-3.7v1.87h3.15v1.39h-3.15v1.94h3.7v1.39h-5.26Z"></path>
+              <path class="cls-2" d="M39.89,67.12l-3.16-4.9v4.9h-1.56v-7.99h1.39l3.16,4.89v-4.89h1.56v7.99h-1.39Z"></path>
+              <path class="cls-2" d="M43.15,67.12v-7.99h5.26v1.39h-3.7v1.87h3.15v1.39h-3.15v1.94h3.7v1.39h-5.26Z"></path>
+              <path class="cls-2" d="M52.98,63.85v3.28h-1.55v-3.28l-2.4-4.71h1.69l1.49,3.22,1.47-3.22h1.69l-2.4,4.71Z"></path>
+              <path class="cls-2" d="M56.35,67.12v-7.99h1.56v7.99h-1.56ZM56.47,56.97h1.29v1.3h-1.29v-1.3Z"></path>
+              <path class="cls-2" d="M65.44,67.12v-4.65l-1.53,3.03h-1.05l-1.54-3.03v4.65h-1.56v-7.99h1.54l2.09,4.32,2.07-4.32h1.54v7.99h-1.56Z"></path>
+              <path class="cls-2" d="M77.14,67.12v-4.65l-1.53,3.03h-1.05l-1.54-3.03v4.65h-1.56v-7.99h1.54l2.09,4.32,2.07-4.32h1.54v7.99h-1.56Z"></path>
+              <path class="cls-2" d="M80.56,67.12v-7.99h5.26v1.39h-3.7v1.87h3.15v1.39h-3.15v1.94h3.7v1.39h-5.26Z"></path>
+              <path class="cls-2" d="M91.58,67.12l-1.56-3.19h-1.12v3.19h-1.56v-7.99h3.13c1.63,0,2.59,1.11,2.59,2.44,0,1.12-.68,1.82-1.46,2.1l1.78,3.44h-1.81ZM90.37,60.53h-1.47v2.11h1.47c.68,0,1.13-.44,1.13-1.05s-.45-1.05-1.13-1.05Z"></path>
+              <path class="cls-2" d="M99.32,67.12l-2.05-3.63-1.03,1.23v2.4h-1.56v-7.99h1.56v3.48l2.81-3.48h1.9l-2.65,3.17,2.84,4.81h-1.82Z"></path>
+              <path class="cls-2" d="M102.14,67.12v-7.99h5.26v1.39h-3.7v1.87h3.15v1.39h-3.15v1.94h3.7v1.39h-5.26Z"></path>
+              <path class="cls-2" d="M108.44,67.12v-1.26l3.41-5.34h-3.26v-1.39h5.1v1.23l-3.42,5.36h3.42v1.39h-5.25Z"></path>
+              <path class="cls-2" d="M115.07,67.12v-7.99h1.56v7.99h-1.56ZM115.19,56.97h1.29v1.3h-1.29v-1.3Z"></path>
+            </g>
+            <rect class="cls-2" x="21" y="68.58" width="95.63" height=".29"></rect>
+          </g>
+        </g>
+      </svg>
+    </a>
+
+    <nav class="nav-links" aria-label="Ana menü">
+      <a href="#" class="active">Ana Sayfa</a>
+      <a href="#">Şubelerimiz</a>
+      <a href="#">Ayrıcalıklar</a>
+      <a href="#">Koçlarımız</a>
+      <a href="#">Haberler</a>
+      <a href="#">Hakkımızda</a>
+    </nav>
+
+    <div class="nav-cta">
+      <a href="#" class="btn btn-outline">Giriş Yap</a>
+      <a href="#" class="btn btn-orange">Başvur <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero" aria-label="Kahraman bölümü">
+  <div class="hero-pattern"></div>
+
+  <!-- Decorative SVG shapes -->
+  <svg class="hero-deco-left" viewBox="0 0 300 300" fill="none" aria-hidden="true">
+    <polygon points="150,20 280,260 20,260" fill="white"/>
+    <polygon points="150,80 240,240 60,240" fill="white" opacity=".5"/>
+  </svg>
+  <svg class="hero-deco-right" viewBox="0 0 220 220" fill="none" aria-hidden="true">
+    <circle cx="110" cy="110" r="100" stroke="white" stroke-width="20"/>
+    <circle cx="110" cy="110" r="60" stroke="white" stroke-width="10"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <i class="fa-solid fa-mountain-sun"></i>
+      YKS Sınav Hazırlık &amp; Çalışma Merkezi
+    </div>
+    <h1>Geleceğini <span>EN Deneyim</span><br>ile planla</h1>
+    <p class="hero-sub">200+ şubemiz, uzman koçlarımız ve dijital platformlarımızla her adımında yanındayız. Başarıya giden yolculuk burada başlıyor.</p>
+    <div class="hero-btns">
+      <a href="#sehirler" class="btn btn-orange btn-lg">
+        <i class="fa-solid fa-location-dot"></i>
+        EN Yakın Deneyim
+      </a>
+      <a href="#basvur" class="btn btn-orange-outline btn-lg" style="border-color:rgba(255,255,255,.5); color:white;">
+        Hemen Başvur
+        <i class="fa-solid fa-chevron-right fa-xs"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Stats bar -->
+  <div class="hero-stats">
+    <div class="hero-stats-inner">
+      <div class="stat-item">
+        <div class="stat-num">200+</div>
+        <div class="stat-lbl">Şube</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">6+</div>
+        <div class="stat-lbl">Şehir</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">10+</div>
+        <div class="stat-lbl">Ayrıcalık</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">50.000+</div>
+        <div class="stat-lbl">Öğrenci</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROCESS ─── -->
+<section class="process-section">
+  <div class="section-inner">
+    <div class="section-header center">
+      <span class="section-tag">Nasıl Başlarım?</span>
+      <h2 class="section-title">Yolculuğun <span>3 Adımda</span> Başlıyor</h2>
+      <p class="section-sub">Şubemizi ziyaret etmekten başarıya ulaşmaya — her adımı seninle birlikte tasarlıyoruz.</p>
+    </div>
+
+    <div class="process-flow">
+      <!-- Step 1 -->
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div class="step-label">Adım Bir</div>
+        <div class="step-title">Tanışma</div>
+        <p class="step-desc">Sana en yakın EN Deneyim şubesini keşfet. Ekibimizle yüz yüze tanış, hedeflerini ve ihtiyaçlarını özgürce paylaş. İlk adım her zaman en güzel adımdır.</p>
+      </div>
+
+      <!-- Connector -->
+      <div class="process-connector" aria-hidden="true">
+        <div class="process-connector-line"></div>
+        <i class="fa-solid fa-chevron-right process-connector-arrow"></i>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div class="step-label">Adım İki</div>
+        <div class="step-title">Eşleşme</div>
+        <p class="step-desc">Sana en uygun abonelik paketini ve kişisel Gölge Koç'unu birlikte belirleyelim. Her öğrencinin yolculuğu kendine özel olmalı.</p>
+      </div>
+
+      <!-- Connector -->
+      <div class="process-connector" aria-hidden="true">
+        <div class="process-connector-line"></div>
+        <i class="fa-solid fa-chevron-right process-connector-arrow"></i>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div class="step-label">Adım Üç</div>
+        <div class="step-title">Hazırlık</div>
+        <p class="step-desc">ÜçDörtBeş ALL Star, EN Deneme Kulübü ve kişisel programlarla hedefe koş. Her gün seni bir adım daha ileri taşıyacak sistemler hazır.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ─── -->
+<section class="services-section" id="ayricaliklar">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Neler Sunuyoruz?</span>
+      <h2 class="section-title">Ayrıcalıklarımız</h2>
+      <p class="section-sub">Sadece bir çalışma alanı değil — seni zirveye taşıyacak eksiksiz bir ekosistem.</p>
+    </div>
+
+    <div class="services-grid">
+      <article class="service-card">
+        <div class="service-img g1">
+          <i class="fa-solid fa-user-shield"></i>
+        </div>
+        <div class="service-body">
+          <h3 class="service-title">Gölge Koç</h3>
+          <p class="service-desc">Sana özel atanan deneyimli koçun, akademik ve kişisel gelişimini yakından takip eder. Her gün, her adımda yanında.</p>
+          <a href="#" class="service-link">Detay <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+        </div>
+      </article>
+
+      <article class="service-card">
+        <div class="service-img g2">
+          <i class="fa-solid fa-clipboard-check"></i>
+        </div>
+        <div class="service-body">
+          <h3 class="service-title">EN Deneme Kulübü</h3>
+          <p class="service-desc">Gerçek sınav atmosferinde deneme sınavları, detaylı analiz raporları ve kıyaslama sistemleriyle sınava tam hazır ol.</p>
+          <a href="#" class="service-link">Detay <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+        </div>
+      </article>
+
+      <article class="service-card">
+        <div class="service-img g3">
+          <i class="fa-solid fa-book-open"></i>
+        </div>
+        <div class="service-body">
+          <h3 class="service-title">ÜçDörtBeş ALL Star</h3>
+          <p class="service-desc">Türkiye'nin en kapsamlı YKS hazırlık platformu. Video dersler, soru bankası ve konu testleriyle konuları pekiştir.</p>
+          <a href="#" class="service-link">Detay <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+        </div>
+      </article>
+
+      <article class="service-card">
+        <div class="service-img g4">
+          <i class="fa-solid fa-cube"></i>
+        </div>
+        <div class="service-body">
+          <h3 class="service-title">EN Box</h3>
+          <p class="service-desc">Her ay kapına gelen özel çalışma materyalleri ve motivasyon paketi. Çalışma ritminini canlı tut, enerjini yüksek tut.</p>
+          <a href="#" class="service-link">Detay <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CITIES ─── -->
+<section class="cities-section" id="sehirler">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Şubelerimiz</span>
+      <h2 class="section-title">Türkiye'nin her yerinde<br><span>EN Deneyim</span></h2>
+      <p class="section-sub">6 şehirde 200'den fazla şubemizle sana en yakın noktada hazırız.</p>
+    </div>
+
+    <div class="cities-grid">
+      <div class="city-card">
+        <i class="fa-solid fa-city city-deco" aria-hidden="true"></i>
+        <span class="city-badge"><i class="fa-solid fa-location-dot"></i> 32 Şube</span>
+        <div class="city-name">İstanbul</div>
+        <p class="city-sub">Avrupa ve Anadolu yakasında 32 modern şube</p>
+      </div>
+
+      <div class="city-card">
+        <i class="fa-solid fa-building city-deco" aria-hidden="true"></i>
+        <span class="city-badge"><i class="fa-solid fa-location-dot"></i> 28 Şube</span>
+        <div class="city-name">Ankara</div>
+        <p class="city-sub">Başkentte güçlü ağımız, bölgenin en büyük deneyimi</p>
+      </div>
+
+      <div class="city-card">
+        <i class="fa-solid fa-water city-deco" aria-hidden="true"></i>
+        <span class="city-badge"><i class="fa-solid fa-location-dot"></i> 18 Şube</span>
+        <div class="city-name">İzmir</div>
+        <p class="city-sub">Ege'nin incisinde 18 şubeyle yanındayız</p>
+      </div>
+
+      <div class="city-card">
+        <i class="fa-solid fa-anchor city-deco" aria-hidden="true"></i>
+        <span class="city-badge"><i class="fa-solid fa-location-dot"></i> 12 Şube</span>
+        <div class="city-name">Samsun</div>
+        <p class="city-sub">Karadeniz'in merkezi şehrinde büyüyen ağımız</p>
+      </div>
+
+      <div class="city-card">
+        <i class="fa-solid fa-mosque city-deco" aria-hidden="true"></i>
+        <span class="city-badge"><i class="fa-solid fa-location-dot"></i> 14 Şube</span>
+        <div class="city-name">Gaziantep</div>
+        <p class="city-sub">Güneydoğu'nun parlayan yıldızında 14 şube</p>
+      </div>
+
+      <div class="city-card">
+        <i class="fa-solid fa-mountain city-deco" aria-hidden="true"></i>
+        <span class="city-badge"><i class="fa-solid fa-location-dot"></i> 8 Şube</span>
+        <div class="city-name">Malatya</div>
+        <p class="city-sub">Doğu Anadolu'da kaliteli eğitimi herkes için sunuyoruz</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ─── -->
+<section class="testimonials-section">
+  <div class="section-inner">
+    <div class="section-header center">
+      <span class="section-tag">Başarı Hikayeleri</span>
+      <h2 class="section-title" style="color:white;">Öğrencilerimiz <span>Anlatıyor</span></h2>
+      <p class="section-sub">En iyi kanıt, değişen hayatlardır.</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="quote-icon">"</div>
+        <p class="testimonial-text">Gölge Koçum sadece derslerimle değil, sınav stresiyle baş etmemle de ilgilendi. İlk defa birinin gerçekten benim gelişimimi takip ettiğini hissettim. TYT'den tam not aldım ve bu deneyim olmadan olmazdı.</p>
+        <div class="testimonial-sep"></div>
+        <div class="testimonial-author">
+          <div class="author-avatar">EK</div>
+          <div>
+            <div class="author-name">Eylül K.</div>
+            <div class="author-title">Anadolu Lisesi Mezunu · İstanbul</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="quote-icon">"</div>
+        <p class="testimonial-text">EN Deneme Kulübü sayesinde sınav ortamını defalarca prova ettim. Raporlar zayıf olduğum yerleri net gösterdi ve her geçen ay puanım yükseldi. Şimdi istediğim üniversitede okuyorum.</p>
+        <div class="testimonial-sep"></div>
+        <div class="testimonial-author">
+          <div class="author-avatar">MA</div>
+          <div>
+            <div class="author-name">Mehmet A.</div>
+            <div class="author-title">Üniversite 1. Sınıf Öğrencisi · Ankara</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="quote-icon">"</div>
+        <p class="testimonial-text">12. sınıfta çok bunalmıştım ama EN Deneyim'deki çalışma ortamı ve koçlarımın desteği her şeyi değiştirdi. Şubeye geldiğimde eve gelmiş gibi hissediyordum. Başarı kendiliğinden geldi.</p>
+        <div class="testimonial-sep"></div>
+        <div class="testimonial-author">
+          <div class="author-avatar">ZB</div>
+          <div>
+            <div class="author-name">Zeynep B.</div>
+            <div class="author-title">12. Sınıf Öğrencisi · İzmir</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BLOG ─── -->
+<section class="blog-section">
+  <div class="section-inner">
+    <div class="section-header" style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:20px;">
+      <div>
+        <span class="section-tag">Blog &amp; Haberler</span>
+        <h2 class="section-title">Güncel <span>Haberler</span></h2>
+      </div>
+      <a href="#" class="btn btn-outline" style="flex-shrink:0;">Tüm Yazılar <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+    </div>
+
+    <div class="blog-grid">
+      <article class="blog-card">
+        <div class="blog-img bi1">
+          <span class="blog-date"><i class="fa-regular fa-calendar"></i> 22 Nisan 2026</span>
+        </div>
+        <div class="blog-body">
+          <div class="blog-cat">YKS Rehberi</div>
+          <h3 class="blog-title">2026 YKS Başvuru Takvimi ve Dikkat Etmeniz Gerekenler</h3>
+          <p class="blog-excerpt">Bu yılki YKS başvuru tarihleri açıklandı. Başvuru sürecinde yapmamanız gereken hatalar ve son dakika ipuçları bu yazıda.</p>
+          <a href="#" class="blog-link">Devamını Oku <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-img bi2">
+          <span class="blog-date"><i class="fa-regular fa-calendar"></i> 15 Nisan 2026</span>
+        </div>
+        <div class="blog-body">
+          <div class="blog-cat">Çalışma Teknikleri</div>
+          <h3 class="blog-title">Pomodoro Tekniğini YKS Hazırlığına Nasıl Uyarlarsınız?</h3>
+          <p class="blog-excerpt">Konsantrasyonunuzu artıracak ve yorgunluğu azaltacak bu teknikle günde 2 saat daha verimli çalışabilirsiniz.</p>
+          <a href="#" class="blog-link">Devamını Oku <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-img bi3">
+          <span class="blog-date"><i class="fa-regular fa-calendar"></i> 8 Nisan 2026</span>
+        </div>
+        <div class="blog-body">
+          <div class="blog-cat">Başarı Hikayeleri</div>
+          <h3 class="blog-title">Gölge Koç Programından Geçen 50 Öğrenci Hayallerindeki Bölümde</h3>
+          <p class="blog-excerpt">2025 YKS'de Gölge Koç programımızdan yararlanan öğrencilerimizin başarı oranı Türkiye ortalamasının 3 katı oldu.</p>
+          <a href="#" class="blog-link">Devamını Oku <i class="fa-solid fa-arrow-right fa-xs"></i></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA BAND ─── -->
+<div class="cta-band" id="basvur">
+  <div class="cta-band-inner">
+    <div class="cta-band-text">
+      <h2>Yolculuğuna bugün başla.<br>İlk adım ücretsiz!</h2>
+      <p>Sana en yakın EN Deneyim şubesini bul, ücretsiz oryantasyon randevunu al.</p>
+    </div>
+    <div class="cta-band-btns">
+      <a href="#" class="btn btn-white btn-lg">
+        <i class="fa-solid fa-location-dot"></i>
+        Şube Bul
+      </a>
+      <a href="tel:02125717155" class="btn btn-white-outline btn-lg">
+        <i class="fa-solid fa-phone"></i>
+        0212 571 71 55
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <!-- Brand Column -->
+      <div class="footer-brand">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 137.79 68.86" aria-label="EN Deneyim Merkezi">
+          <defs>
+            <style>
+              .f-cls-1 { fill: none; }
+              .f-cls-2 { fill: #9b948f; }
+              .f-cls-3 { fill: #ed6c05; }
+              .f-cls-4 { clip-path: url(#clippath-footer); }
+            </style>
+            <clipPath id="clippath-footer">
+              <rect class="f-cls-1" width="137.79" height="38.05"></rect>
+            </clipPath>
+          </defs>
+          <g>
+            <g>
+              <g class="f-cls-4">
+                <polyline class="f-cls-3" points="68.82 5.95 137.64 37.83 69.08 .25 68.97 .02 68.82 .11 68.67 .02 68.55 .25 0 37.83 68.82 5.95"></polyline>
+              </g>
+              <g>
+                <path class="f-cls-3" d="M68.88,45.57c-4.21,5.15-9.56,7.78-16.16,7.49-5.05-.22-9.35-2.28-12.86-5.94-6.93-7.21-6.94-18.84.08-26.19,4.01-4.2,8.99-6.16,14.81-5.86,5.83.3,10.45,2.95,14.16,7.49,4.49-5.52,10.24-8.1,17.26-7.42,5.12.49,9.35,2.88,12.66,6.85,6.47,7.74,5.58,19.27-2.08,26.29-7.37,6.75-20.28,6.9-27.85-2.7ZM67.47,34.03c-.08,9.06,7.43,16.63,16.55,16.69,8.98.06,16.62-7.39,16.72-16.29.1-9.25-7.23-16.95-16.2-17.03-9.5-.08-16.98,7.21-17.07,16.63ZM53.35,17.35c-.76.1-1.88.18-2.98.39-8.84,1.63-14.88,10.88-12.99,19.68,1.76,8.16,9.3,13.92,17.55,13.23,5.08-.43,9.09-2.74,12.17-6.76.3-.39.3-.7.08-1.15-2.83-5.79-2.84-11.59.01-17.38.23-.46.19-.76-.11-1.15-3.38-4.41-7.84-6.66-13.74-6.85Z"></path>
+                <path class="f-cls-3" d="M79.41,29.52c.07-.02.14-.05.21-.07.16.23.33.46.48.7,2.63,4.13,5.31,8.23,7.87,12.41.68,1.11,1.4,1.63,2.72,1.49.78-.08.97-.3.96-1.05-.03-5.84,0-11.68-.02-17.52,0-1.6.25-1.39-1.4-1.4-1.2,0-1.39.2-1.4,1.4,0,4.02,0,8.04,0,12.05,0,.3-.03.6-.04.9-.07.02-.14.03-.21.05-.17-.25-.35-.5-.51-.76-2.53-4.01-5.11-7.98-7.55-12.04-.74-1.23-1.52-1.81-2.97-1.64-.76.09-.97.26-.97,1.02.03,6.03.02,12.05.02,18.08,0,.26.03.52.05.87.34,0,.63,0,.92,0,1.73,0,1.84-.11,1.84-1.81,0-3.94,0-7.88,0-11.81,0-.29,0-.58,0-.87Z"></path>
+                <path class="f-cls-3" d="M56.68,32.44c-2.03,0-3.91-.02-5.78.01-.63,0-.92-.15-.9-.85.05-1.37.04-2.73,0-4.1-.01-.59.17-.8.78-.79,2.28.03,4.55.01,6.83.01,1.92,0,1.89,0,1.9-1.89,0-.63-.22-.76-.8-.75-3.37.02-6.75,0-10.12.01-1.12,0-1.37.24-1.37,1.36,0,5.71,0,11.42,0,17.12,0,1.23.21,1.44,1.45,1.45,3.56,0,7.12,0,10.69,0,.23,0,.47-.03.77-.05,0-.58-.04-1.12.01-1.64.07-.71-.18-.92-.89-.91-2.79.04-5.57,0-8.36.02-.63,0-.92-.16-.9-.86.04-1.58.04-3.16,0-4.74-.01-.61.2-.78.79-.77,1.58.03,3.16.02,4.74,0,.24,0,.64-.16.69-.32.2-.71.3-1.45.45-2.29Z"></path>
+              </g>
+              <g>
+                <path class="f-cls-2" d="M26.29,65.95c-.57.8-1.32,1.17-2.41,1.17h-2.88v-7.99h2.88c1.09,0,1.84.37,2.41,1.17.49.68.5,1.5.5,2.83s-.01,2.14-.5,2.83ZM24.91,61.02c-.26-.33-.64-.49-1.17-.49h-1.19v5.2h1.19c.53,0,.91-.17,1.17-.49.29-.35.33-.85.33-2.11s-.03-1.76-.33-2.11Z"></path>
+                <path class="f-cls-2" d="M28.39,67.12v-7.99h5.26v1.39h-3.7v1.87h3.15v1.39h-3.15v1.94h3.7v1.39h-5.26Z"></path>
+                <path class="f-cls-2" d="M39.89,67.12l-3.16-4.9v4.9h-1.56v-7.99h1.39l3.16,4.89v-4.89h1.56v7.99h-1.39Z"></path>
+                <path class="f-cls-2" d="M43.15,67.12v-7.99h5.26v1.39h-3.7v1.87h3.15v1.39h-3.15v1.94h3.7v1.39h-5.26Z"></path>
+                <path class="f-cls-2" d="M52.98,63.85v3.28h-1.55v-3.28l-2.4-4.71h1.69l1.49,3.22,1.47-3.22h1.69l-2.4,4.71Z"></path>
+                <path class="f-cls-2" d="M56.35,67.12v-7.99h1.56v7.99h-1.56Z"></path>
+                <path class="f-cls-2" d="M65.44,67.12v-4.65l-1.53,3.03h-1.05l-1.54-3.03v4.65h-1.56v-7.99h1.54l2.09,4.32,2.07-4.32h1.54v7.99h-1.56Z"></path>
+                <path class="f-cls-2" d="M77.14,67.12v-4.65l-1.53,3.03h-1.05l-1.54-3.03v4.65h-1.56v-7.99h1.54l2.09,4.32,2.07-4.32h1.54v7.99h-1.56Z"></path>
+                <path class="f-cls-2" d="M80.56,67.12v-7.99h5.26v1.39h-3.7v1.87h3.15v1.39h-3.15v1.94h3.7v1.39h-5.26Z"></path>
+                <path class="f-cls-2" d="M91.58,67.12l-1.56-3.19h-1.12v3.19h-1.56v-7.99h3.13c1.63,0,2.59,1.11,2.59,2.44,0,1.12-.68,1.82-1.46,2.1l1.78,3.44h-1.81ZM90.37,60.53h-1.47v2.11h1.47c.68,0,1.13-.44,1.13-1.05s-.45-1.05-1.13-1.05Z"></path>
+                <path class="f-cls-2" d="M99.32,67.12l-2.05-3.63-1.03,1.23v2.4h-1.56v-7.99h1.56v3.48l2.81-3.48h1.9l-2.65,3.17,2.84,4.81h-1.82Z"></path>
+                <path class="f-cls-2" d="M102.14,67.12v-7.99h5.26v1.39h-3.7v1.87h3.15v1.39h-3.15v1.94h3.7v1.39h-5.26Z"></path>
+                <path class="f-cls-2" d="M108.44,67.12v-1.26l3.41-5.34h-3.26v-1.39h5.1v1.23l-3.42,5.36h3.42v1.39h-5.25Z"></path>
+                <path class="f-cls-2" d="M115.07,67.12v-7.99h1.56v7.99h-1.56Z"></path>
+              </g>
+              <rect class="f-cls-2" x="21" y="68.58" width="95.63" height=".29"></rect>
+            </g>
+          </g>
+        </svg>
+        <p>Türkiye'nin önde gelen YKS sınav hazırlık ve çalışma merkezi zinciri. Geleceğini EN Deneyim ile planla.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <!-- Links 1 -->
+      <div class="footer-col">
+        <h4>Ayrıcalıklar</h4>
+        <ul>
+          <li><a href="#">Gölge Koç</a></li>
+          <li><a href="#">EN Deneme Kulübü</a></li>
+          <li><a href="#">ÜçDörtBeş ALL Star</a></li>
+          <li><a href="#">EN Box</a></li>
+          <li><a href="#">Dijital Platform</a></li>
+          <li><a href="#">Üyelik Paketleri</a></li>
+        </ul>
+      </div>
+
+      <!-- Links 2 -->
+      <div class="footer-col">
+        <h4>Kurumsal</h4>
+        <ul>
+          <li><a href="#">Hakkımızda</a></li>
+          <li><a href="#">Şubelerimiz</a></li>
+          <li><a href="#">Kariyer</a></li>
+          <li><a href="#">Basın Odası</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">SSS</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-col">
+        <h4>İletişim</h4>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-phone"></i>
+          <a href="tel:02125717155" style="color:rgba(255,255,255,.5); text-decoration:none;">0212 571 71 55</a>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-envelope"></i>
+          <a href="mailto:iletisim@endeneyimmerkezi.com" style="color:rgba(255,255,255,.5); text-decoration:none; font-size:13px;">iletisim@endeneyimmerkezi.com</a>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-globe"></i>
+          <a href="https://www.endeneyimmerkezi.com" style="color:rgba(255,255,255,.5); text-decoration:none;">endeneyimmerkezi.com</a>
+        </div>
+        <div class="footer-contact-item" style="margin-top:20px;">
+          <i class="fa-solid fa-clock"></i>
+          <span>Pzt–Cmt: 08:00–22:00<br>Pazar: 10:00–20:00</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 EN Deneyim Merkezi. Tüm hakları saklıdır.</span>
+      <div style="display:flex; gap:20px;">
+        <a href="#">Gizlilik Politikası</a>
+        <a href="#">Kullanım Koşulları</a>
+        <a href="#">KVKK</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
