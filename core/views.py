@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.views.generic import TemplateView
 
 
@@ -7,7 +6,7 @@ class TasarimSeciciView(TemplateView):
 
 
 class V1KurumsalView(TemplateView):
-    template_name = "core/v1-kurumsal.html"
+    template_name = "core/v1-minimal.html"
 
 
 class V2ModernView(TemplateView):

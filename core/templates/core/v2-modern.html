@@ -76,6 +76,10 @@
       list-style: none;
     }
 
+    .nav-links > li {
+      position: relative;
+    }
+
     .nav-links a {
       text-decoration: none;
       color: var(--gray-dark);
@@ -85,6 +89,60 @@
     }
 
     .nav-links a:hover { color: var(--orange); }
+
+    /* Dropdown trigger label */
+    .nav-links .has-dropdown > a {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .nav-links .has-dropdown > a .nav-chevron {
+      font-size: 0.65rem;
+      transition: transform 0.2s;
+      opacity: 0.7;
+    }
+
+    /* Dropdown panel */
+    .nav-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-lg);
+      padding: 0.5rem 0;
+      min-width: 200px;
+      z-index: 200;
+      list-style: none;
+    }
+
+    .nav-dropdown li a {
+      display: block;
+      padding: 0.55rem 1.25rem;
+      font-size: 0.875rem;
+      color: var(--gray-dark);
+      white-space: nowrap;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .nav-dropdown li a:hover {
+      color: var(--orange);
+      background: var(--orange-pale);
+    }
+
+    /* Show dropdown on hover */
+    .has-dropdown:hover > .nav-dropdown,
+    .has-dropdown:focus-within > .nav-dropdown {
+      display: block;
+    }
+
+    .has-dropdown:hover > a .nav-chevron {
+      transform: rotate(180deg);
+    }
 
     .nav-actions {
       display: flex;
@@ -973,8 +1031,8 @@
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1.5fr;
-      gap: 3rem;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1.6fr;
+      gap: 2.5rem;
       margin-bottom: 3rem;
     }
 
@@ -1139,7 +1197,7 @@
     @media (max-width: 1024px) {
       .services-grid { grid-template-columns: repeat(2, 1fr); }
       .privileges-grid { grid-template-columns: repeat(4, 1fr); }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr 1fr; }
     }
 
     @media (max-width: 768px) {
@@ -1234,19 +1292,44 @@
     </a>
 
     <ul class="nav-links">
-      <li><a href="#hizmetler">Hizmetler</a></li>
-      <li><a href="#ayriliklar">10 Ayrıcalık</a></li>
-      <li><a href="#paketler">Paketler</a></li>
-      <li><a href="#etkinlikler">Etkinlikler</a></li>
+      <li><a href="#">Anasayfa</a></li>
+
+      <li class="has-dropdown">
+        <a href="#kurumsal">Kurumsal <span class="nav-chevron">▾</span></a>
+        <ul class="nav-dropdown">
+          <li><a href="#kurumsal">Hikayemiz</a></li>
+          <li><a href="#kurumsal">Felsefemiz</a></li>
+          <li><a href="#kurumsal">İnsan Kaynakları</a></li>
+          <li><a href="#kurumsal">Kurumsal Kimlik</a></li>
+          <li><a href="#kurumsal">Franchise</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <a href="#endeneyim">Endeneyim <span class="nav-chevron">▾</span></a>
+        <ul class="nav-dropdown">
+          <li><a href="#endeneyim">Neden Endeneyim?</a></li>
+          <li><a href="#endeneyim">Ayrıcalıklar</a></li>
+          <li><a href="#endeneyim">Şubeler</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <a href="#abonelikler">Abonelikler <span class="nav-chevron">▾</span></a>
+        <ul class="nav-dropdown">
+          <li><a href="#abonelikler">Solo</a></li>
+          <li><a href="#abonelikler">Elite</a></li>
+          <li><a href="#abonelikler">Premium</a></li>
+        </ul>
+      </li>
+
+      <li><a href="#">Blog</a></li>
       <li><a href="#iletisim">İletişim</a></li>
     </ul>
 
     <div class="nav-actions">
-      <a href="tel:02125717155" class="btn btn-outline">
-        <i class="fa-solid fa-phone"></i> 0212 571 71 55
-      </a>
-      <a href="#iletisim" class="btn btn-primary">
-        Bilgi Al <i class="fa-solid fa-arrow-right"></i>
+      <a href="https://app.endeneyimmerkezi.com/login.php" class="btn btn-primary">
+        Giriş Yap <i class="fa-solid fa-arrow-right"></i>
       </a>
     </div>
   </div>
@@ -1754,7 +1837,7 @@
   <div class="footer-inner">
     <div class="footer-grid">
 
-      <!-- Brand -->
+      <!-- Column 1 — Brand -->
       <div class="footer-brand">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 137.79 68.86" height="40" aria-label="EN Deneyim Merkezi" style="filter: brightness(0) invert(1);">
           <defs>
@@ -1786,76 +1869,77 @@
             </g>
           </g>
         </svg>
+        <p style="font-style: italic; font-size: 0.875rem; margin: 0.75rem 0 0.5rem; color: rgba(255,255,255,0.8);">
+          Yeni bir deneyim seni bekliyor.
+        </p>
         <p>
           Türkiye'nin en kapsamlı YKS hazırlık ve çalışma salonu zinciri.
           200+ şube, 6+ şehir ile geleceğini şekillendiriyoruz.
         </p>
-        <div class="footer-socials">
-          <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
-          <a href="#" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
-          <a href="#" class="social-btn"><i class="fa-brands fa-twitter"></i></a>
-          <a href="#" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
-        </div>
       </div>
 
-      <!-- Quick Links -->
+      <!-- Column 2 — Kurumsal -->
       <div class="footer-col">
-        <h5>Hızlı Bağlantılar</h5>
+        <h5>Kurumsal</h5>
         <ul class="footer-links">
           <li><a href="#">Hakkımızda</a></li>
-          <li><a href="#hizmetler">Hizmetlerimiz</a></li>
-          <li><a href="#ayriliklar">10 Ayrıcalık</a></li>
-          <li><a href="#paketler">Paketler</a></li>
-          <li><a href="#etkinlikler">Etkinlikler</a></li>
-          <li><a href="#">Blog</a></li>
+          <li><a href="#">Franchise</a></li>
+          <li><a href="#">İnsan Kaynakları</a></li>
         </ul>
       </div>
 
-      <!-- Ayrıcalıklar -->
+      <!-- Column 3 — Endeneyim -->
       <div class="footer-col">
-        <h5>Ayrıcalıklar</h5>
+        <h5>Endeneyim</h5>
         <ul class="footer-links">
-          <li><a href="#">EN Hall</a></li>
-          <li><a href="#">EN Deneme</a></li>
-          <li><a href="#">Gölge Koç</a></li>
-          <li><a href="#">EN Özel Ders</a></li>
-          <li><a href="#">EN Analiz</a></li>
-          <li><a href="#">EN Coffee</a></li>
-          <li><a href="#">EN Box</a></li>
+          <li><a href="#">Neden Endeneyim?</a></li>
+          <li><a href="#">Ayrıcalıklar</a></li>
+          <li><a href="#">Şubeler</a></li>
         </ul>
       </div>
 
-      <!-- Contact -->
+      <!-- Column 4 — Abonelikler -->
+      <div class="footer-col">
+        <h5>Abonelikler</h5>
+        <ul class="footer-links">
+          <li><a href="#">Solo</a></li>
+          <li><a href="#">Elite</a></li>
+          <li><a href="#">Premium</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 5 — İletişim -->
       <div class="footer-col">
         <h5>İletişim</h5>
         <div class="footer-contact-items">
-          <div class="contact-item">
-            <i class="fa-solid fa-phone"></i>
-            <span>0212 571 71 55</span>
-          </div>
           <div class="contact-item">
             <i class="fa-regular fa-envelope"></i>
             <span>iletisim@endeneyimmerkezi.com</span>
           </div>
           <div class="contact-item">
-            <i class="fa-solid fa-location-dot"></i>
-            <span>İstanbul, Ankara, İzmir,<br>Bursa, Konya, Gaziantep</span>
+            <i class="fa-solid fa-phone"></i>
+            <span>0212 571 71 55</span>
           </div>
           <div class="contact-item">
-            <i class="fa-regular fa-clock"></i>
-            <span>Pazartesi – Pazar: 07:00 – 23:00</span>
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Cihannüma, Barbaros Blv. No:4,<br>34353 Beşiktaş/İstanbul</span>
           </div>
         </div>
+        <div class="footer-socials" style="margin-top: 1.25rem;">
+          <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
       </div>
+
     </div>
 
     <div class="footer-bottom">
-      <span>© 2025 EN Deneyim Merkezi. Tüm hakları saklıdır.</span>
+      <span>© 2026 EN Deneyim Merkezi. Tüm hakları saklıdır.</span>
       <div class="footer-bottom-links">
-        <a href="#">Gizlilik Politikası</a>
         <a href="#">KVKK</a>
-        <a href="#">Kullanım Koşulları</a>
+        <a href="#">Gizlilik Politikası</a>
         <a href="#">Çerez Politikası</a>
       </div>
     </div>
