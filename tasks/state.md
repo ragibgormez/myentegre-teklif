@@ -2,8 +2,8 @@
 
 ## Project State
 - Phase: dev
-- Last completed: V2 Dream Big DNA + V3 Ren Edu DNA refactor (anasayfa + 6 alt sayfa her biri)
-- Next up: Commit + push, Coolify auto-deploy, browser visual review
+- Last completed: 34 gerçek görsel (endeneyimmerkezi.com'dan) eklendi — 3 anasayfa + 18 alt sayfa hero/tile/event/blog gradient placeholder'ları replaced
+- Next up: Browser visual review, opsiyonel ek görsel (V2 prestij icon yanına real img), yeni içerik istekleri
 - Blockers: none
 
 ## Key Decisions
@@ -38,5 +38,6 @@
 ## Brand Assets
 - core/static/img/logo-white.png — beyaz logo (koyu arkaplan)
 - core/static/img/logo-dark.png — siyah logo (açık arkaplan)
+- core/static/img/site/ — 34 gerçek site görseli (şube fotoları, hikayemiz, paket icons, hero bg)
 - core/static/fonts/Town10-Display-{Medium,Bold,Black}.otf
 - core/static/video/hero.mp4 (V1 hero arkaplan video)

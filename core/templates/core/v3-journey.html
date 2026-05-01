@@ -235,16 +235,28 @@
       opacity: 0;
       animation: heroFade 24s infinite;
     }
+    .hero-slide {
+      background-size: cover;
+      background-position: center;
+    }
+    .hero-slide::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(26,35,50,0.78) 0%, rgba(26,35,50,0.55) 50%, rgba(243,116,34,0.45) 100%);
+      z-index: 1;
+    }
+    .hero-slide > * { position: relative; z-index: 2; }
     .hero-slide-1 {
-      background: linear-gradient(135deg, #1A2332 0%, #2d3a5a 50%, #f37422 100%);
+      background-image: url('{% static "img/site/samsun-atakum-en-deneyim-2.jpeg" %}');
       animation-delay: 0s;
     }
     .hero-slide-2 {
-      background: linear-gradient(135deg, #1A2332 0%, #c23f1b 60%, #fec841 100%);
+      background-image: url('{% static "img/site/malatya-yesilyurt-en-deneyim-merkezi-18.jpeg" %}');
       animation-delay: 8s;
     }
     .hero-slide-3 {
-      background: linear-gradient(135deg, #1A2332 0%, #ff7727 50%, #ffe77e 100%);
+      background-image: url('{% static "img/site/istanbul-besiktas-en-deneyim-8-scaled.jpeg" %}');
       animation-delay: 16s;
     }
     @keyframes heroFade {
@@ -656,9 +668,10 @@
       padding: 18px;
       position: relative;
     }
-    .blog-img.bi1 { background: linear-gradient(135deg, #fde8d0, #fbd0a8); }
-    .blog-img.bi2 { background: linear-gradient(135deg, #e8f0fe, #c8d8f8); }
-    .blog-img.bi3 { background: linear-gradient(135deg, #e8fde8, #a8dca8); }
+    .blog-img { background-size: cover; background-position: center; }
+    .blog-img.bi1 { background-image: url('{% static "img/site/geometri-1024x524.webp" %}'); }
+    .blog-img.bi2 { background-image: url('{% static "img/site/yks-ekran-suresi-1024x681.webp" %}'); }
+    .blog-img.bi3 { background-image: url('{% static "img/site/deneme_optik_endeneyim-1024x512.webp" %}'); }
     .blog-date {
       display: inline-flex;
       align-items: center;
